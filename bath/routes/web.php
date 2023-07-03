@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\BathController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::controller(BathController::class)->prefix('user')->group(function() {
+    Route::get('bath/index', 'add');
+});
+
 
 require __DIR__.'/auth.php';
