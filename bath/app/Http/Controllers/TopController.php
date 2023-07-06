@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class BathController extends Controller
+class TopController extends Controller
 {
-    public function index(int $id)
+    public function top()
     {
-        // ユーザーがログイン済みなら
+        // ユーザーがログイン済み
         if (Auth::check()) {
             // 認証しているユーザーを取得
             $user = Auth::user();
@@ -19,6 +19,6 @@ class BathController extends Controller
         } else {
             $user_id = null;
         }
-        return view('user.list.index', compact('user_id'));
+        return view('top', compact('user_id'));
     }
 }

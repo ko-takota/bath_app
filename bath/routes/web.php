@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TopController;
 use App\Http\Controllers\User\BathController;
+use App\Http\Controllers\Admin\AdminController;
+
 
 
 /*
@@ -16,9 +19,10 @@ use App\Http\Controllers\User\BathController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,9 +34,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::controller(BathController::class)->prefix('user')->group(function() {
-    Route::get('bath/index', 'add');
-});
-
-
 require __DIR__.'/auth.php';
+
+//topページ
+Route::get('/', [TopController::class, 'top'])
+    ->name('top');
+
+//マイページ
+Route::get('/User/{id}/index', [BathController::class, 'index'])
+    ->name('user.index');
+
+//検索
+// Route::get('/search', [PrefectureController::class, 'search'])
+// ->name('search');
+
+//施設ページ
+Route::get('/admin/bath', [AdminController::class, 'admin'])
+    ->name('admin.bath');
