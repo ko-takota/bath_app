@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('bath_name');
             $table->string('prefecture_id');
             $table->string('address')->unique();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

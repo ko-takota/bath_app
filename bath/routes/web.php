@@ -3,10 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
+use App\Http\Controllers\PrefectureController;
 use App\Http\Controllers\User\BathController;
 use App\Http\Controllers\Admin\AdminController;
 
-
+//管理画面系ファイル呼び出し
+include __DIR__ . '/admin.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -45,8 +47,8 @@ Route::get('/User/{id}/index', [BathController::class, 'index'])
     ->name('user.index');
 
 //検索
-// Route::get('/search', [PrefectureController::class, 'search'])
-// ->name('search');
+Route::get('/search', [PrefectureController::class, 'search'])
+->name('search');
 
 //施設ページ
 Route::get('/admin/bath', [AdminController::class, 'admin'])

@@ -8,10 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Bath extends Model
 {
     use HasFactory;
-    // protected $guarded = ['id', 'bath_name', 'prefecture_id', 'address'];
+    protected $guarded = ['id', 'bath_name', 'prefecture_id', 'address'];
+    
     public function prefecture()
     {
         return $this->belongsTo(Prefecture::class);
+    }
+
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
 }

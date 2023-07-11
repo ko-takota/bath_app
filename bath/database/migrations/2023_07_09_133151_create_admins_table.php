@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prefectures', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('prefecture_name');
-            $table->foreignId('user_id')->constrained();
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prefectures');
+        Schema::dropIfExists('admins');
     }
 };

@@ -14,6 +14,7 @@
                     マイページ
                 {{-- </a> --}}
             </button>
+            </form>
             <form action="{{ route('logout')}}" method="POST">
             @csrf
             <button>ログアウト</button>
