@@ -19,6 +19,6 @@ class TopController extends Controller
         } else {
             $user_id = null;
         }
-        return view('top', compact('user_id'));
+        return view('user.top', compact('user_id'));
     }
 }

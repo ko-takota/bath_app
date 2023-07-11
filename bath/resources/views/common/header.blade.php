@@ -15,17 +15,17 @@
                 {{-- </a> --}}
             </button>
             </form>
-            <form action="{{ route('logout')}}" method="POST">
+            <form action="{{ route('user.logout')}}" method="POST">
             @csrf
             <button>ログアウト</button>
             </form>
             {{-- ユーザー新規登録・ログインしていない場合、新規登録・ログインボタン表示 --}}
             @else
             <button>
-                <a href="{{ route('login')}}">ログイン</a>
+                <a href="{{ route('user.login')}}">ログイン</a>
             </button>
             <button>
-                <a href="{{ route('register')}}">初めての方（新規会員登録）</a>
+                <a href="{{ route('user.register')}}">初めての方（新規会員登録）</a>
             </button>
             @endauth
             <form method="GET" action="URL">

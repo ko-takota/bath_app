@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\PrefectureController;
 use App\Http\Controllers\User\BathController;
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admins\AdminController;
 
 //管理画面系ファイル呼び出し
-include __DIR__ . '/admin.php';
+//include __DIR__ . '/admin.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +28,9 @@ include __DIR__ . '/admin.php';
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth:users', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth:users')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -51,5 +51,5 @@ Route::get('/search', [PrefectureController::class, 'search'])
 ->name('search');
 
 //施設ページ
-Route::get('/admin/bath', [AdminController::class, 'admin'])
-    ->name('admin.bath');
+Route::get('/admins/bath', [AdminController::class, 'admins'])
+    ->name('admins.bath');

@@ -17,7 +17,7 @@
 
     <hr class="dark:border-gray-700/60" />
 
-    <a href="{{ route('top') }}"
+    <a href="{{ route('user.top') }}"
         class="flex h-16 w-16 flex-col items-center justify-center gap-1 text-fuchsia-900 dark:text-gray-900">
     <!-- HeroIcon - Home Modern -->
        <small className="text-xs font-medium">ホーム</small>

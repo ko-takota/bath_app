@@ -1,8 +1,8 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('user.register') }}">
         @csrf
 
-        <a class="flex items-center justify-center text-gray-900 font-bold p-5 mb-4 md:mb-20" href="{{ route('top') }}">
+        <a class="flex items-center justify-center text-gray-900 font-bold p-5 mb-4 md:mb-20" href="{{ route('user.top') }}">
         <span>お気に入り温泉会員登録</span>
         </a>
         <!-- Name -->
@@ -42,7 +42,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-900 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
+            <a class="underline text-sm text-gray-600 dark:text-gray-900 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('user.login') }}">
                 {{ __('すでに登録済みですか？') }}
             </a>
 

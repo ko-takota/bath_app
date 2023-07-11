@@ -12,7 +12,7 @@ class LoginController extends Controller
     //ログインページの表示
     public function index()
   {
-    return view('admin.login.index');
+    return view('admins.login.index');
   }
 
   //ログイン処理
@@ -23,7 +23,7 @@ class LoginController extends Controller
        //ユーザー情報が見つかったらログイン
        if (Auth::guard('admins')->attempt($credentials)) {
        //ログイン後に表示するページにリダイレクト
-       return redirect()->route('admin.top')->with([
+       return redirect()->route('admins.top')->with([
            'login_msg' => 'ログインしました。',
        ]);
        }
@@ -40,7 +40,7 @@ class LoginController extends Controller
      $request->session()->regenerateToken();
 
      //ログインページにリダイレクト
-     return redirect()->route('admin.login.index')->with([
+     return redirect()->route('admins.login.index')->with([
        'logout_msg' => 'ログアウトしました',
      ]);
    }

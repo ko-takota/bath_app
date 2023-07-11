@@ -7,8 +7,7 @@
 
 
 
-
-<form method="GET" action="{{ route('search') }}" class="d-flex">
+<form method="GET" action="{{ route('user.search') }}" class="d-flex">
     <div>
         <label for="prefecture">都道府県</label>
         <select name="prefecture">

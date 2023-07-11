@@ -3,13 +3,14 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+    管理者用
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('admin.login') }}">
         @csrf
     <div class="bg-yellow-200">
-        <a class="flex items-center justify-center text-gray-900 font-bold p-8 mb-4 md:mb-10" href="{{ route('top') }}">
+        {{-- <a class="flex items-center justify-center text-gray-900 font-bold p-8 mb-4 md:mb-10" href="{{ route('admin./') }}">
             <span>お気に入り温泉会員登録</span>
-        </a>
+        </a> --}}
 
         <!-- Email Address -->
         <div>
@@ -39,8 +40,8 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-900 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+            @if (Route::has('admin.password.request'))
+                <a class="underline text-sm text-gray-600 dark:text-gray-900 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('admin.password.request') }}">
                     {{ __('パスワードを忘れた場合はこちら') }}
                 </a>
             @endif

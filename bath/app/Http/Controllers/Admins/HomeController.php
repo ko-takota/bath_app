@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function top()
     {
-        return view('admin.top');
+        return view('admins.top');
          //ログインページの表示
     }
 
