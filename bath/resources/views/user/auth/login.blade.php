@@ -7,7 +7,7 @@
     <form method="POST" action="{{ route('user.login') }}">
         @csrf
     <div class="bg-yellow-200">
-        <a class="flex items-center justify-center text-gray-900 font-bold p-8 mb-4 md:mb-10" href="{{ route('top') }}">
+        <a class="flex items-center justify-center text-gray-900 font-bold p-8 mb-4 md:mb-10" href="{{ route('user.top') }}">
             <span>お気に入り温泉会員登録</span>
         </a>
 
