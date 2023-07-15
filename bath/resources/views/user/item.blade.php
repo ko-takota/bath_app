@@ -12,11 +12,13 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("一覧") }}
                     @foreach ($baths as $bath)
+                    <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}">
                         <div>
                             <h3>{{ $bath->bath_name }}</h3>
                             <h2>{{ $bath->address }}</h2>
                             <a>{{ number_format($bath->price) }}<span class="text-sm text-gray-400">円（月額）</span></a>
                         </div>
+                    </a>
                     @endforeach
                 </div>
             </div>

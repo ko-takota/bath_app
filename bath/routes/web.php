@@ -41,6 +41,11 @@ Route::middleware('auth:users')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //施設検索
     //Route::get('/bath_search', [BathSearchController::class, 'search'])->name('bath_search');
+    //商品ページ
+    Route::get('/item', [ItemController::class, 'item'])
+    ->name('item');
+    Route::get('show/{item}', [ItemController::class, 'show'])
+    ->name('item.show');
 });
 
 require __DIR__.'/auth.php';
