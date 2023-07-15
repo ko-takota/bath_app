@@ -18,8 +18,11 @@ return new class extends Migration
             $table->string('bath_name');
             $table->string('prefecture_id');
             $table->string('address')->unique();
-            $table->foreignId('user_id')->constrained();
+            // $table->unsignedBigInteger('user_id')->constrained();
             $table->timestamps();
+
+            // $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

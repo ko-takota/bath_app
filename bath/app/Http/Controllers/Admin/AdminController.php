@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin; //Eloquent
+use Illuminate\Support\Facades\DB; //QueryBuilder
+use Carbon\Carbon;
+
 
 class AdminController extends Controller
 {
@@ -19,7 +23,25 @@ class AdminController extends Controller
      */
     public function index()
     {
-        dd('オーナー');
+        // $date_now = Carbon::now();
+        // $date_parse = Carbon::parse(now());
+        // echo $date_now;
+        // echo $date_parse;
+
+        // $e_all = Admin::all();
+        // $q_get = DB::table('admins')->select('name', 'created_at')->get();
+        // $q_first = DB::table('admins')->select('name')->first();
+
+        // $c_test = collect([
+        //     'name' => 'test'
+        // ]);
+
+        // var_dump($q_first);
+
+        // dd($e_all, $q_get, $q_first, $c_test);
+        $admins = Admin::select('name', 'email', 'created_at')->get();
+
+        return view('admin.admin.index', compact('admins'));
     }
 
     /**
