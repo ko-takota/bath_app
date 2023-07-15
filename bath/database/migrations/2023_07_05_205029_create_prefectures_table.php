@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('prefectures', function (Blueprint $table) {
             $table->id();
-            $table->string('prefecture_name');
-            $table->foreignId('user_id')->constrained();
+            $table->string('prefecture_name')->unique();
             $table->timestamps();
         });
     }

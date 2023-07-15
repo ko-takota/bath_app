@@ -18,11 +18,11 @@ class BathFactory extends Factory
     public function definition()
     {
         return [
-            'bath_name' => $this->faker->word,
-            'prefecture_id' => $this->faker->number,
-            'address' => $this->faker->string,
-            'user_id' => $this->faker->numberBetween(1,3),
-            //
+            'bath_name' => fake()->word(),
+            'prefecture_id' => fake()->numberBetween(1, 47),
+            'price' => fake()->numberBetween(3500, 15000),
+            'address' => fake()->address(),
+            'user_id' => fake()->numberBetween(1, 100),
         ];
     }
 }

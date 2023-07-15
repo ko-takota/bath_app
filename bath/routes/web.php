@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\PrefectureController;
-use App\Http\Controllers\User\BathController;
+use App\Http\Controllers\User\MypageController;
 use App\Http\Controllers\Admins\AdminController;
 use App\Http\Controllers\User\ItemController;
 
@@ -39,6 +39,8 @@ Route::middleware('auth:users')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //施設検索
+    //Route::get('/bath_search', [BathSearchController::class, 'search'])->name('bath_search');
 });
 
 require __DIR__.'/auth.php';
@@ -48,7 +50,7 @@ Route::get('/', [TopController::class, 'top'])
     ->name('top');
 
 //マイページ
-Route::get('/User/{id}/index', [BathController::class, 'index'])
+Route::get('/User/{id}/index', [MypageController::class, 'index'])
     ->name('user.index');
 
 //検索
@@ -58,3 +60,7 @@ Route::get('/search', [PrefectureController::class, 'search'])
 //施設ページ
 Route::get('/admins/bath', [AdminController::class, 'admins'])
     ->name('admins.bath');
+
+//商品ページ
+Route::get('/item', [ItemController::class, 'item'])
+    ->name('item');

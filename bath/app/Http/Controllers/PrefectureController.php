@@ -11,6 +11,7 @@ class PrefectureController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
+        
         $query = Prefecture::query();
         if (!empty($search)) {
             $query->where('title', 'LIKE', "%{$search}%")
@@ -19,7 +20,7 @@ class PrefectureController extends Controller
 
         $prefectures = $query->get()->sortByDesc('created_at');
 
-        return view('user.parts.prefecture', ['prefectures' => $prefectures]);
+        return view('user.search', ['prefectures' => $prefectures]);
     }
 }
 

@@ -7,7 +7,7 @@
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
             {{-- 認証によって、ボタン表示の切り替え --}}
             @auth
-            <form action="{{ route('user.index', ['id' => $user_id]) }}" method="GET">
+            {{-- <form action="{{ route('user.index', ['id' => $user_id]) }}" method="GET"> --}}
                 @csrf
             <button>
                 {{-- <a href="{{ route('user.index', ['id' => $user_id]) }}"> --}}

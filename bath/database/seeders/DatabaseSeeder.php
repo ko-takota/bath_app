@@ -6,6 +6,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\BathSeeder;
 use Database\Seeders\PrefectureSeeder;
+use App\Models\Bath;
+use App\Models\Prefecture;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,11 +26,13 @@ class DatabaseSeeder extends Seeder
         foreach(self::SEEDERS as $seeder) {
             $this->call($seeder);
         }
-        // \App\Models\User::factory(10)->create();
+
+        Bath::factory(100)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
     }
 }
