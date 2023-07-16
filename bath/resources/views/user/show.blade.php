@@ -15,7 +15,11 @@
             <div class="p-6 text-gray-900 dark:text-gray-100">
                 ￥{{ number_format($bath->price) }}
             </div>
+            <form method="post" action="{{ route('user.cart.add')}}">
+            @csrf
             <button class="flex ml-auth bg-white text-brack border-0 py-2 px-6">入会</button>
+            <input type="hidden" name="bath_id" value="{{ $bath->id }}">
+            </form>
         </div>
     </div>
 </x-app-layout>
