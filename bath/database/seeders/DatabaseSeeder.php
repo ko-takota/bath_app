@@ -7,7 +7,6 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\BathSeeder;
 use Database\Seeders\PrefectureSeeder;
 use App\Models\Bath;
-use App\Models\Prefecture;
 
 class DatabaseSeeder extends Seeder
 {

@@ -8,7 +8,15 @@
 
 
 <form method="GET" action="{{ route('user.search') }}" class="d-flex">
-    <div>
+    <div class="lg:flex lg:justify-around">
+        <div class="lg:flex items-center">
+            <select name="category" class="lg:mb-0"></select>
+            <div class="flex space-x-2 items-center">
+                <div><input name="keyword" class="border border-gray-500 py-2" placeholder="キーワードを入力"></div>
+                <div><button class="ml-auth bg-indigo-500 text-brack border-0 py-2 px-6">検索する</button></div>
+            </div>
+        </div>
+
         <label for="prefecture">都道府県</label>
         <select name="prefecture">
             <option class="form-control me-2" name="search" type="search" aria-label="Search">選択して下さい</option>
