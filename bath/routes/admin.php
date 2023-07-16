@@ -30,12 +30,14 @@ Route::get('/', function () {
     return view('admin.welcome');
 });
 
-Route::resource('admin', AdminController::class)
-->middleware('auth:admin');
+//ログインしている場合のみ表示
+Route::resource('admin', AdminController::class)->middleware('auth:admin');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth:admin', 'verified'])->name('dashboard');
+
+
 
 // Route::middleware('auth:admin')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

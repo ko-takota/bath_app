@@ -3,7 +3,6 @@
 @extends('layouts.common')
 
 @include('common.header')
-@include('user.parts.prefecture')
 
 @include('common.sidebar')
 

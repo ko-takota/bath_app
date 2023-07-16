@@ -23,5 +23,4 @@ class Bath extends Model
         return $this->belongsToMany(User::class, 'carts')
         ->withPivot('id');
     }
-
 }

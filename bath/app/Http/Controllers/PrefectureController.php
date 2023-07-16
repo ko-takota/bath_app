@@ -4,23 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Prefecture;
+use App\Models\Bath;
+use App\Models\AreaCategory;
 
 class PrefectureController extends Controller
 {
     public function search(Request $request)
     {
-        $search = $request->input('search');
-        
-        $query = Prefecture::query();
-        if (!empty($search)) {
-            $query->where('title', 'LIKE', "%{$search}%")
-            ->orWhere('body', 'LIKE', "%{$search}%");
-        }
+        $categories = AreaCategory::with('prefcture')
+        ->get();
+        $baths = Bath::all();
 
-        $prefectures = $query->get()->sortByDesc('created_at');
-
-        return view('user.search', ['prefectures' => $prefectures]);
+        return view('user.item', compact('baths', 'categories'));
     }
 }
 

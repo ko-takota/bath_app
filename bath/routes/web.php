@@ -24,51 +24,31 @@ use App\Http\Controllers\User\CartController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::middleware('auth:users')->group(function () {
-    Route::get('/item', [ItemController::class, 'index'])->name('items.index');
-});
-
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth:users', 'verified'])->name('dashboard');
-
 Route::middleware('auth:users')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    //施設検索
-    //Route::get('/bath_search', [BathSearchController::class, 'search'])->name('bath_search');
-    //商品ページ
+    //施設一覧ページ
     Route::get('/item', [ItemController::class, 'item'])->name('item');
-    //各施設
+    //各施設登録ぺージ
     Route::get('show/{item}', [ItemController::class, 'show'])->name('item.show');
 });
 
 Route::prefix('cart')->middleware('auth:users')->group(function(){
+    Route::get('/mycart', [CartController::class, 'myCart'])->name('cart.mycart');
+    //施設入会登録
     Route::post('add', [CartController::class, 'add'])->name('cart.add');
 });
 
 require __DIR__.'/auth.php';
 
 //topページ
-Route::get('/', [TopController::class, 'top'])
-    ->name('top');
+Route::get('/', [TopController::class, 'top'])->name('top');
 
 //マイページ
-Route::get('/User/{id}/index', [MypageController::class, 'index'])
-    ->name('user.index');
+Route::get('/user/{id}/index', [MypageController::class, 'index'])->name('index');
 
 //検索
-Route::get('/search', [PrefectureController::class, 'search'])
-->name('search');
-
-//施設ページ
-Route::get('/admins/bath', [AdminController::class, 'admins'])
-    ->name('admins.bath');
+Route::get('/search', [PrefectureController::class, 'search'])->name('search');
 
 

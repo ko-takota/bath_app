@@ -17,6 +17,7 @@
             </div>
             <form method="post" action="{{ route('user.cart.add')}}">
             @csrf
+            {{-- <a href="{{ route('user.cart.mycart', ['price' => $bath->price ]) }}"> --}}
             <button class="flex ml-auth bg-white text-brack border-0 py-2 px-6">入会</button>
             <input type="hidden" name="bath_id" value="{{ $bath->id }}">
             </form>

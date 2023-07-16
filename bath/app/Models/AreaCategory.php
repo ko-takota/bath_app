@@ -12,6 +12,6 @@ class AreaCategory extends Model
 
     public function prefcture()
     {
-        return $this->hasMany(PrefectureCategory::class);
+        return $this->hasMany(PrefctureCategory::class);
     }
 }
