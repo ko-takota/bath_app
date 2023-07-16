@@ -35,9 +35,12 @@ Route::middleware('auth:users')->group(function () {
 });
 
 Route::prefix('cart')->middleware('auth:users')->group(function(){
+    //マイカート
     Route::get('/mycart', [CartController::class, 'myCart'])->name('cart.mycart');
     //施設入会登録
     Route::post('add', [CartController::class, 'add'])->name('cart.add');
+    //カートから削除
+    Route::post('delete/{item}', [CartController::class, 'delete'])->name('cart.delete');
 });
 
 require __DIR__.'/auth.php';

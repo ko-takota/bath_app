@@ -42,8 +42,15 @@ class CartController extends Controller
                 'bath_id' => $request->bath_id
             ]);
         }
-        //$baths = Bath::select('price');
+
         return redirect()->route('user.cart.mycart');
-        //return view('user.cart.mycart', compact('baths'));
+    }
+
+    public function delete($id)
+    {
+        Cart::where('bath_id', $id)->where('user_id', Auth::id())
+        ->delete();
+        
+        return redirect()->route('user.cart.mycart');
     }
 }
