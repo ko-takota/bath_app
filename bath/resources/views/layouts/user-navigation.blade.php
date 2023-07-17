@@ -12,11 +12,14 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('user.item')" :active="request()->routeIs('user.itemd.index')">
+                    <x-nav-link :href="route('user.item')" :active="request()->routeIs('user.item.index')">
                         {{ __('ホーム') }}
                     </x-nav-link>
                     <x-nav-link :href="route('user.cart.mycart')" :active="request()->routeIs('user.cart.mycart')">
                         カートを表示
+                    </x-nav-link>
+                    <x-nav-link :href="route('user.index', ['id' => Auth::id()])">
+                        マイページ
                     </x-nav-link>
                 </div>
             </div>
@@ -37,7 +40,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('user.profile.edit')">
+                        <x-dropdown-link :href="route('user.top')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -86,7 +89,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('user.profile.edit')">
+                <x-responsive-nav-link :href="route('user.top')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 

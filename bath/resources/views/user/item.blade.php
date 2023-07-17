@@ -1,8 +1,7 @@
-商品一覧
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('ホーム') }}
+            {{ __('施設') }}
         </h2>
         <form method="GET" action="{{ route('user.item') }}" class="d-flex">
             <div class="lg:flex lg:justify-around">
@@ -32,7 +31,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("一覧") }}
+                    {{ __("施設一覧") }}
                     @foreach ($baths as $bath)
                     <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}">
                         <div>
