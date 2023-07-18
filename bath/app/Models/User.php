@@ -45,7 +45,7 @@ class User extends Authenticatable
 
 
     public function baths()
-    {
+    {   //カートに入れる
         return $this->belongsToMany(Bath::class, 'carts')
         ->withPivot('id');
     }

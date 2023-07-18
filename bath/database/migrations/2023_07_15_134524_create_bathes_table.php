@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('bathes', function (Blueprint $table) {
             $table->id();
             $table->string('bath_name');
-            $table->string('prefecture_id');
+            $table->text('information');
             $table->integer('price');
             $table->string('address')->unique();
             $table->unsignedBigInteger('user_id')->constrained();
+            $table->unsignedBigInteger('prefcture_category_id')->constrained();
             $table->timestamps();
         });
     }

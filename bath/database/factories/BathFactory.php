@@ -18,11 +18,12 @@ class BathFactory extends Factory
     public function definition()
     {
         return [
-            'bath_name' => fake()->word(),
-            'prefecture_id' => fake()->numberBetween(1, 47),
-            'price' => fake()->numberBetween(3500, 15000),
-            'address' => fake()->address(),
-            'user_id' => fake()->numberBetween(1, 100),
+            'bath_name' => fake()-> word(),
+            'information' => fake()-> text(),
+            'price' => fake()-> numberBetween(3500, 15000),
+            'address' => fake()-> address(),
+            'user_id' => fake()-> numberBetween(1, 100),
+            'prefcture_category_id' => fake()-> numberBetween(1, 47),
         ];
     }
 }

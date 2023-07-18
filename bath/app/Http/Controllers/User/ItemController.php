@@ -18,8 +18,8 @@ class ItemController extends Controller
 
     public function item()
     {
+        //都道府県カテゴリー
         $categories = AreaCategory::with('prefcture')->get();
-
         $baths = Bath::all();
 
         return view('user.item', compact('baths', 'categories'));
@@ -27,6 +27,7 @@ class ItemController extends Controller
 
     public function show($id)
     {
+        //選択された施設詳細
         $bath = Bath::findOrFail($id);
 
         return view('user.show', compact('bath'));
