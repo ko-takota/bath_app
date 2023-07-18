@@ -39,5 +39,6 @@ require __DIR__.'/auth.php';
 
 //topページ
 Route::get('/', [TopController::class, 'top'])->name('top');
+Route::get('/tt', [TopController::class, 'second'])->name('second');
 //マイページ
 Route::get('/user/{id}/index', [MypageController::class, 'index'])->name('index');

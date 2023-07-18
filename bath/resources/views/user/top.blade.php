@@ -23,6 +23,3 @@
 
 {{-- フッター呼び出し --}}
 @include('common.footer')
-
-
-
