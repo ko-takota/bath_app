@@ -16,11 +16,28 @@ class ItemController extends Controller
         $this->middleware('auth:users');
     }
 
-    public function item()
+    public function item(Request $request)
     {
         //都道府県カテゴリー
         $categories = AreaCategory::with('prefcture')->get();
-        $baths = Bath::all();
+        $baths = Bath::query();
+        $category = $request->category;
+
+        if ($category) {
+            $baths = $baths->where('prefcture_category_id', '=', $category);
+        }
+
+        $keyword = $request->keyword;
+
+        if ($keyword) {
+            $baths = $baths->where(function ($query) use ($keyword) {
+                $query->where('bath_name', 'like', '%' . $keyword . '%')
+                    ->orWhere('information', 'like', '%' . $keyword . '%')
+                    ->orWhere('address', 'like', '%' . $keyword . '%');
+            });
+        }
+
+        $baths = $baths->get();
 
         return view('user.item', compact('baths', 'categories'));
     }
