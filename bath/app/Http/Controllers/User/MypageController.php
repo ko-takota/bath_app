@@ -19,6 +19,6 @@ class MypageController extends Controller
         } else {
             $user_id = null;
         }
-        return view('user.list.index', compact('user_id'));
+        return view('user.list.mypage', compact('user_id'));
     }
 }

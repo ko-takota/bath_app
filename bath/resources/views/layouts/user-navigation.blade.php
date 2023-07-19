@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('user.search')" :active="request()->routeIs('user.item.index')">
+                    <x-nav-link :href="route('user.search')" :active="request()->routeIs('user.search')">
                         {{ __('ホーム') }}
                     </x-nav-link>
                     <x-nav-link :href="route('user.cart.mycart')" :active="request()->routeIs('user.cart.mycart')">
