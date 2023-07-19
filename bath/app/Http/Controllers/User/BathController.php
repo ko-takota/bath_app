@@ -8,15 +8,14 @@ use App\Models\Bath;
 use App\Models\AreaCategory;
 
 
-
-class ItemController extends Controller
+class BathController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth:users');
     }
 
-    public function item(Request $request)
+    public function search(Request $request)
     {
         //都道府県カテゴリー
         $categories = AreaCategory::with('prefcture')->get();
@@ -39,7 +38,7 @@ class ItemController extends Controller
 
         $baths = $baths->get();
 
-        return view('user.item', compact('baths', 'categories'));
+        return view('user.search', compact('baths', 'categories'));
     }
 
     public function show($id)

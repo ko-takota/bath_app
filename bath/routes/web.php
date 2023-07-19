@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\User\MypageController;
-use App\Http\Controllers\User\ItemController;
+use App\Http\Controllers\User\BathController;
 use App\Http\Controllers\User\CartController;
 use App\Models\User;
 
@@ -23,8 +23,8 @@ use App\Models\User;
 */
 
 Route::middleware('auth:users')->group(function () {
-    Route::get('/item', [ItemController::class, 'item'])->name('item');//施設一覧ページ
-    Route::get('show/{item}', [ItemController::class, 'show'])->name('item.show');//各施設登録ぺージ
+    Route::get('/search', [BathController::class, 'search'])->name('search');//施設一覧ページ
+    Route::get('show/{item}', [BathController::class, 'show'])->name('item.show');//各施設登録ぺージ
 });
 
 Route::prefix('cart')->middleware('auth:users')->group(function(){

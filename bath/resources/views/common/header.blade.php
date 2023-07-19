@@ -24,10 +24,6 @@
                 <a href="{{ route('user.register')}}">初めての方(新規会員登録)</a>
             </button>
             @endauth
-            <form method="GET" action="URL">
-                <input type="search" placeholder="温泉施設を探す...">
-                <input type="submit" value="検索する">
-            </form>
         </nav>
     </div>
   </header>

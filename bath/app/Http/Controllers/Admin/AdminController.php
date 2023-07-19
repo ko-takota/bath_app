@@ -24,7 +24,7 @@ class AdminController extends Controller
     {
         $admins = Admin::select('name', 'email', 'created_at')->get();
 
-        return view('admin.admin.index', compact('admins'));
+        return view('admin.index', compact('admins'));
     }
 
     /**

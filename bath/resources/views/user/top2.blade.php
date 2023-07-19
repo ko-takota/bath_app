@@ -25,7 +25,7 @@
                 <div class="max-w-lg mx-auto flex flex-col gap-y-6">
                     <a href="{{ route('user.top') }}" class="py-4 px-6 inline-flex justify-center items-center gap-2 rounded-md border font-semibold bg-white text-gray-700 align-middle hover:bg-opacity-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-base dark:bg-opacity-60 dark:text-gray-500 h-20">
                         <button>トップ</button></a>
-                    <a href="{{ route('user.item') }}" class="py-4 px-6 inline-flex justify-center items-center gap-2 rounded-md border font-semibold bg-white text-gray-700 align-middle hover:bg-opacity-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-base dark:bg-opacity-60 dark:text-gray-500 h-20">
+                    <a href="{{ route('user.search') }}" class="py-4 px-6 inline-flex justify-center items-center gap-2 rounded-md border font-semibold bg-white text-gray-700 align-middle hover:bg-opacity-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-base dark:bg-opacity-60 dark:text-gray-500 h-20">
                         <button>見つける</button></a>
                     <a href="{{ route('user.index', ['id' => $user_id]) }}" class="py-4 px-6 inline-flex justify-center items-center gap-2 rounded-md border font-semibold bg-white text-gray-700 align-middle hover:bg-opacity-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-base dark:bg-opacity-60 dark:text-gray-500 h-20">
                         <button>マイページ</button></a>

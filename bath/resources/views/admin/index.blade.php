@@ -1,4 +1,5 @@
-<x-app-layout>
+登録者一覧画面
+{{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('オーナー一覧') }}
@@ -14,19 +15,8 @@
                     {{ $admin->email }}
                     {{ $admin->created_at }}
                     @endforeach
-                    {{-- エロクアント
-                    @foreach ($e_all as $e_admin)
-                    {{ $e_admin->name }}
-                    {{ $e_admin->created_at }}
-                    @endforeach
-                    <br>
-                    クエリビルダ
-                    @foreach ($q_get as $q_admin)
-                    {{ $q_admin->name }}
-                    {{ $q_admin->created_at }}
-                    @endforeach --}}
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app-layout> --}}
