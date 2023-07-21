@@ -19,9 +19,12 @@ return new class extends Migration
             $table->text('information');
             $table->integer('price');
             $table->string('address')->unique();
-            $table->unsignedBigInteger('user_id')->constrained();
+            $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('prefcture_category_id')->constrained();
             $table->timestamps();
+
+            $table->foreign('admin_id')->references('id')->on('admins');
+            // $table->foreign('id')->references('manage_bath_id')->on('admins');
         });
     }
 

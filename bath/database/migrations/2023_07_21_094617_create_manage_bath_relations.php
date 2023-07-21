@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('carts', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id')->constrained();
-            $table->unsignedBigInteger('bath_id')->constrained();
-            $table->timestamps();
+        Schema::create('manage_bath_relations', function (Blueprint $table) {
+            $table->unsignedBigInteger('manage_bath_id');
+            $table->unsignedBigInteger('bath_id');
 
-            $table->foreign('user_id')->references('id')->on('users');
+            // 'manage_bath_id' を外部キーとして設定
+            $table->foreign('manage_bath_id')->references('id')->on('admins');
+
+            // 'bath_id' を外部キーとして設定
             $table->foreign('bath_id')->references('id')->on('bathes');
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('manage_bath_relations');
     }
 };

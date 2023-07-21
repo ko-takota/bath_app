@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Bath;
+use App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +22,7 @@ class BathFactory extends Factory
             'information' => fake()-> text(),
             'price' => fake()-> numberBetween(3500, 15000),
             'address' => fake()-> address(),
-            'user_id' => fake()-> numberBetween(1, 100),
+            'admin_id' => Admin::factory(),
             'prefcture_category_id' => fake()-> numberBetween(1, 47),
         ];
     }
