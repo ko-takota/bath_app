@@ -29,7 +29,7 @@ Route::get('/', function () {
     return view('admin.welcome');
 });
 
-//ログインしている場合のみ表示
+//ログインしている場合のみ表示(オーナー管理)
 Route::resource('admin', AdminController::class)->middleware('auth:admin')
 ->only(['index']);;
 
@@ -41,6 +41,7 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth:admin', 'verified'])->name('dashboard');
 
+//カートに入れたメンバー
 Route::get('/member', [MemberController::class, 'index'])->name('member');
 
 
