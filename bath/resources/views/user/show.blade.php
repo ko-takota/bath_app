@@ -16,7 +16,14 @@
                 </div>
             </div>
             <div class="p-6 text-gray-900 dark:text-gray-100">
-                ￥{{ number_format($bath->price) }}
+                <p>プラン選択</p>
+                <select name="plan" class="bg-black">
+                    @foreach($plan as $plans)
+                    {
+                        <option value="{{ $plans->name }}">{{ $plans->name }}：{{ $plans->price }}</option>
+                    }
+                    @endforeach
+                </select>
             </div>
             <form method="post" action="{{ route('user.cart.add')}}">
             @csrf

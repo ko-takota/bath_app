@@ -10,7 +10,7 @@ use App\Models\User;
 class Bath extends Model
 {
     use HasFactory;
-    protected $guarded = ['id', 'bath_name', 'information', 'price', 'address', 'user_id', 'prefcture_category_id'];
+    protected $guarded = ['bath_name', 'information', 'price', 'address', 'admin_id', 'prefcture_category_id'];
     protected $table = 'bathes';
 
     public function category()
@@ -22,5 +22,10 @@ class Bath extends Model
     public function users() {
         return $this->belongsToMany(User::class, 'carts')
         ->withPivot('id');
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
 }

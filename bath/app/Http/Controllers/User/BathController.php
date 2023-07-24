@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Bath;
 use App\Models\AreaCategory;
-
+use App\Models\Plan;
 
 class BathController extends Controller
 {
@@ -46,6 +46,9 @@ class BathController extends Controller
         //選択された施設詳細
         $bath = Bath::findOrFail($id);
 
-        return view('user.show', compact('bath'));
+        //プランを選択するためカラム取得
+        $plan = Plan::all();
+
+        return view('user.show', compact('bath', 'plan'));
     }
 }

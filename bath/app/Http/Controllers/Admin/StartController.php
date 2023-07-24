@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bath;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-
-class AdminController extends Controller
+class StartController extends Controller
 {
-
     public function __construct()
     {
-        //認証されていたら各メソッド実行
         $this->middleware('auth:admin');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +20,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // //admin全員分を取得
-        // // $admins = Admin::select('name', 'email')->get();
-        return view('admin.index');
+
     }
 
     /**
@@ -34,7 +30,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.start.create');
     }
 
     /**
@@ -45,7 +41,20 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'bath_name' => ['required', 'string', 'max:30'],
+            'information' => ['required', 'string', 'max:250'],
+            'address' => ['required', 'string', 'max:60'],
+        ]);
+
+        Bath::create(
+            [
+                'bath_name' => $request->bath_name,
+                'information' => $request->information,
+                'address' => $request->address,
+            ]
+        );
+
     }
 
     /**
@@ -65,9 +74,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Bath $bath)
     {
-        //
+        return view('admin.start.edit', compact('bath'));
     }
 
     /**
