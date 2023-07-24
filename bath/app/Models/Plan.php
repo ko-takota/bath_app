@@ -17,6 +17,7 @@ class Plan extends Model
     protected $fillable = [
         'name',
         'price',
+        'contents',
     ];
 
     public function users()

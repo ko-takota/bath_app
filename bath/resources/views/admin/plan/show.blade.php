@@ -10,6 +10,7 @@
     <h1>プラン詳細</h1>
     <p>プラン名：{{$plan->name}}</p>
     <p>月額料金：{{$plan->price}}</p>
+    <p>プラン詳細：{{$plan->contents}}</p>
     <a href="/admin/plan/{{$plan->id}}/edit">編集</a>
     <a href="/admin/plan">戻る</a>
 </body>

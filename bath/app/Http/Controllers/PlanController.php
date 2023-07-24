@@ -51,12 +51,14 @@ class PlanController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:30'],
             'price' => ['required', 'numeric'], // 価格は整数型としてバリデーション
+            'contents' => ['required', 'string', 'max:250'],
         ]);
 
         Plan::create(
             [
                 'name' => $request->name,
                 'price' => $request->price,
+                'contents' => $request->contents,
             ]);
         return redirect()->route('admin.plan.index');
     }

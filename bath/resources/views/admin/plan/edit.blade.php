@@ -13,6 +13,7 @@
         {{method_field('PUT')}}
         <p>プラン名：<input type="text" name="name" value="{{$plan->name}}" cols="40"></p>
         <p>月額料金：<input type="integer" name="price" value="{{$plan->price}}" rows="4" cols="40"></p>
+        <p>プラン詳細： <textarea type="text" name="contents" value="{{$plan->contents}}"></textarea></p>
         <p><input type="submit" value="更新"></p>
     </form>
     <a href="/admin/plan/{{$plan->id}}">戻る</a>

@@ -12,6 +12,7 @@
         {{ csrf_field() }}
         <p>プラン名： <input type="text" name="name"></p>
         <p>月額料金： <input type="numeric" name="price" rows="4" cols="40">(半角数字)</p>
+        <p>プラン詳細： <textarea type="text" name="contents"></textarea></p>
         <p><input type="submit" value="作成"></p>
     </form>
     <a href="/admin/plan">一覧へ戻る</a>
