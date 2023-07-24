@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('manage_bath_id')->nullable(true);
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('price');
+            $table->text('contents')->nullable();//プランの内容
+            $table->unsignedBigInteger('bath_id')->nullable();
             $table->timestamps();
 
+            $table->foreign('bath_id')->references('id')->on('bathes');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('plans');
     }
 };

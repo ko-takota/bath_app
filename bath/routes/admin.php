@@ -12,9 +12,7 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\MemberController;
-
-
-
+use App\Http\Controllers\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +32,10 @@ Route::get('/', function () {
 //ログインしている場合のみ表示
 Route::resource('admin', AdminController::class)->middleware('auth:admin')
 ->only(['index']);;
+
+//管理者のプラン詳細
+Route::resource('plan', PlanController::class);
+
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Bath;
+use App\Models\Plan;
 
 class User extends Authenticatable
 {
@@ -48,5 +49,10 @@ class User extends Authenticatable
     {   //カートに入れる
         return $this->belongsToMany(Bath::class, 'carts')
         ->withPivot('id');
+    }
+
+    public function plan()
+    {
+        return $this->belongsToMany(Plan::class);
     }
 }
