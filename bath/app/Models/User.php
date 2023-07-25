@@ -55,4 +55,38 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Plan::class);
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Bath::class, 'likes', 'user_id', 'bath_id')->withTimestamps();
+    }
+    //いいねをつける処理
+    public function like($bathId)
+    {
+        $exist = $this->is_like($bathId);
+
+        if($exist){
+            return false;
+        } else {
+            $this->likes()->attach($bathId);
+            return true;
+        }
+    }
+    //いいねを外す処理
+    public function unlike($bathId)
+    {
+        $exist = $this->is_like($bathId);
+
+        if($exist){
+            $this->likes()->detach($bathId);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //すでにいいねをしているかどうか
+    public function is_like($bathId)
+    {
+        return $this->likes()->where('bath_id', $bathId)->exists();
+    }
 }
