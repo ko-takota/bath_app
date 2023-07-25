@@ -6,6 +6,7 @@ use App\Http\Controllers\TopController;
 use App\Http\Controllers\User\MypageController;
 use App\Http\Controllers\User\BathController;
 use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\LikeController;
 use App\Models\User;
 
 //管理画面系ファイル呼び出し
@@ -25,6 +26,8 @@ use App\Models\User;
 Route::middleware('auth:users')->group(function () {
     Route::get('/search', [BathController::class, 'search'])->name('search');//施設一覧ページ
     Route::get('show/{item}', [BathController::class, 'show'])->name('item.show');//各施設登録ぺージ
+    Route::post('/{id}/like', [LikeController::class, 'store'])->name('bath.like');//いいね
+    Route::delete('{id}/unlike', [LikeController::class, 'destroy'])->name('bath.unlike');//いいね解除
 });
 
 Route::prefix('cart')->middleware('auth:users')->group(function(){
