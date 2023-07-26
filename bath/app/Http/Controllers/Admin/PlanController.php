@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Plan;
+use Illuminate\Support\Facades\Auth;
+
 
 class PlanController extends Controller
 {
@@ -55,11 +57,14 @@ class PlanController extends Controller
             'contents' => ['required', 'string', 'max:250'],
         ]);
 
+        $bath_id = Auth::user()->manage_bath_id;
+
         Plan::create(
             [
                 'name' => $request->name,
                 'price' => $request->price,
                 'contents' => $request->contents,
+                'bath_id' => $bath_id,
             ]);
         return redirect()->route('admin.plan.index');
     }

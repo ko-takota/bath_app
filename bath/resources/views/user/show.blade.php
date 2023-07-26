@@ -16,11 +16,12 @@
                 </div>
             </div>
             <div class="p-6 text-gray-900 dark:text-gray-100">
-                <p>プラン選択</p>
+                <p>プラン</p>
                 <select name="plan" class="bg-black">
-                    @foreach($plan as $plans)
+                    <option value="" selected>選択してください</option>
+                    @foreach($plans as $plan)
                     {
-                        <option value="{{ $plans->name }}">{{ $plans->name }}：{{ $plans->price }}</option>
+                        <option value="{{ $plan->name }}">{{ $plan->name }}：月額{{ $plan->price }}円</option>
                     }
                     @endforeach
                 </select>
@@ -30,6 +31,7 @@
             <button class="flex ml-auth bg-white text-brack border-0 py-2 px-6">入会</button>
             <input type="hidden" name="bath_id" value="{{ $bath->id }}">
             </form>
+            {{-- お気に入り機能 --}}
             <div class="btn-group bg-white" style="width: 200px; margin: 0 auto;">
                 @if (Auth::id() != $bath->user_id)
                 @if (Auth::user()->is_like($bath->id))

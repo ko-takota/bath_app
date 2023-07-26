@@ -20,10 +20,16 @@ class Plan extends Model
         'name',
         'price',
         'contents',
+        'bath_id',
     ];
 
     public function users()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
     }
 }

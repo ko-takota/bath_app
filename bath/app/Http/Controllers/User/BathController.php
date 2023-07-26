@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Bath;
 use App\Models\AreaCategory;
 use App\Models\Plan;
+use App\Models\Admin;
+use GuzzleHttp\Psr7\Query;
+use Illuminate\Support\Facades\DB;
+
 
 class BathController extends Controller
 {
@@ -43,12 +47,12 @@ class BathController extends Controller
 
     public function show($id)
     {
-        //選択された施設詳細
-        $bath = Bath::findOrFail($id);
+        $bath = Bath::findOrFail($id);//ユーザーが選択された施設詳細
+        $admin = $bath->admin;    //選択された施設の管理者を取得
 
-        //プランを選択するためカラム取得
-        $plan = Plan::all();
+        //選択された施設と管理者施設のidが一致するプランを取得
+        $plans = Plan::where('bath_id', $admin->manage_bath_id)->get();
 
-        return view('user.show', compact('bath', 'plan'));
+        return view('user.show', compact('bath', 'plans'));
     }
 }
