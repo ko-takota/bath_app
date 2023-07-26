@@ -19,9 +19,9 @@
                 <p>プラン</p>
                 <select name="plan" class="bg-black">
                     <option value="" selected>選択してください</option>
-                    @foreach($plans as $plan)
+                    @foreach($plan as $plans)
                     {
-                        <option value="{{ $plan->name }}">{{ $plan->name }}：月額{{ $plan->price }}円</option>
+                        <option value="{{ $plans->name }}">{{ $plans->name }}：月額{{ $plans->price }}円</option>
                     }
                     @endforeach
                 </select>

@@ -28,4 +28,9 @@ class Bath extends Model
     {
         return $this->belongsTo(Admin::class, 'admin_id');
     }
+    
+    public function plans()
+    {
+        return $this->hasMany(Plan::class, 'bath_id');
+    }
 }

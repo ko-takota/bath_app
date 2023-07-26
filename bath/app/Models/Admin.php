@@ -26,8 +26,5 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function plans()
-    {
-        return $this->hasMany(Plan::class, 'bath_id');
-    }
+    
 }

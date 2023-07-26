@@ -48,11 +48,8 @@ class BathController extends Controller
     public function show($id)
     {
         $bath = Bath::findOrFail($id);//ユーザーが選択された施設詳細
-        $admin = $bath->admin;    //選択された施設の管理者を取得
+        $plan = $bath->plans;
 
-        //選択された施設と管理者施設のidが一致するプランを取得
-        $plans = Plan::where('bath_id', $admin->manage_bath_id)->get();
-
-        return view('user.show', compact('bath', 'plans'));
+        return view('user.show', compact('bath', 'plan'));
     }
 }

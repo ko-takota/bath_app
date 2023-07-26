@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('bath_id')->references('manage_bath_id')->on('admins');
+            $table->foreign('bath_id')->references('id')->on('bathes');
         });
     }
 

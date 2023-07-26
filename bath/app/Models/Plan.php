@@ -28,7 +28,7 @@ class Plan extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function admin()
+    public function bath()
     {
         return $this->belongsTo(Admin::class);
     }
