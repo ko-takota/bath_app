@@ -5,21 +5,18 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Like;
 
 
 class LikeController extends Controller
 {
-    // public function store(Request $request, $id)
-    // {
-    //     Auth::user()->like($id);
-    //     return back();
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth:users');
+    }
 
-    // public function destroy($id)
-    // {
-    //     Auth::user()->unlike($id);
-    //     return back();
-    // }
+
     public function store(Request $request, $id)
     {
         Auth::user()->like($id);
@@ -31,4 +28,15 @@ class LikeController extends Controller
         Auth::user()->unlike($id);
         return back();
     }
+
+    public function index()
+    {
+        $user = User::findOrfail(Auth::id());
+        $likes = $user->likes;//ログインユーザーがお気に入りした温泉
+
+        // Like::where('user_id', Auth::user());
+
+        return view('user.list.like', compact('likes', 'user'));
+    }
+
 }
