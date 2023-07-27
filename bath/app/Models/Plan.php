@@ -32,4 +32,14 @@ class Plan extends Model
     {
         return $this->belongsTo(Admin::class);
     }
+
+    public function admin()
+    {
+        return $this->belongsTo(Plan::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

@@ -25,8 +25,10 @@ class PlanController extends Controller
     //プラン一覧ページを表示
     public function index()
     {
-        $plans = Plan::all();
-        return view('admin.plan.index', compact('plans'));
+        $admin = Auth::user();
+        $myPlans = Plan::where('bath_id', $admin->manage_bath_id)->get();
+
+        return view('admin.plan.index', compact('myPlans'));
     }
 
     /**

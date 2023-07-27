@@ -34,6 +34,8 @@ Route::prefix('cart')->middleware('auth:users')->group(function(){
     Route::get('/mycart', [CartController::class, 'myCart'])->name('cart.mycart');//マイカート
     Route::post('add', [CartController::class, 'add'])->name('cart.add');//施設入会登録
     Route::post('delete/{item}', [CartController::class, 'delete'])->name('cart.delete');//カートから削除
+    // プランが削除されたらカート情報のプランも削除
+    Route::post('/delete-plan/{id}', [CartController::class, 'deletePlan'])->name('cart.delete.plan');
 });
 
 require __DIR__.'/auth.php';

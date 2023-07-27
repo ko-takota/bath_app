@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('bath_id')->constrained();
             $table->unsignedBigInteger('plan_id')->constrained();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('bath_id')->references('id')->on('bathes');

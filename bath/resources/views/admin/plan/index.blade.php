@@ -17,7 +17,7 @@
                     <form method="POST">
                             {{ csrf_field() }}
                             {{method_field('DELETE')}}
-                        @foreach($plans as $plan)
+                        @foreach($myPlans as $plan)
                                 <p>
                                     <a href="/admin/plan/{{$plan->id}}" class="hover:underline">
                                         プラン名：{{$plan->name}}：{{$plan->price}}円

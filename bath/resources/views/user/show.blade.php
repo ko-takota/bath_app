@@ -20,7 +20,7 @@
                     @csrf
                     <p>プラン</p>
                     <select name="plan_id" class="bg-black">
-                        <option name="noSelect" value="" selected>選択してください</option>
+                        <option value="" selected>選択してください</option>
                             @foreach($plans as $plan)
                                 {
                                     <option value="{{ $plan->id }}">{{ $plan->name }}：月額{{ $plan->price }}円</option>
@@ -37,19 +37,21 @@
                 @endif
             </div>
             {{-- お気に入り機能 --}}
-            <div class="btn-group bg-white" style="width: 200px; margin: 0 auto;">
-                @if (Auth::id() != $bath->user_id)
-                @if (Auth::user()->is_like($bath->id))
-                {!! Form::open(['route' => ['user.bath.unlike', $bath->id], 'method' => 'delete']) !!}
-                {!! Form::submit('お気に入り済み', ['class' => 'button btn btn-warning']) !!}
-                {!! Form::close() !!}
-                @else
-                {!! Form::open(['route' => ['user.bath.like', $bath->id]]) !!}
-                {!! Form::submit('お気に入りする', ['class' => 'button btn btn-success']) !!}
-                {!! Form::close() !!}
-                @endif
-                @endif
-            </div>
+            <button>
+                <div class="btn-group bg-white">
+                    @if (Auth::id() != $bath->user_id)
+                        @if (Auth::user()->is_like($bath->id))
+                        {!! Form::open(['route' => ['user.bath.unlike', $bath->id], 'method' => 'delete']) !!}
+                        {!! Form::submit('お気に入り済み', ['class' => 'button btn btn-warning']) !!}
+                        {!! Form::close() !!}
+                        @else
+                        {!! Form::open(['route' => ['user.bath.like', $bath->id]]) !!}
+                        {!! Form::submit('お気に入りする', ['class' => 'button btn btn-success'])!!}
+                        {!! Form::close() !!}
+                        @endif
+                    @endif
+                </div>
+            </button>
         </div>
     </div>
 </x-app-layout>
