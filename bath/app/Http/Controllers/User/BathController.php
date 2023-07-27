@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Bath;
 use App\Models\AreaCategory;
 use App\Models\Plan;
-use App\Models\Admin;
+use App\Models\Cart;
 use GuzzleHttp\Psr7\Query;
 use Illuminate\Support\Facades\DB;
 
@@ -48,8 +48,8 @@ class BathController extends Controller
     public function show($id)
     {
         $bath = Bath::findOrFail($id);//ユーザーが選択された施設詳細
-        $plan = $bath->plans;
+        $plans = $bath->plans;
 
-        return view('user.show', compact('bath', 'plan'));
+        return view('user.show', compact('bath', 'plans'));
     }
 }

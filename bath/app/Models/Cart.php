@@ -12,7 +12,8 @@ class Cart extends Model
 
     protected $fillable = [
         'user_id',
-        'bath_id'
+        'bath_id',
+        'plan_id',
     ];
 
     //BathテーブルとCartsテーブルを紐づけ

@@ -16,21 +16,21 @@
                 </div>
             </div>
             <div class="p-6 text-gray-900 dark:text-gray-100">
-                <p>プラン</p>
-                <select name="plan" class="bg-black">
-                    <option value="" selected>選択してください</option>
-                    @foreach($plan as $plans)
-                    {
-                        <option value="{{ $plans->name }}">{{ $plans->name }}：月額{{ $plans->price }}円</option>
-                    }
-                    @endforeach
-                </select>
+                <form method="post" action="{{ route('user.cart.add')}}">
+                    @csrf
+                    <p>プラン</p>
+                    <select name="plan_id" class="bg-black">
+                        <option value="" selected>選択してください</option>
+                            @foreach($plans as $plan)
+                                {
+                                    <option value="{{ $plan->id }}">{{ $plan->name }}：月額{{ $plan->price }}円</option>
+                                }
+                            @endforeach
+                    </select>
+                    <button class="flex ml-auth bg-white text-brack border-0 py-2 px-6">入会</button>
+                    <input type="hidden" name="bath_id" value="{{ $bath->id }}">
+                </form>
             </div>
-            <form method="post" action="{{ route('user.cart.add')}}">
-            @csrf
-            <button class="flex ml-auth bg-white text-brack border-0 py-2 px-6">入会</button>
-            <input type="hidden" name="bath_id" value="{{ $bath->id }}">
-            </form>
             {{-- お気に入り機能 --}}
             <div class="btn-group bg-white" style="width: 200px; margin: 0 auto;">
                 @if (Auth::id() != $bath->user_id)

@@ -31,15 +31,19 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        $itemInCart = Cart::where('bath_id', $request->bath_id)
-        ->where('user_id', Auth::id())->first();
+        $cart = Cart::where('bath_id', $request->bath_id)
+            ->where('user_id', Auth::id())
+            ->where('plan_id', $request->plan_id)
+            ->first();
 
-        if($itemInCart) {
-            $itemInCart->save();
+        if($cart) {
+            $cart->plan_id = $request->plan_id; // ユーザーが選択したプランIDを保存
+            $cart->save();
         } else {
             Cart::create([
                 'user_id' => Auth::id(),
-                'bath_id' => $request->bath_id
+                'bath_id' => $request->bath_id,
+                'plan_id' => $request->plan_id,
             ]);
         }
 
@@ -50,7 +54,7 @@ class CartController extends Controller
     {
         Cart::where('bath_id', $id)->where('user_id', Auth::id())
         ->delete();
-        
+
         return redirect()->route('user.cart.mycart');
     }
 }
