@@ -48,12 +48,12 @@ class User extends Authenticatable
     public function baths()
     {   //カートに入れる
         return $this->belongsToMany(Bath::class, 'carts')
-        ->withPivot('id');
+        ->withPivot('id', 'plan_id');
     }
 
-    public function plan()
+    public function plans()
     {
-        return $this->belongsToMany(Plan::class);
+        return $this->hasMany(Plan::class);
     }
 
     public function likes()

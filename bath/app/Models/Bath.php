@@ -21,14 +21,14 @@ class Bath extends Model
 
     public function users() {
         return $this->belongsToMany(User::class, 'carts')
-        ->withPivot('id');
+        ->withPivot('id', 'plan_id');
     }
 
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'admin_id');
     }
-    
+
     public function plans()
     {
         return $this->hasMany(Plan::class, 'bath_id');

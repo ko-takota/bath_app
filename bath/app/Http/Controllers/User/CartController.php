@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Plan;
 use App\Models\Cart;
 use App\Models\Bath;
 use Illuminate\Support\Facades\Auth;
@@ -15,23 +16,19 @@ use function PHPUnit\Framework\returnSelf;
 class CartController extends Controller
 {
     public function myCart()
-    {   //loginしてるユーザー情報の取得
+    {   //ログインユーザー情報の取得
         $user = User::findOrfail(Auth::id());
-        $baths = $user->baths;
-        $totalPrice = 0;
+        $bath = $user->baths->first();//ログインユーザーが選択した温泉
 
-        foreach ($baths as $bath) {
-            $totalPrice = $bath->price;
-        }
-        //dd($baths, $totalPrice);
+        $carts = Cart::where('user_id', Auth::id())->get();//ログインユーザーのカート情報
 
-        return view('user.cart.mycart', compact('baths','totalPrice'));
+        return view('user.cart.mycart', compact('bath','carts'));
 
     }
 
     public function add(Request $request)
     {
-        $cart = Cart::where('bath_id', $request->bath_id)
+        $cart = Cart::where('bath_id', $request->bath_id)//選択した施設とカートの施設IDの一致
             ->where('user_id', Auth::id())
             ->where('plan_id', $request->plan_id)
             ->first();
@@ -40,7 +37,7 @@ class CartController extends Controller
             $cart->plan_id = $request->plan_id; // ユーザーが選択したプランIDを保存
             $cart->save();
         } else {
-            Cart::create([
+            Cart::create([ //カートに無ければ追加
                 'user_id' => Auth::id(),
                 'bath_id' => $request->bath_id,
                 'plan_id' => $request->plan_id,
@@ -52,7 +49,7 @@ class CartController extends Controller
 
     public function delete($id)
     {
-        Cart::where('bath_id', $id)->where('user_id', Auth::id())
+        Cart::where('id', $id)->where('user_id', Auth::id())
         ->delete();
 
         return redirect()->route('user.cart.mycart');

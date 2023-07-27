@@ -27,7 +27,7 @@
                                 }
                             @endforeach
                     </select>
-                    <button class="flex ml-auth bg-white text-brack border-0 py-2 px-6">入会</button>
+                    <button class="flex ml-auth bg-white text-brack border-0 py-2 px-6">カートに入れる</button>
                     <input type="hidden" name="bath_id" value="{{ $bath->id }}">
                 </form>
             </div>

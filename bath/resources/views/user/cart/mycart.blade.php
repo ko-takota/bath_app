@@ -9,13 +9,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="p-6 text-gray-900 dark:text-gray-100">
                 <h1>{{Auth::user()->name}}さんのカートの中身</h1>
-                @if (count($baths) > 0)
-                    @foreach ($baths as $bath)
+                @if (count($carts) > 0)
+                <div class="md:w-5/12">施設名：{{ $bath->bath_name }}</div>
+                    @foreach ($carts as $cart)
                         <div class="md:flex md:item-center">
-                            <div class="md:w-5/12">{{ $bath->name }}</div>
-                            <div class="md:w-4/12">{{ number_format($bath->price)}}<span class="text-sm text-gray-400">円（月額）</span></div>
+                            <div class="md:w-5/12">プラン名：{{ $cart->plan->name }}</div>
+                            <div class="md:w-4/12">{{ $cart->plan->price }}<span class="text-sm text-gray-400">円（月額）</span></div>
+                            <div class="md:w-5/12">プラン詳細：{{ $cart->plan->contents }}</div>
                             <div class="md:w-3/12">
-                              <form method="post" action="{{route('user.cart.delete', ['item' => $bath->id])}}">
+                              <form method="post" action="{{route('user.cart.delete', ['item' => $cart->id])}}">
                                 @csrf
                                 <button>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

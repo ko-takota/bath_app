@@ -21,4 +21,9 @@ class Cart extends Model
     {
         return $this->belongsTo(Bath::class);
     }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
 }
