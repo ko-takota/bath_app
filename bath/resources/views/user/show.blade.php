@@ -20,7 +20,7 @@
                     @csrf
                     <p>プラン</p>
                     <select name="plan_id" class="bg-black">
-                        <option value="" selected>選択してください</option>
+                        <option name="noSelect" value="" selected>選択してください</option>
                             @foreach($plans as $plan)
                                 {
                                     <option value="{{ $plan->id }}">{{ $plan->name }}：月額{{ $plan->price }}円</option>
@@ -30,6 +30,11 @@
                     <button class="flex ml-auth bg-white text-brack border-0 py-2 px-6">カートに入れる</button>
                     <input type="hidden" name="bath_id" value="{{ $bath->id }}">
                 </form>
+                @if (session('message'))
+                    <div class="alert alert-danger">
+                        {{ session('message') }}
+                    </div>
+                @endif
             </div>
             {{-- お気に入り機能 --}}
             <div class="btn-group bg-white" style="width: 200px; margin: 0 auto;">

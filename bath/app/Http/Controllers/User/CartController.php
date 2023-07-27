@@ -28,6 +28,12 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
+        $noSelect = $request->input('noSelect');
+        // 'noSelect'フィールドが空文字列の場合、"選択してください"メッセージを追加する
+        if ($noSelect === '') {
+            return redirect()->back()->with('message', '選択してください');
+        }
+
         $cart = Cart::where('bath_id', $request->bath_id)//選択した施設とカートの施設IDの一致
             ->where('user_id', Auth::id())
             ->where('plan_id', $request->plan_id)
@@ -37,11 +43,17 @@ class CartController extends Controller
             $cart->plan_id = $request->plan_id; // ユーザーが選択したプランIDを保存
             $cart->save();
         } else {
-            Cart::create([ //カートに無ければ追加
-                'user_id' => Auth::id(),
-                'bath_id' => $request->bath_id,
-                'plan_id' => $request->plan_id,
-            ]);
+            if ($request->filled('plan_id')) {
+
+                Cart::create([ //カートに無ければ追加
+                    'user_id' => Auth::id(),
+                    'bath_id' => $request->bath_id,
+                    'plan_id' => $request->plan_id,
+                ]);
+            } else {
+                // $request->plan_idが空の場合の処理
+                return redirect()->back()->with('message', 'プランを選択してください');
+            }
         }
 
         return redirect()->route('user.cart.mycart');
