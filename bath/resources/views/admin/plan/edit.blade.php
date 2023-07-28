@@ -9,7 +9,7 @@
 <body>
     <h1>プラン編集</h1>
     <form action="/admin/plan/{{$plan->id}}" method="POST">
-        {{csrf_field()}}
+        @csrf
         {{method_field('PUT')}}
         <p>プラン名：<input type="text" name="name" value="{{$plan->name}}" cols="40"></p>
         <p>月額料金：<input type="integer" name="price" value="{{$plan->price}}" rows="4" cols="40"></p>

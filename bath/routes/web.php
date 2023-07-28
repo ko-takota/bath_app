@@ -7,6 +7,7 @@ use App\Http\Controllers\User\MypageController;
 use App\Http\Controllers\User\BathController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\LikeController;
+use App\Http\Controllers\User\InformationController;
 use App\Models\User;
 
 //管理画面系ファイル呼び出し
@@ -29,6 +30,9 @@ Route::middleware('auth:users')->group(function () {
     Route::post('/{id}/like', [LikeController::class, 'store'])->name('bath.like');//いいね
     Route::delete('{id}/unlike', [LikeController::class, 'destroy'])->name('bath.unlike');//いいね解除
     Route::get('/like', [LikeController::class, 'index'])->name('like.index');//いいね一覧表示
+    Route::get('/information', [InformationController::class, 'index'])->name('information');
+    Route::get('/information/{userId}', [InformationController::class, 'edit'])->name('information.edit');
+    Route::post('/information', [InformationController::class, 'update'])->name('information.update');
 });
 
 Route::prefix('cart')->middleware('auth:users')->group(function(){
