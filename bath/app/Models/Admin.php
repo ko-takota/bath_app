@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Bath;
 
 class Admin extends Authenticatable
 {
@@ -26,5 +27,8 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
+    public function bath()
+    {
+        return $this->hasOne(Bath::class);
+    }
 }

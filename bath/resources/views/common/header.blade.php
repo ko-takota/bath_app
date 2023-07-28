@@ -23,6 +23,9 @@
             <button class="mx-4">
                 <a href="{{ route('user.register')}}">初めての方(新規会員登録)</a>
             </button>
+            <button class="mx-4">
+                <a href="{{ route('user.search')}}">検索</a>
+            </button>
             @endauth
         </nav>
     </div>

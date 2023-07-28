@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\PrefctureCategory;
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Plan;
 
 class Bath extends Model
 {
     use HasFactory;
-    protected $guarded = ['bath_name', 'information', 'price', 'address', 'admin_id', 'prefcture_category_id'];
+    protected $guarded = ['bath_name', 'information', 'address', 'admin_id', 'prefcture_category_id'];
     protected $table = 'bathes';
 
     public function category()

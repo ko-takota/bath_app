@@ -37,7 +37,6 @@
                         <div>
                             <h3>{{ $bath->bath_name }}</h3>
                             <h2>{{ $bath->address }}</h2>
-                            <a>{{ number_format($bath->price) }}<span class="text-sm text-gray-400">円（月額）</span></a>
                         </div>
                     </a>
                     @endforeach

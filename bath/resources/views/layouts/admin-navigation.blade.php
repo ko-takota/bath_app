@@ -80,6 +80,12 @@
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.admin.index')" :active="request()->routeIs('admin.admin.index')">
+                オーナー管理
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.plan.index')" :active="request()->routeIs('admin.plan.index')">
+                プラン作成
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

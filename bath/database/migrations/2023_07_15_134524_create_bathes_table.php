@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('bath_name');
             $table->text('information');
-            $table->integer('price');
             $table->string('address')->unique();
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('prefcture_category_id')->constrained();

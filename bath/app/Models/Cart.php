@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Bath;
+use App\Models\Plan;
+
 
 class Cart extends Model
 {
@@ -19,7 +22,7 @@ class Cart extends Model
     ];
 
     //BathテーブルとCartsテーブルを紐づけ
-    public function stock()
+    public function bath()
     {
         return $this->belongsTo(Bath::class);
     }

@@ -53,5 +53,8 @@
                 </div>
             </button>
         </div>
+        <div>
+            <a href="{{route('user.search')}}" class="bg-white">施設一覧へ</a>
+        </div>
     </div>
 </x-app-layout>

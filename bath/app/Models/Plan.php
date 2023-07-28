@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Bath;
+use App\Models\Admin;
+use App\Models\Cart;
+
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plan extends Model
@@ -30,12 +35,12 @@ class Plan extends Model
 
     public function bath()
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(Bath::class);
     }
 
     public function admin()
     {
-        return $this->belongsTo(Plan::class);
+        return $this->belongsTo(Admin::class);
     }
 
     public function carts()

@@ -20,7 +20,6 @@ class BathFactory extends Factory
         return [
             'bath_name' => fake()-> word(),
             'information' => fake()-> text(),
-            'price' => fake()-> numberBetween(3500, 15000),
             'address' => fake()-> address(),
             'admin_id' => Admin::factory(),
             'prefcture_category_id' => fake()-> numberBetween(1, 47),

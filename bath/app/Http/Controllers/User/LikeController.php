@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Like;
+use App\Models\Bath;
 
 
 class LikeController extends Controller
@@ -29,6 +29,7 @@ class LikeController extends Controller
         return back();
     }
 
+    //いいね一覧表示画面
     public function index()
     {
         $user = User::findOrfail(Auth::id());

@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\DB;
 
 class BathController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:users');
-    }
-
     public function search(Request $request)
     {
         //都道府県カテゴリー
