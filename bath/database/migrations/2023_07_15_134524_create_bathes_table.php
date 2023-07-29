@@ -21,6 +21,8 @@ return new class extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('prefcture_category_id')->nullable()->constrained();
             $table->timestamps();
+            $table->softDeletes();
+
 
             $table->foreign('admin_id')->references('id')->on('admins');
             // $table->foreign('id')->references('manage_bath_id')->on('admins');

@@ -6,11 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Bath;
 use App\Models\AreaCategory;
-use App\Models\Plan;
-use App\Models\Cart;
-use GuzzleHttp\Psr7\Query;
-use Illuminate\Support\Facades\DB;
-
 
 class BathController extends Controller
 {

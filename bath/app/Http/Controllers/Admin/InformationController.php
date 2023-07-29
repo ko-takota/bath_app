@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Admin;
-
+use App\Models\Bath;
 
 class InformationController extends Controller
 {
@@ -93,9 +93,12 @@ class InformationController extends Controller
             $admin->password = Hash::make($request->password); // 新しいパスワードをハッシュ化して保存
             $admin->save();
 
-            return redirect()->route('admin.information.index')->with('message', '[オーナー情報を更新しました。]');
+            return redirect()->route('admin.information.index')
+            ->with('message', '[オーナー情報を更新しました。]');
+
         } else if (empty($request->password_confirmation)) {
             return redirect()->back()->with('error', '※パスワード確認に値を入力してください。');
+
         } else {
             return redirect()->route('admin.information.edit', ['information' => $admin->id])->with('error', '※入力したパスワードが違っています');
         }
@@ -109,6 +112,10 @@ class InformationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Admin::findOrFail($id)->delete();//論理削除
+        Bath::findOrFail($id)->delete();//関連した温泉施設も同時に論理削除
+
+        return redirect()->route('admin.register')
+        ->with('message', '[アカウントを削除しました。新規登録画面に戻ります。]');
     }
 }

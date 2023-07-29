@@ -19,7 +19,7 @@ class AdminFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'manage_bath_id' => fake()->numberBetween(1, 47),
+            'manage_bath_id' => fake()->numberBetween(1, 100),
             'email' => fake()->unique()->safeEmail(),
             'password' => bcrypt('password'), // password
             'remember_token' => Str::random(10),

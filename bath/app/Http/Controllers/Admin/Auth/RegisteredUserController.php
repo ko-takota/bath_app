@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                 ]);
-
+            //管理者が作成されたら、admin_idが紐付く施設を同時に作成
                 Bath::create([
                     'admin_id' => $admin->id,
                     'bath_name' => '施設名を入力して下さい',
@@ -64,7 +64,7 @@ class RegisteredUserController extends Controller
 
                 Auth::guard('admin')->login($admin);
 
-            },2);
+            }, 2);
         }catch(Throwable $e){
             Log::error($e); // 保存場所：storage\logs\laravel.log
             throw $e;

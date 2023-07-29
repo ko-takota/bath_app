@@ -99,6 +99,9 @@ class InformationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();//論理削除
+
+        return redirect()->route('user.top')
+        ->with('message','※アカウントを削除しました。トップに戻ります。');
     }
 }

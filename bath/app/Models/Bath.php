@@ -8,17 +8,19 @@ use App\Models\PrefctureCategory;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Plan;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Bath extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
 
     protected $fillable = [
         'bath_name',
         'information',
         'address',
         'admin_id',
-        'prefcture_category_id'
+        'prefcture_category_id',
     ];
 
     protected $table = 'bathes';

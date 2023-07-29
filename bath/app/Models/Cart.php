@@ -12,8 +12,7 @@ use App\Models\Plan;
 
 class Cart extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory,SoftDeletes;
 
     protected $fillable = [
         'user_id',
