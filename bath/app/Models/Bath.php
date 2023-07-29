@@ -12,7 +12,15 @@ use App\Models\Plan;
 class Bath extends Model
 {
     use HasFactory;
-    protected $guarded = ['bath_name', 'information', 'address', 'admin_id', 'prefcture_category_id'];
+
+    protected $fillable = [
+        'bath_name',
+        'information',
+        'address',
+        'admin_id',
+        'prefcture_category_id'
+    ];
+
     protected $table = 'bathes';
 
     public function category()
@@ -28,7 +36,7 @@ class Bath extends Model
 
     public function admin()
     {
-        return $this->belongsTo(Admin::class, 'admin_id');
+        return $this->belongsTo(Admin::class);
     }
 
     public function plans()

@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Throwable;
+use Illuminate\Support\Facades\Log;
+use App\Models\Bath;
+use Illuminate\Support\Facades\DB;
+
+
 
 class RegisteredUserController extends Controller
 {
@@ -34,17 +40,35 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Admin::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'prefcture_category_id' => 'nullable',
         ]);
 
-        $admin = Admin::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        //エラーがあった場合の処理
+        try{
+            DB::transaction(function () use($request) {
+                $admin = Admin::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
 
-        event(new Registered($admin));
+                Bath::create([
+                    'admin_id' => $admin->id,
+                    'bath_name' => '施設名を入力して下さい',
+                    'information' => '',
+                    'address' => '住所を入力して下さい',
+                    'prefcture_category_id' => null
+                ]);
 
-        Auth::guard('admin')->login($admin);
+                event(new Registered($admin));
+
+                Auth::guard('admin')->login($admin);
+
+            },2);
+        }catch(Throwable $e){
+            Log::error($e); // 保存場所：storage\logs\laravel.log
+            throw $e;
+        }
 
         return redirect(RouteServiceProvider::ADMIN_HOME);
     }

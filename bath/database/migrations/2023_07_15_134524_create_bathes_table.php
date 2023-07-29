@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('bath_name');
             $table->text('information');
-            $table->string('address')->unique();
+            $table->string('address');
             $table->unsignedBigInteger('admin_id');
-            $table->unsignedBigInteger('prefcture_category_id')->constrained();
+            $table->unsignedBigInteger('prefcture_category_id')->nullable()->constrained();
             $table->timestamps();
 
             $table->foreign('admin_id')->references('id')->on('admins');
