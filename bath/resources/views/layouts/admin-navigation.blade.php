@@ -17,7 +17,7 @@
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.admin.index')" :active="request()->routeIs('admin.admin.index')">
+                    <x-nav-link :href="route('admin.information.index')" :active="request()->routeIs('admin.information.index')">
                         オーナー管理
                     </x-nav-link>
                     <x-nav-link :href="route('admin.plan.index')" :active="request()->routeIs('admin.plan.index')">
@@ -80,7 +80,7 @@
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.admin.index')" :active="request()->routeIs('admin.admin.index')">
+            <x-responsive-nav-link :href="route('admin.information.index')" :active="request()->routeIs('admin.information.index')">
                 オーナー管理
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.plan.index')" :active="request()->routeIs('admin.plan.index')">

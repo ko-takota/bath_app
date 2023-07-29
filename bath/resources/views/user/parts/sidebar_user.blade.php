@@ -15,7 +15,7 @@
         <small class="text-center text-xs font-medium"> 投稿 </small>
     </a>
 
-    <a href="{{ route('user.information')}}"
+    <a href="{{ route('user.information.index')}}"
         class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-900 dark:hover:bg-slate-600">
     <!-- HeroIcon - Cog-6-tooth -->
         <small class="text-center text-xs font-medium"> 会員情報変更 </small>

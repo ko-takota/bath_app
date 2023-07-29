@@ -30,9 +30,7 @@ Route::middleware('auth:users')->group(function () {
     Route::post('/{id}/like', [LikeController::class, 'store'])->name('bath.like');//いいね
     Route::delete('{id}/unlike', [LikeController::class, 'destroy'])->name('bath.unlike');//いいね解除
     Route::get('/like', [LikeController::class, 'index'])->name('like.index');//いいね一覧表示
-    Route::get('/information', [InformationController::class, 'index'])->name('information');
-    Route::get('/information/{userId}', [InformationController::class, 'edit'])->name('information.edit');
-    Route::post('/information', [InformationController::class, 'update'])->name('information.update');
+    Route::resource('information', InformationController::class);//ユーザー情報の一覧や変更
 });
 
 Route::prefix('cart')->middleware('auth:users')->group(function(){

@@ -9,8 +9,8 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\StartController;
@@ -33,9 +33,8 @@ Route::get('/', function () {
 //ログイン後の初期設定
 Route::resource('start', StartController::class);
 
-//ログインしている場合のみ表示(オーナー管理)
-Route::resource('admin', AdminController::class)->middleware('auth:admin')
-->only(['index']);;
+//管理者情報表示(オーナー管理)
+Route::resource('information', InformationController::class)->middleware('auth:admin');
 
 //管理者のプラン詳細
 Route::resource('plan', PlanController::class);

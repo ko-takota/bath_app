@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Admin;
 
 
-class AdminController extends Controller
+class InformationController extends Controller
 {
 
     public function __construct()
@@ -22,9 +24,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // //admin全員分を取得
-        // // $admins = Admin::select('name', 'email')->get();
-        return view('admin.index');
+        $admin = Auth::user();
+        //$admin = Admin::select('id', 'name', 'email')->get();
+        return view('admin.information.index', compact('admin'));
     }
 
     /**
@@ -67,7 +69,9 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin = Admin::findOrFail($id);
+
+        return view('admin.information.edit', compact('admin'));
     }
 
     /**
@@ -79,7 +83,22 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $admin = Admin::findOrFail($id);
+
+        //if文で入力されたpasswordとpassword_confirmation比較するためにHash化
+        if ($request->password === $request->password_confirmation) {
+            // 新しいパスワードと確認用のパスワードが一致する場合の処理
+            $admin->name = $request->name;
+            $admin->email = $request->email;
+            $admin->password = Hash::make($request->password); // 新しいパスワードをハッシュ化して保存
+            $admin->save();
+
+            return redirect()->route('admin.information.index')->with('message', '[オーナー情報を更新しました。]');
+        } else if (empty($request->password_confirmation)) {
+            return redirect()->back()->with('error', '※パスワード確認に値を入力してください。');
+        } else {
+            return redirect()->route('admin.information.edit', ['information' => $admin->id])->with('error', '※入力したパスワードが違っています');
+        }
     }
 
     /**
