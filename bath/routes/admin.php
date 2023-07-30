@@ -13,7 +13,8 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PlanController;
-use App\Http\Controllers\Admin\StartController;
+use App\Http\Controllers\Admin\BathController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,14 +31,17 @@ Route::get('/', function () {
     return view('admin.welcome');
 });
 
-//ログイン後の初期設定
-Route::resource('start', StartController::class);
-
 //管理者情報表示(オーナー管理)
 Route::resource('information', InformationController::class)->middleware('auth:admin');
-
 //管理者のプラン詳細
 Route::resource('plan', PlanController::class);
+
+Route::prefix('baths')->
+middleware('auth:admin')->group(function () {
+    Route::get('index', [BathController::class, 'index'])->name('bath.index');
+    Route::get('edit/{bath}', [BathController::class, 'edit'])->name('bath.edit');
+    Route::post('update/{bath}', [BathController::class, 'update'])->name('bath.update');
+});
 
 
 Route::get('/dashboard', function () {
