@@ -14,8 +14,24 @@ class InformationController extends Controller
 
     public function __construct()
     {
-        //認証されていたら各メソッド実行
+        //管理者かどうかの確認
         $this->middleware('auth:admin');
+
+        //別のアカウントにログインされないように
+        $this->middleware(function($request, $next) {
+            // dd($request->route()->parameter('information')); //文字列
+            // dd(Auth::id()); //数字
+            $id = $request->route()->parameter('information');//ログイン管理者が持つ施設ID
+            if(!is_null($id)) {
+                $bathAdminId = Bath::findOrFail($id)->admin->id;
+                $bathId = (int)$bathAdminId;
+                $adminId = Auth::id();
+                if($bathId !== $adminId) { //同じで無ければ
+                    abort(404); //404画面
+                }
+            }
+            return $next($request);
+        });
     }
     /**
      * Display a listing of the resource.

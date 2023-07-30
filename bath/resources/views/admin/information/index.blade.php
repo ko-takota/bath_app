@@ -12,24 +12,39 @@
                 {{ session('message') }}
             </div>
         @endif
-        <h1>管理者情報</h1>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <p class="bg-white text-black-600">管理者情報</p>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="p-8 text-gray-900 dark:text-gray-100">
                     @if (Auth::check())
                         名前：{{ $admin->name }}<br>
                         ID：{{ $admin->email }}<br>
                     @endif
                     <button type="submit" onclick="location.href='{{ route('admin.information.edit', ['information' => $admin->id])}}'">編集する</button>
-
-                    <form id="delete_{{$admin->id}}" method="POST" action="{{ route('admin.information.destroy', ['information' => $admin->id]) }}">
-                        @method('delete')
-                        @csrf
-                    <a href="#" data-id="{{ $admin->id }}" onclick="deletePost(this)" class="text-red-600">アカウント削除</button>
-                    </form>
                 </div>
             </div>
         </div>
+
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <p class="bg-white text-black-600">施設情報</p>
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-8 text-gray-900 dark:text-gray-100">
+                    @if (Auth::check())
+                        施設名：{{ $admin->bath->bath_name }}<br>
+                        施設情報：{{ $admin->bath->information }}<br>
+                        住所：{{ $admin->bath->address }}<br>
+                        都道府県：{{ $admin->bath->prefcture_category_id }}<br>
+                    @endif
+                    <button type="submit" onclick="location.href='{{ route('admin.information.edit', ['information' => $admin->id])}}'">編集する</button>
+                </div>
+            </div>
+        </div>
+        <form class="text-red-600" id="delete_{{$admin->id}}" method="POST" action="{{ route('admin.information.destroy', ['information' => $admin->id]) }}">
+            @method('delete')
+            @csrf
+        <button><a href="#" data-id="{{ $admin->id }}" onclick="deletePost(this)">アカウント削除</button>
+        </form>
     </div>
     <script>
         function deletePost(e) {
