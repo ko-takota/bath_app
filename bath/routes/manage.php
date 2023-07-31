@@ -9,12 +9,19 @@ use App\Http\Controllers\Manage\Auth\PasswordController;
 use App\Http\Controllers\Manage\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Manage\Auth\RegisteredUserController;
 use App\Http\Controllers\Manage\Auth\VerifyEmailController;
+use App\Http\Controllers\Manage\AdminController;
+
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
     return view('manage.welcome');
 });
+
+
+Route::resource('admin', AdminController::class)
+->middleware('auth:manage');
+
 
 Route::get('/dashboard', function () {
     return view('manage.dashboard');

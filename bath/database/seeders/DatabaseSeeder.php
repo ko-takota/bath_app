@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             $this->call($seeder);
         }
 
-        Bath::factory(100)->create();
+        Bath::factory(10)->create();
         User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

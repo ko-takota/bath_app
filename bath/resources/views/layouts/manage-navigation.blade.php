@@ -17,6 +17,9 @@
                     <x-nav-link :href="route('manage.dashboard')" :active="request()->routeIs('manage.dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('manage.admin.index')" :active="request()->routeIs('manage.admin.index')">
+                        {{ __('管理者一覧') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -73,6 +76,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('manage.dashboard')" :active="request()->routeIs('manage.dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('manage.admin.index')" :active="request()->routeIs('manage.admin.index')">
+                {{ __('管理者一覧') }}
             </x-responsive-nav-link>
         </div>
 
