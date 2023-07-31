@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('bathes', function (Blueprint $table) {
             $table->id();
-            $table->string('bath_name');
+            $table->string('name');
             $table->text('information');
             $table->string('address');
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('prefcture_category_id')->nullable()->constrained();
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

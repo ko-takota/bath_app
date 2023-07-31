@@ -18,7 +18,7 @@ class BathFactory extends Factory
     public function definition()
     {
         return [
-            'bath_name' => fake()-> word(),
+            'name' => fake()-> word(),
             'information' => fake()-> text(),
             'address' => fake()-> address(),
             'admin_id' => Admin::factory(),

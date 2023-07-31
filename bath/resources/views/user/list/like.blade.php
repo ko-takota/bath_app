@@ -16,7 +16,7 @@
             <tbody>
                 @foreach ($likes as $like)
                     <tr>
-                        <td>{{ $like->bath_name }}</td>
+                        <td>{{ $like->name }}</td>
                         <td>{{ $like->information }}</td>
                     </tr>
                 @endforeach

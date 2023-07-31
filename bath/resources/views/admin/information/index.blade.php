@@ -31,7 +31,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-8 text-gray-900 dark:text-gray-100">
                     @if (Auth::check())
-                        施設名：{{ $admin->bath->bath_name }}<br>
+                        施設名：{{ $admin->bath->name }}<br>
                         施設情報：{{ $admin->bath->information }}<br>
                         住所：{{ $admin->bath->address }}<br>
                         都道府県：{{ $admin->bath->prefcture_category_id }}<br>

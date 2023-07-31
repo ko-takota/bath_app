@@ -16,7 +16,7 @@ class Bath extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        'bath_name',
+        'name',
         'information',
         'address',
         'admin_id',

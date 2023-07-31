@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
             //管理者が作成されたら、admin_idが紐付く施設を同時に作成
                 Bath::create([
                     'admin_id' => $admin->id,
-                    'bath_name' => '施設名を入力して下さい',
+                    'name' => '施設名を入力して下さい',
                     'information' => '',
                     'address' => '住所を入力して下さい',
                     'prefcture_category_id' => null

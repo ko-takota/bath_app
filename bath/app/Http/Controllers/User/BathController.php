@@ -24,7 +24,7 @@ class BathController extends Controller
 
         if ($keyword) {
             $baths = $baths->where(function ($query) use ($keyword) {
-                $query->where('bath_name', 'like', '%' . $keyword . '%')
+                $query->where('name', 'like', '%' . $keyword . '%')
                     ->orWhere('information', 'like', '%' . $keyword . '%')
                     ->orWhere('address', 'like', '%' . $keyword . '%');
             });

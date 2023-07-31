@@ -10,7 +10,7 @@
             <div class="p-6 text-gray-900 dark:text-gray-100">
                 <h1>{{Auth::user()->name}}さんのカートの中身</h1>
                 @if (count($carts) > 0)
-                <div class="md:w-5/12">施設名：{{ $bath->bath_name }}</div>
+                <div class="md:w-5/12">施設名：{{ $bath->name }}</div>
                     @foreach ($carts as $cart)
                         @if($cart->plan) <!-- プランが存在する場合 -->
                             <div class="md:flex md:item-center">

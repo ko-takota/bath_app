@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="{{ route('admin.bath.edit', ['bath' => $bath->id]) }}">
                     <div>
-                    {{ $bath->bath_name }}
+                    {{ $bath->name }}
                     </div>
                     <div>
                         @if(empty($bath->imagename))

@@ -35,7 +35,7 @@
                     @foreach ($baths as $bath)
                     <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}">
                         <div>
-                            <h3>{{ $bath->bath_name }}</h3>
+                            <h3>{{ $bath->name }}</h3>
                             <h2>{{ $bath->address }}</h2>
                         </div>
                     </a>
