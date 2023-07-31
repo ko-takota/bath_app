@@ -26,7 +26,8 @@ class PlanController extends Controller
     public function index()
     {
         $admin = Auth::user();
-        $myPlans = Plan::where('bath_id', $admin->manage_bath_id)->get();
+        $bathId = $admin->baths->value('id');
+        $myPlans = Plan::where('bath_id', $bathId)->get();
 
         return view('admin.plan.index', compact('myPlans'));
     }
@@ -59,7 +60,7 @@ class PlanController extends Controller
             'contents' => ['required', 'string', 'max:250'],
         ]);
 
-        $bath_id = Auth::user()->manage_bath_id;
+        $bath_id = Auth::user()->baths->value('id');
 
         Plan::create(
             [

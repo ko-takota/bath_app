@@ -19,7 +19,7 @@ class BathController extends Controller
 
             $id = $request->route()->parameter('bath');//ログイン管理者が持つ施設ID
             if(!is_null($id)) {
-                $bathAdminId = Bath::findOrFail($id)->admin->id;
+                $bathAdminId = Bath::findOrFail($id)->admin_id;
                 $bathId = (int)$bathAdminId;
                 $adminId = Auth::id();
                 if($bathId !== $adminId) { //同じで無ければ

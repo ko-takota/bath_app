@@ -13,16 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('baths', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('price');
-            $table->text('contents')->nullable();//プランの内容
-            $table->unsignedBigInteger('bath_id')->nullable();
+            $table->text('information');
+            $table->string('address');
+            $table->unsignedBigInteger('admin_id');
+            $table->unsignedBigInteger('prefcture_category_id')->nullable()->constrained();
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('bath_id')->references('id')->on('baths');
+
+            $table->foreign('admin_id')->references('id')->on('admins');
+            // $table->foreign('id')->references('manage_bath_id')->on('admins');
         });
     }
 
@@ -33,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plans');
+        Schema::dropIfExists('baths');
     }
 };

@@ -16,7 +16,6 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
-        'manage_bath_id'
     ];
 
     protected $hidden = [
@@ -28,8 +27,8 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function bath()
+    public function baths()
     {
-        return $this->hasOne(Bath::class);
+        return $this->belongsToMany(Bath::class, 'admin_baths', 'admin_id', 'bath_id');
     }
 }

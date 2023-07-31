@@ -30,12 +30,21 @@
             <p class="bg-white text-black-600">施設情報</p>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-8 text-gray-900 dark:text-gray-100">
+<<<<<<< HEAD
                     @if (Auth::check())
                         施設名：{{ $admin->bath->name }}<br>
                         施設情報：{{ $admin->bath->information }}<br>
                         住所：{{ $admin->bath->address }}<br>
                         都道府県：{{ $admin->bath->prefcture_category_id }}<br>
                     @endif
+=======
+                    @foreach ($baths as $bath)
+                        施設名：{{ $bath->bath_name }}<br>
+                        施設情報：{{ $bath->information }}<br>
+                        住所：{{ $bath->address }}<br>
+                        都道府県：{{ $bath->prefcture_category_id }}<br>
+                    @endforeach
+>>>>>>> admin_bath
                     <button type="submit" onclick="location.href='{{ route('admin.information.edit', ['information' => $admin->id])}}'">編集する</button>
                 </div>
             </div>
