@@ -14,10 +14,10 @@
                     {{ $bath->name }}
                     </div>
                     <div>
-                        @if(empty($bath->imagename))
+                        @if(empty($bath->image))
                          <img src="{{ asset('images/no_image.jpg')}}">
                         @else
-                         <img src="{{ asset('storage/baths/' . $bath->imagename)}}">
+                         <img src="{{ asset('storage/baths/' . $bath->image)}}">
                         @endif
                     </div>
                     </a>
