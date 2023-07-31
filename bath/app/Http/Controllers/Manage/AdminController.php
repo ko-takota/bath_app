@@ -24,7 +24,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = Admin::all('id', 'name','email', 'created_at');
+        $admins = Admin::select('id', 'name','email', 'created_at')->paginate(8);
 
         return view('manage.admin.index', compact('admins'));
     }
