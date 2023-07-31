@@ -21,6 +21,7 @@ class Bath extends Model
         'address',
         'admin_id',
         'prefcture_category_id',
+        'image',
     ];
 
     protected $table = 'bathes';

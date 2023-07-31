@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Bath;
 
 class BathController extends Controller
@@ -40,11 +41,18 @@ class BathController extends Controller
 
     public function edit($id)
     {
-        dd(Bath::findOrFail($id));
+        $baths = (Bath::findOrFail($id));
+
+        return view('admin.bath.edit', compact('baths'));
     }
 
     public function update(Request $request, $id)
     {
+        $image = $request->image;
+        if(!is_null($image) && $image->isValid()){
+            Storage::putFile('public/baths', $image);
+        }
 
+        return redirect()->route('admin.bath.index');
     }
 }
