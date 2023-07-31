@@ -1,11 +1,4 @@
 <x-guest-layout>
-    <div class="text-red-600">
-        @if(session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
-    </div>
     <h1>システム管理者登録</h1>
 
     <form method="POST" action="{{ route('manage.register') }}">

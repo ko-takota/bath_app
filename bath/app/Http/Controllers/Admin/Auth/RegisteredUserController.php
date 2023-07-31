@@ -40,7 +40,6 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Admin::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'prefcture_category_id' => 'nullable',
         ]);
 
         //エラーがあった場合の処理
