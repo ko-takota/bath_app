@@ -19,7 +19,9 @@ class TopController extends Controller
         } else {
             $user_id = null;
         }
-        return view('user.top', compact('user_id'));
+
+        $text = 'Your Dynamic Text';
+        return view('user.top', compact('user_id', 'text'));
     }
 
     public function second()
