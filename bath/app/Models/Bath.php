@@ -11,6 +11,7 @@ use App\Models\Plan;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
+
 class Bath extends Model
 {
     use HasFactory,SoftDeletes;
@@ -23,7 +24,7 @@ class Bath extends Model
         'prefcture_category_id',
     ];
 
-    protected $table = 'bathes';
+    protected $table = 'baths';
 
     public function category()
     {
@@ -36,9 +37,9 @@ class Bath extends Model
         ->withPivot('id', 'plan_id');
     }
 
-    public function admin()
+    public function admins()
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsToMany(Admin::class, 'admin_bath', 'bath_id', 'admin_id');
     }
 
     public function plans()

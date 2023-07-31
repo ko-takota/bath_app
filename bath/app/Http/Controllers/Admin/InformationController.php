@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use App\Models\Admin;
 use App\Models\Bath;
 
@@ -23,7 +24,7 @@ class InformationController extends Controller
             // dd(Auth::id()); //数字
             $id = $request->route()->parameter('information');//ログイン管理者が持つ施設ID
             if(!is_null($id)) {
-                $bathAdminId = Bath::findOrFail($id)->admin->id;
+                $bathAdminId = Bath::findOrFail($id)->admin_id;
                 $bathId = (int)$bathAdminId;
                 $adminId = Auth::id();
                 if($bathId !== $adminId) { //同じで無ければ
@@ -41,8 +42,10 @@ class InformationController extends Controller
     public function index()
     {
         $admin = Auth::user();
+        $baths = DB::table('baths')->where('admin_id', $admin->id)->get();
+
         //$admin = Admin::select('id', 'name', 'email')->get();
-        return view('admin.information.index', compact('admin'));
+        return view('admin.information.index', compact('admin','baths'));
     }
 
     /**

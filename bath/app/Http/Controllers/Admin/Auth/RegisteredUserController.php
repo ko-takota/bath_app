@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\AdminBath;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -51,12 +52,17 @@ class RegisteredUserController extends Controller
                     'password' => Hash::make($request->password),
                 ]);
             //管理者が作成されたら、admin_idが紐付く施設を同時に作成
-                Bath::create([
+                $bath = Bath::create([
                     'admin_id' => $admin->id,
                     'bath_name' => '施設名を入力して下さい',
                     'information' => '',
                     'address' => '住所を入力して下さい',
-                    'prefcture_category_id' => null
+                    'prefcture_category_id' => null,
+                ]);
+
+                AdminBath::create([
+                    'admin_id' => $admin->id,
+                    'bath_id' => $bath->id,
                 ]);
 
                 event(new Registered($admin));

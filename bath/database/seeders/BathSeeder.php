@@ -16,7 +16,7 @@ class BathSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('bathes')->insert([
+        // DB::table('baths')->insert([
         //     ['id' => 1, 'bath_name' => 'あさひの湯', 'prefecture_id' => '1', 'price' => '4000','address' => '札幌市中央区北2条西4丁目', 'user_id' => '2'],
         //     ['id' => 2, 'bath_name' => 'ゆふいんの森', 'prefecture_id' => '3', 'price' => '4000','address' => '由布市湯布院川南町2567', 'user_id' => '2'],
         //     ['id' => 3, 'bath_name' => 'たまご湯', 'prefecture_id' => '12', 'price' => '4000','address' => '渋谷区道玄坂2丁目14-14', 'user_id' => '2'],

@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Admin;
+use App\Models\Bath;
 
 return new class extends Migration
 {
@@ -13,15 +15,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('admin_baths', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('price');
-            $table->text('contents')->nullable();//プランの内容
-            $table->unsignedBigInteger('bath_id')->nullable();
+            $table->unsignedBigInteger('admin_id');
+            $table->unsignedBigInteger('bath_id');
             $table->timestamps();
-            $table->softDeletes();
 
+            $table->foreign('admin_id')->references('id')->on('admins');
             $table->foreign('bath_id')->references('id')->on('baths');
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plans');
+        Schema::dropIfExists('admin_baths');
     }
 };
