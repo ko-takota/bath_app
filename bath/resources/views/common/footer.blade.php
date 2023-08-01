@@ -30,7 +30,6 @@
             <button class="mx-4 mb-4">
                 <a href="{{ route('user.search')}}">検索</a>
             </button>
-
         </nav>
       </span>
     </div>
