@@ -53,7 +53,7 @@
                             {{ $admins->links() }}
                           </div>
                         </div>
-                      </section>
+                    </section>
                 </div>
             </div>
         </div>

@@ -131,10 +131,6 @@ class InformationController extends Controller
      */
     public function destroy($id)
     {
-        Admin::findOrFail($id)->delete();//論理削除
-        Bath::findOrFail($id)->delete();//関連した温泉施設も同時に論理削除
-
-        return redirect()->route('admin.register')
-        ->with('message', '[アカウントを削除しました。新規登録画面に戻ります。]');
+        //
     }
 }

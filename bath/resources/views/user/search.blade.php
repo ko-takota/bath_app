@@ -16,7 +16,6 @@
                         </option>
                          @endforeach
                         @endforeach
-
                     </select>
                     <div class="flex space-x-2 items-center">
                         <div><input name="keyword" class="border border-gray-500 py-2" placeholder="キーワードを入力"></div>

@@ -82,7 +82,7 @@ class PlanController extends Controller
     //プラン詳細ページ
     public function show(Plan $plan)
     {
-        return view('admin.plan.show', compact('plan'));
+        //
     }
 
     /**
@@ -93,8 +93,10 @@ class PlanController extends Controller
      */
 
     //プラン編集ページ
-    public function edit(Plan $plan)
+    public function edit($id)
     {
+        $plan = Plan::findOrFail($id);
+
         return view('admin.plan.edit', compact('plan'));
     }
 
@@ -110,7 +112,7 @@ class PlanController extends Controller
     public function update(Request $request, plan $plan)
     {
         $plan->fill($request->all())->save();
-        return view('admin.plan.show', compact('plan'));
+        return redirect()->route('admin.plan.index');
     }
 
     /**
@@ -123,8 +125,8 @@ class PlanController extends Controller
     //プランを削除
     public function destroy($id)
     {
-        $plan = Plan::findOrFail($id);
-        $plan->delete();
+        Plan::findOrFail($id)->delete();
+
         return redirect()->route('admin.plan.index');
     }
 }

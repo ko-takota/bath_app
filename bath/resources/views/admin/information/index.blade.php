@@ -1,65 +1,48 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('オーナー一覧') }}
+            {{ __('管理者情報') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        {{--変更成功の場合のメッセージ--}}
-        @if(session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <p class="bg-white text-black-600">管理者情報</p>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-8 text-gray-900 dark:text-gray-100">
-                    @if (Auth::check())
-                        名前：{{ $admin->name }}<br>
-                        ID：{{ $admin->email }}<br>
-                    @endif
-                    <button type="submit" onclick="location.href='{{ route('admin.information.edit', ['information' => $admin->id])}}'">編集する</button>
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <section class="text-gray-600 body-font">
+                        <div class="container px-5 mx-auto">
+                            @if(session('message'))
+                                <div class="alert alert-success">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
+                            <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+                                <table class="table-auto w-full text-left whitespace-no-wrap">
+                                    <thead>
+                                        <tr>
+                                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">名前</th>
+                                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">メールアドレス</th>
+                                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日</th>
+                                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+                                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        <td class="px-4 py-3">{{ $admin->name }}</td>
+                                        <td class="px-4 py-3">{{ $admin->email }}</td>
+                                        <td class="px-4 py-3">{{ $admin->created_at->diffForHumans() }}</td>
+                                        <td class="px-4 py-3">
+                                            <button onclick="location.href='{{ route('admin.information.edit', ['information' => $admin->id]) }}'" class="text-white bg-yellow-500 border-0 py-2 px-3 focus:outline-none hover:bg-yellow-600 rounded">編集</button>
+                                        </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      </section>
                 </div>
             </div>
         </div>
-
-
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <p class="bg-white text-black-600">施設情報</p>
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-8 text-gray-900 dark:text-gray-100">
-<<<<<<< HEAD
-                    @if (Auth::check())
-                        施設名：{{ $admin->bath->name }}<br>
-                        施設情報：{{ $admin->bath->information }}<br>
-                        住所：{{ $admin->bath->address }}<br>
-                        都道府県：{{ $admin->bath->prefcture_category_id }}<br>
-                    @endif
-=======
-                    @foreach ($baths as $bath)
-                        施設名：{{ $bath->bath_name }}<br>
-                        施設情報：{{ $bath->information }}<br>
-                        住所：{{ $bath->address }}<br>
-                        都道府県：{{ $bath->prefcture_category_id }}<br>
-                    @endforeach
->>>>>>> admin_bath
-                    <button type="submit" onclick="location.href='{{ route('admin.information.edit', ['information' => $admin->id])}}'">編集する</button>
-                </div>
-            </div>
-        </div>
-        <form class="text-red-600" id="delete_{{$admin->id}}" method="POST" action="{{ route('admin.information.destroy', ['information' => $admin->id]) }}">
-            @method('delete')
-            @csrf
-        <button><a href="#" data-id="{{ $admin->id }}" onclick="deletePost(this)">アカウント削除</button>
-        </form>
     </div>
-    <script>
-        function deletePost(e) {
-            if(confirm('本当にアカウントを削除してもいい？')) {
-                document.getElementById('delete_' + e.dataset.id).submit();
-            }
-        }
-    </script>
 </x-app-layout>

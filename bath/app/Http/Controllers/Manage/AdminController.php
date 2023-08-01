@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Bath;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -127,6 +128,7 @@ class AdminController extends Controller
     public function destroy($id)
     {
         Admin::findOrFail($id)->delete();
+        Bath::findOrFail($id)->delete();
 
         return redirect()->route('manage.admin.index')
         ->with('message', 'アカウントを削除しました。');

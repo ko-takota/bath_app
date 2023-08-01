@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Bath;
+use App\Models\PrefctureCategory;
+
 
 class BathController extends Controller
 {
@@ -31,6 +33,7 @@ class BathController extends Controller
         });
     }
 
+
     public function index()
     {
         $bath =  Bath::where('admin_id', Auth::id())->first();
@@ -39,20 +42,45 @@ class BathController extends Controller
         return view('admin.bath.index', compact('bath'));
     }
 
+
+
     public function edit($id)
     {
+        $categories = PrefctureCategory::select('id', 'name')->get();
+
         $baths = (Bath::findOrFail($id));
 
-        return view('admin.bath.edit', compact('baths'));
+        return view('admin.bath.edit', compact('baths','categories'));
     }
+
+
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'information' => ['required', 'string', 'max:1000'],
+            'address' => ['required', 'string', 'max:100'],
+        ]);
+
         $image = $request->image;
         if(!is_null($image) && $image->isValid()){
-            Storage::putFile('public/baths', $image);
+            $imageName = Storage::putFile('public/baths', $image);
         }
 
-        return redirect()->route('admin.bath.index');
+        $bath = Bath::findOrFail($id);
+        $bath->name = $request->name;
+        $bath->information = $request->information;
+        $bath->address = $request->address;
+        $bath->prefcture_category_id = $request->category;
+
+        if(!is_null($image) && $image->isValid()){
+            $bath->image = $imageName;
+        }
+
+        $bath->save();
+
+        return redirect()->route('admin.bath.index')
+        ->with('message', '施設情報を更新しました。');
     }
 }
