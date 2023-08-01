@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('施設') }}
+            {{ __('施設一覧') }}
         </h2>
         <form method="GET" action="{{ route('user.search') }}" class="d-flex">
             <div class="lg:flex lg:justify-around">
@@ -25,22 +25,28 @@
             </div>
         </form>
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("施設一覧") }}
-                    @foreach ($baths as $bath)
-                    <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}">
-                        <div>
-                            <h3>{{ $bath->name }}</h3>
-                            <h2>{{ $bath->address }}</h2>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto flex justify-center">
+            <div class="-m-4 lg:w-1/2">
+                @foreach ($baths as $bath)
+                <div class=" mt-8 mb-8 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-yellow-500  items-center md:mb-2 lg:mb-0">{{ $bath->image }}</a>
+                        <div class="p-6">
+                        <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{ $bath->name }}</h1>
+                            <p class="leading-relaxed mb-3">{{ $bath->address }}</p>
+                            <div class=" items-center">
+                            <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-yellow-500  items-center md:mb-2 lg:mb-0">
+                                さらに詳しく
+                                <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                            </div>
                         </div>
-                    </a>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
-    </div>
+    </section>
 </x-app-layout>
