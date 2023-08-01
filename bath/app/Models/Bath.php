@@ -8,6 +8,7 @@ use App\Models\PrefctureCategory;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Plan;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -46,5 +47,15 @@ class Bath extends Model
     public function plans()
     {
         return $this->hasMany(Plan::class, 'bath_id');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
 }

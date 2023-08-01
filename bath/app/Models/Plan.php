@@ -8,8 +8,6 @@ use App\Models\User;
 use App\Models\Bath;
 use App\Models\Admin;
 use App\Models\Cart;
-
-
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plan extends Model

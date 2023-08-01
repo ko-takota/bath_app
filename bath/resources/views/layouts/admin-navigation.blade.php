@@ -26,6 +26,9 @@
                     <x-nav-link :href="route('admin.information.index')" :active="request()->routeIs('admin.information.index')">
                         オーナー管理
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.post.index')" :active="request()->routeIs('admin.post.index')">
+                        お知らせ投稿
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -94,6 +97,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.information.index')" :active="request()->routeIs('admin.information.index')">
                 オーナー管理
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.post.index')" :active="request()->routeIs('admin.post.index')">
+                お知らせ投稿
             </x-responsive-nav-link>
         </div>
 

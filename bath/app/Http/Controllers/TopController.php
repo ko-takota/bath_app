@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
+use App\Models\Admin;
+
 
 class TopController extends Controller
 {
@@ -20,8 +24,14 @@ class TopController extends Controller
             $user_id = null;
         }
 
-        $text = 'Your Dynamic Text';
-        return view('user.top', compact('user_id', 'text'));
+
+        $posts = DB::table('posts')
+        ->join('baths', 'posts.bath_id', '=', 'baths.id')
+        ->join('admins', 'baths.admin_id', '=', 'admins.id')
+        ->select('posts.*', 'admins.name as admin_name')
+        ->get();
+
+        return view('user.top', compact('user_id', 'posts'));
     }
 
     public function second()

@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\BathController;
+use App\Http\Controllers\Admin\PostController;
+
 
 
 /*
@@ -41,6 +43,14 @@ middleware('auth:admin')->group(function () {
     Route::get('index', [BathController::class, 'index'])->name('bath.index');
     Route::get('edit/{bath}', [BathController::class, 'edit'])->name('bath.edit');
     Route::post('update/{bath}', [BathController::class, 'update'])->name('bath.update');
+});
+
+
+Route::prefix('post')->middleware('auth:admin')->group(function(){
+    Route::get('index', [PostController::class, 'index'])->name('post.index');//投稿一覧
+    Route::get('create', [PostController::class, 'create'])->name('post.create');
+    Route::post('store', [PostController::class, 'store'])->name('post.store');
+
 });
 
 
