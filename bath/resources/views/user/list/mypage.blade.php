@@ -36,7 +36,7 @@
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                 </svg>
             </div>
-            <a href="{{route('user.search')}}">
+            <a href="{{route('user.bath.search')}}">
             <h2 class="text-lg text-gray-200 font-medium title-font mb-2 text-center hover:bg-yellow-600">自分のセントーを探しに行く</h2>
             </a>
             <p class="leading-relaxed text-base text-gray-300">検索画面へ移動します。</p>

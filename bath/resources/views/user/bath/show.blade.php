@@ -9,7 +9,7 @@
         <div class="text-center max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ $bath->name }}
+                    {{ $bath->bath_name }}
                 </div>
                 <div class="bg-white">
                     <nav>{{ $bath->information }}</nav>
@@ -54,7 +54,7 @@
             </button>
         </div>
         <div>
-            <a href="{{route('user.search')}}" class="bg-white">施設一覧へ</a>
+            <a href="{{route('user.bath.search')}}" class="bg-white">施設一覧へ</a>
         </div>
     </div>
 </x-app-layout>

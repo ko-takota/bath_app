@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('施設一覧') }}
         </h2>
-        <form method="GET" action="{{ route('user.search') }}" class="d-flex">
+        <form method="GET" action="{{ route('user.bath.search') }}" class="d-flex">
             <div class="lg:flex lg:justify-around">
                 <div class="lg:flex items-center">
                     <select name="category" class="lg:mb-0 lg:mr-1">

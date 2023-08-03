@@ -28,7 +28,7 @@
             </button>
             @endauth
             <button class="mx-4 mb-4">
-                <a href="{{ route('user.search')}}">検索</a>
+                <a href="{{ route('user.bath.search')}}">検索</a>
             </button>
         </nav>
       </span>

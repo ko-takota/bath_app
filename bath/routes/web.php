@@ -25,7 +25,7 @@ use App\Models\User;
 */
 
 Route::middleware('auth:users')->group(function () {
-    Route::get('/search', [BathController::class, 'search'])->name('search');//施設一覧ページ
+    Route::get('/bath/search', [BathController::class, 'search'])->name('bath.search');//施設一覧ページ
     Route::get('show/{item}', [BathController::class, 'show'])->name('item.show');//各施設登録ぺージ
     Route::post('/{id}/like', [LikeController::class, 'store'])->name('bath.like');//いいね
     Route::delete('{id}/unlike', [LikeController::class, 'destroy'])->name('bath.unlike');//いいね解除
@@ -43,7 +43,6 @@ Route::prefix('cart')->middleware('auth:users')->group(function(){
 
 require __DIR__.'/auth.php';
 
-// Route::get('/search', [SearchController::class, 'search'])->name('search');//検索結果
 
 //topページ
 Route::get('/', [TopController::class, 'top'])->name('top');

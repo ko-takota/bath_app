@@ -9,6 +9,7 @@ use App\Models\AreaCategory;
 
 class BathController extends Controller
 {
+    //温泉検索
     public function search(Request $request)
     {
         //都道府県カテゴリー
@@ -32,14 +33,15 @@ class BathController extends Controller
 
         $baths = $baths->get();
 
-        return view('user.search', compact('baths', 'categories'));
+        return view('user.bath.search', compact('baths', 'categories'));
     }
 
+    //温泉の詳細
     public function show($id)
     {
         $bath = Bath::findOrFail($id);//ユーザーが選択された施設詳細
         $plans = $bath->plans;
 
-        return view('user.show', compact('bath', 'plans'));
+        return view('user.bath.show', compact('bath', 'plans'));
     }
 }

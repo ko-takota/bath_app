@@ -42,7 +42,7 @@
                     カートに選択された施設が入っていません。
                 @endif
                 <div>
-                    <a href="{{route('user.search')}}" class="index">施設一覧へ</a>
+                    <a href="{{route('user.bath.search')}}" class="index">施設一覧へ</a>
                 </div>
             </div>
 
