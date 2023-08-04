@@ -15,8 +15,9 @@ use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\BathController;
 use App\Http\Controllers\Admin\PostController;
-
-
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BathSelectController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,25 +39,28 @@ Route::resource('information', InformationController::class)->middleware('auth:a
 //管理者のプラン詳細
 Route::resource('plan', PlanController::class);
 
+//管理者施設情報
 Route::prefix('baths')->
 middleware('auth:admin')->group(function () {
     Route::get('index', [BathController::class, 'index'])->name('bath.index');
     Route::get('edit/{bath}', [BathController::class, 'edit'])->name('bath.edit');
     Route::post('update/{bath}', [BathController::class, 'update'])->name('bath.update');
+//管理者ログイン後の施設選択
+    Route::get('/select', [BathSelectController::class, 'index'])->name('bath.select');
+    Route::post('/save-selected', [BathSelectController::class, 'saveSelectedBath'])->name('bath.select.save');
 });
 
-
+//お知らせ
 Route::prefix('post')->middleware('auth:admin')->group(function(){
     Route::get('index', [PostController::class, 'index'])->name('post.index');//投稿一覧
     Route::get('create', [PostController::class, 'create'])->name('post.create');
     Route::post('store', [PostController::class, 'store'])->name('post.store');
-
 });
 
+//ダッシュボード
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])
+->middleware(['auth:admin', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth:admin', 'verified'])->name('dashboard');
 
 //カートに入れたメンバー
 Route::get('/member', [MemberController::class, 'index'])->name('member');
