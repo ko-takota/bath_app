@@ -4,14 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Plan;
 use App\Models\Cart;
-use App\Models\Bath;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use PHPUnit\Framework\ComparisonMethodDoesNotDeclareBoolReturnTypeException;
 
-use function PHPUnit\Framework\returnSelf;
 
 class CartController extends Controller
 {
@@ -22,7 +18,7 @@ class CartController extends Controller
 
         $carts = Cart::where('user_id', Auth::id())->get();//ログインユーザーのカート情報
 
-        return view('user.cart.mycart', compact('bath','carts'));
+        return view('user.cart.mycart', compact('bath', 'carts', 'user'));
 
     }
 

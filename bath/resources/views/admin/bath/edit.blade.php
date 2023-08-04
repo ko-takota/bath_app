@@ -52,7 +52,7 @@
                                         @if(empty($baths->image))
                                         <img src="{{ asset('images/no_image.jpg')}}">
                                         @else
-                                        <img src="{{ asset('storage/baths/' . $baths->image)}}">
+                                        <img src="{{ asset('public/images/' . $baths->image)}}">
                                         @endif
                                     </div>
                                 </div>

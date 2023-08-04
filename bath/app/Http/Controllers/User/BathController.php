@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Bath;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Models\AreaCategory;
 
 class BathController extends Controller
@@ -31,8 +33,9 @@ class BathController extends Controller
         }
 
         $baths = $baths->get();
+        $user = User::findOrfail(Auth::id());//マイページに戻るため
 
-        return view('user.search', compact('baths', 'categories'));
+        return view('user.search', compact('baths', 'categories', 'user'));
     }
 
     public function show($id)

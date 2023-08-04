@@ -1,6 +1,6 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 <!DOCTYPE html>
-<html class="h-full" lang="en">
+<html class="h-full" lang="ja">
 <head class="h-full">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
