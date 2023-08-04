@@ -45,6 +45,9 @@ middleware('auth:admin')->group(function () {
     Route::get('index', [BathController::class, 'index'])->name('bath.index');
     Route::get('edit/{bath}', [BathController::class, 'edit'])->name('bath.edit');
     Route::post('update/{bath}', [BathController::class, 'update'])->name('bath.update');
+//管理者ログイン後の施設選択
+    Route::get('/select', [BathSelectController::class, 'index'])->name('bath.select');
+    Route::post('/save-selected', [BathSelectController::class, 'saveSelectedBath'])->name('bath.select.save');
 });
 
 //お知らせ
@@ -54,14 +57,10 @@ Route::prefix('post')->middleware('auth:admin')->group(function(){
     Route::post('store', [PostController::class, 'store'])->name('post.store');
 });
 
-//管理者ログイン後の施設選択
-Route::get('/bath/select', [BathSelectController::class, 'index'])
-->middleware(['auth:admin'])->name('admin.bath.select');
+//ダッシュボード
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])
+->middleware(['auth:admin', 'verified'])->name('dashboard');
 
-
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth:admin', 'verified'])->name('dashboard');
 
 //カートに入れたメンバー
 Route::get('/member', [MemberController::class, 'index'])->name('member');
