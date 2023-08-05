@@ -54,7 +54,7 @@
 
                                             </div>
                                         </div>
-                                        {{-- 変更失敗時のメッセージ --}}
+                                        {{-- 変更失敗時メッセージ --}}
                                         @if (session('error'))
                                             <div class="alert alert-danger">
                                                 {{ session('error') }}
