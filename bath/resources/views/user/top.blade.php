@@ -19,18 +19,18 @@
                 <div class="w-20 h-20 rounded-full inline-flex items-center justify-center">
                 </div>
                 <div class="flex flex-col items-center text-center justify-center">
-                  <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">マッチングセントー</h2>
-                  <div class="w-12 h-1 bg-yellow-500 rounded mt-2 mb-4"></div>
                     <a href="{{ route('user.search')}}">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <h2 class="hover:bg-gray-200 font-medium title-font mt-4 text-gray-900 text-lg  border border-gray-900 p-6 rounded-lg">マッチングセントー(探す)
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>
+                         </svg>
+                        </h2>
                     </a>
                 </div>
               </div>
               <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
                 <p class="leading-relaxed text-lg mb-4">マッチングセントーの解説</p>
-                <a class="text-yellow-500 inline-flex items-center">Learn More
+                <a class="hover:bg-yellow-700 text-yellow-500 inline-flex items-center">マッチングセントーって何？？
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                   </svg>
@@ -40,9 +40,8 @@
           </div>
         </div>
       </section>
-
       {{-- ニュース --}}
-      <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">お知らせ</span></h1>
+      <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">施設からのお知らせ</span></h1>
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-wrap -mx-4 -my-8">
@@ -93,9 +92,6 @@
             </div>
         </div>
       </section>
-
-
-
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto flex flex-col">
           <div class="lg:w-4/6 mx-auto">

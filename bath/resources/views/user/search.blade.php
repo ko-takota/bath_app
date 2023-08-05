@@ -43,13 +43,13 @@
                 <div class="container px-5 py-24 mx-auto flex justify-center">
                     <div class="-m-4 lg:w-1/2">
                         @foreach ($baths as $bath)
-                        <div class=" mt-8 mb-8 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <div class="hover:bg-gray-300 mt-8 mb-8 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                                 <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-yellow-500  items-center md:mb-2 lg:mb-0">
                                     <img src="{{ asset($bath->image) }}" alt="温泉施設画像">
                                 </a>
                                 <div class="p-6">
                                 <h1 class="title-font text-lg font-medium text-white mb-3">{{ $bath->name }}</h1>
-                                    <p class="leading-relaxed mb-3 text-gray-300">{{ $bath->address }}</p>
+                                    <p class="leading-relaxed mb-3 text-gray-800">{{ $bath->address }}</p>
                                     <div class=" items-center">
                                     <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-yellow-500  items-center md:mb-2 lg:mb-0">
                                         さらに詳しく

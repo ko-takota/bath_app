@@ -3,7 +3,7 @@
 @extends('layouts.common')
 @section('content')
 <section class="text-gray-600 body-font ">
-    <img src="{{ asset('images/22296391.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(1px);">
+    <img src="{{ asset('images/22296391.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(4px);">
     <div class="container px-5 py-24 mx-auto">
         <div class="dropdown">
             <form action="{{ route('user.index', ['id' => $user]) }}" method="GET">
@@ -19,7 +19,7 @@
       </div>
       <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            {{-- <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"> --}}
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <section class="text-gray-600 body-font">
                         <div class="container px-5 mx-auto">
@@ -28,7 +28,7 @@
                                     {{ session('message') }}
                                 </div>
                             @endif
-                            <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+                            <div class="hover:bg-gray-200 lg:w-2/3 w-full mx-auto overflow-auto">
                                 <table class="table-auto w-full text-left whitespace-no-wrap">
                                     <thead>
                                         <tr>
