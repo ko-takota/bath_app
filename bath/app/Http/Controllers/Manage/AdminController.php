@@ -51,7 +51,7 @@ class AdminController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Admin::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', 'regex:/^[A-Za-z0-9]+$/u', Rules\Password::defaults()->mixedCase()->numbers()],
         ]);
 
         Admin::create([
@@ -99,6 +99,10 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'password' => ['required', 'confirmed', Rules\Password::defaults()->mixedCase()->numbers()],
+        ]);
+
         $admin = Admin::findOrFail($id);
         //if文で入力されたpasswordとpassword_confirmation比較するためにHash化
         if ($request->password === $request->password_confirmation) {

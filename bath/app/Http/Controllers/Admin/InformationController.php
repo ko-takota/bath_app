@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules;
 use App\Models\Admin;
 use App\Models\Bath;
 
@@ -103,6 +104,10 @@ class InformationController extends Controller
     public function update(Request $request, $id)
     {
         $admin = Admin::findOrFail($id);
+
+        $request->validate([
+            'password' => ['required', 'confirmed', 'regex:/^[A-Za-z0-9]+$/u', Rules\Password::defaults()->mixedCase()->numbers()],
+        ]);
 
         //if文で入力されたpasswordとpassword_confirmation比較するためにHash化
         if ($request->password === $request->password_confirmation) {
