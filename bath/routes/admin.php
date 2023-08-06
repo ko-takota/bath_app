@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\BathController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BathSelectController;
+use App\Http\Controllers\Admin\BathCreateController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -33,6 +34,14 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', function () {
     return view('admin.welcome');
 });
+
+Route::middleware(['auth:admin'])->group(function () {
+    // login後、施設作成画面と処理
+    Route::get('/create-bath', [BathCreateController::class, 'bathCreateForm'])->name('show_create_bath');
+    Route::post('/create-bath', [BathCreateController::class, 'create'])->name('create_bath');
+});
+
+
 
 //管理者情報表示(オーナー管理)
 Route::resource('information', InformationController::class)->middleware('auth:admin');
