@@ -24,12 +24,12 @@
                         <select name="category" class="lg:mb-0 lg:mr-1">
                             <option value="0" @if(\Request::get('category') === '0') selected @endif>全て</option>
                             @foreach ($categories as $category)
-                            <optgroup label="{{ $category->name }}"></optgroup>
-                            @foreach ($category->prefcture as $prefcture)
-                            <option value="{{ $prefcture->id }}" @if(\Request::get('category') == $prefcture->id) selected @endif>
-                                {{ $prefcture->name }}
-                            </option>
-                            @endforeach
+                                <optgroup label="{{ $category->name }}"></optgroup>
+                                @foreach ($category->prefcture as $prefcture)
+                                    <option value="{{ $prefcture->id }}" @if(\Request::get('category') == $prefcture->id) selected @endif>
+                                        {{ $prefcture->name }}
+                                    </option>
+                                @endforeach
                             @endforeach
                         </select>
                         <div class="flex space-x-2 items-center">

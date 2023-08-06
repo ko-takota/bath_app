@@ -43,10 +43,11 @@ class InformationController extends Controller
     public function index()
     {
         $admin = Auth::user();
-        $baths = DB::table('baths')->where('admin_id', $admin->id)->get();
+        // $baths = DB::table('baths')->where('admin_id', $admin->id)->get();
+        // $baths = $admin->baths;
 
         //$admin = Admin::select('id', 'name', 'email')->get();
-        return view('admin.information.index', compact('admin','baths'));
+        return view('admin.information.index', compact('admin'));
     }
 
     /**

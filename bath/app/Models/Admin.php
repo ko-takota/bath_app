@@ -32,6 +32,7 @@ class Admin extends Authenticatable
         return $this->belongsToMany(Bath::class, 'admin_baths', 'admin_id', 'bath_id');
     }
 
+
     public function selectedBaths()
     {
         return $this->belongsToMany(Bath::class, 'admin_bath_selected', 'admin_id', 'bath_id');

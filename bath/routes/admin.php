@@ -52,6 +52,7 @@ Route::resource('plan', PlanController::class);
 Route::prefix('baths')->
 middleware('auth:admin')->group(function () {
     Route::get('index', [BathController::class, 'index'])->name('bath.index');
+    Route::get('show/{id}', [BathController::class, 'show'])->name('bath.show');
     Route::get('edit/{bath}', [BathController::class, 'edit'])->name('bath.edit');
     Route::post('update/{bath}', [BathController::class, 'update'])->name('bath.update');
 //管理者ログイン後の施設選択

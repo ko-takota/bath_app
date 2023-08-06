@@ -33,13 +33,12 @@ class BathController extends Controller
         });
     }
 
-
-    public function index()
+    // 選択された温泉施設の情報
+    public function show($id)
     {
-        $bath =  Bath::where('admin_id', Auth::id())->first();
-        // dd($bath);
+        $bath = Bath::find($id);
 
-        return view('admin.bath.index', compact('bath'));
+        return view('admin.bath.show', compact('bath'));
     }
 
 
