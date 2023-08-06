@@ -14,17 +14,14 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('admin.member')" :active="request()->routeIs('admin.member')">
+                        会員管理
                     </x-nav-link>
                     <x-nav-link :href="route('admin.bath.index')" :active="request()->routeIs('admin.bath.index')">
                         施設情報
                     </x-nav-link>
                     <x-nav-link :href="route('admin.plan.index')" :active="request()->routeIs('admin.plan.index')">
                         プラン作成
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.information.index')" :active="request()->routeIs('admin.information.index')">
-                        オーナー管理
                     </x-nav-link>
                     <x-nav-link :href="route('admin.post.index')" :active="request()->routeIs('admin.post.index')">
                         お知らせ投稿
@@ -49,9 +46,9 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        {{-- <x-dropdown-link :href="route('admin.profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link> --}}
+                        <x-dropdown-link :href="route('admin.information.index')">
+                            {{ __('プロフィール編集') }}
+                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('admin.logout') }}">
@@ -60,7 +57,7 @@
                             <x-dropdown-link :href="route('admin.logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('ログアウト') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -83,7 +80,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            <x-responsive-nav-link :href="route('admin.member')" :active="request()->routeIs('admin.member')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.bath.index')" :active="request()->routeIs('admin.bath.index')">
@@ -94,9 +91,6 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.bath.index')" :active="request()->routeIs('admin.bath.index')">
                 施設情報
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.information.index')" :active="request()->routeIs('admin.information.index')">
-                オーナー管理
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.post.index')" :active="request()->routeIs('admin.post.index')">
                 お知らせ投稿
@@ -113,9 +107,9 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                {{-- <x-responsive-nav-link :href="route('admin.profile.edit')">
-                   {{ __('Profile') }}
-                </x-responsive-nav-link> --}}
+                <x-responsive-nav-link :href="route('admin.information.index')">
+                   {{ __('プロフィール編集') }}
+                </x-responsive-nav-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('admin.logout') }}">
@@ -124,7 +118,7 @@
                     <x-responsive-nav-link :href="route('admin.logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('ログアウト') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

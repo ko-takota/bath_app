@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -74,6 +75,10 @@ class InformationController extends Controller
      */
     public function update(Request $request, $information)
     {
+        $request->validate([
+            'password' => ['required', 'confirmed', 'regex:/^[A-Za-z0-9]+$/u', Rules\Password::defaults()->mixedCase()->numbers()],
+        ]);
+
         $user = User::findOrFail($information);
 
         if ($request->password === $request->password_confirmation) {

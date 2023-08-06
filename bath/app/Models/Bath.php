@@ -41,7 +41,7 @@ class Bath extends Model
 
     public function admins()
     {
-        return $this->belongsToMany(Admin::class, 'admin_bath', 'bath_id', 'admin_id');
+        return $this->belongsToMany(Admin::class, 'admin_baths', 'bath_id', 'admin_id');
     }
 
     public function plans()
