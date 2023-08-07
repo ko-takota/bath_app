@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\BathController;
+use App\Http\Controllers\Admin\BathSelectController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -37,7 +38,13 @@ Route::middleware(['auth:admin'])->group(function () {
     // login後、施設作成画面と処理
     Route::get('/create-bath', [BathController::class, 'bathCreateForm'])->name('show_create_bath');
     Route::post('/create-bath', [BathController::class, 'create'])->name('create_bath');
+    //施設選択
+    Route::get('/select-bath', [BathSelectController::class, 'selectBath'])->name('bath.select');
+    Route::post('/selected-bath', [BathSelectController::class, 'saveSelectBath'])->name('bath.select.save');
+
 });
+
+
 
 
 
@@ -47,7 +54,7 @@ Route::resource('information', InformationController::class)->middleware('auth:a
 Route::resource('plan', PlanController::class);
 
 //管理者施設情報
-Route::prefix('baths')->
+Route::prefix('bath')->
 middleware('auth:admin')->group(function () {
     Route::get('index', [BathController::class, 'index'])->name('bath.index');
     Route::get('show/{id}', [BathController::class, 'show'])->name('bath.show');

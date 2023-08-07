@@ -1,8 +1,28 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            施設名：{{ $bath->name }}
-        </h2>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    施設名：{{ $bath->name }}
+                </h2>
+                <div class="flex">
+                    <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('admin.member')" :active="request()->routeIs('admin.member')">
+                            会員管理
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.bath.index')" :active="request()->routeIs('admin.bath.index')">
+                            施設編集
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.plan.index')" :active="request()->routeIs('admin.plan.index')">
+                            プラン作成
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.post.index')" :active="request()->routeIs('admin.post.index')">
+                            お知らせ投稿
+                        </x-nav-link>
+                    </div>
+                </div>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12">

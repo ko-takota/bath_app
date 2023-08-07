@@ -43,37 +43,15 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', 'regex:/^[A-Za-z0-9]+$/u', Rules\Password::defaults()->mixedCase()->numbers()],
         ]);
 
-        //エラーがあった場合の処理
-        try{
-            DB::transaction(function () use($request) {
-                $admin = Admin::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'password' => Hash::make($request->password),
-                ]);
-            //管理者が作成されたら、admin_idが紐付く施設を同時に作成
-                $bath = Bath::create([
-                    'admin_id' => $admin->id,
-                    'name' => '施設名を入力して下さい',
-                    'information' => '',
-                    'address' => '住所を入力して下さい',
-                    'prefcture_category_id' => null,
-                ]);
+        $admin = Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-                AdminBath::create([
-                    'admin_id' => $admin->id,
-                    'bath_id' => $bath->id,
-                ]);
+        event(new Registered($admin));
 
-                event(new Registered($admin));
-
-                Auth::guard('admin')->login($admin);
-
-            }, 2);
-        }catch(Throwable $e){
-            Log::error($e); // 保存場所：storage\logs\laravel.log
-            throw $e;
-        }
+        Auth::guard('admin')->login($admin);
 
         return redirect(RouteServiceProvider::ADMIN_HOME);
     }

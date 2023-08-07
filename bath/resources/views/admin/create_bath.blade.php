@@ -18,10 +18,10 @@
                     <input type="text" id="name" name="name" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                 </div>
                 <div class="relative flex-grow w-full">
-                    <label for="address" class="leading-7 text-sm text-gray-600">都道府県選択 ※必須</label><br>
+                    <label for="category" class="leading-7 text-sm text-gray-600">都道府県選択 ※必須</label><br>
                     <select name="category" class="lg:mb-0 lg:mr-1">
                         @foreach ($categories as $category)
-                            <option label="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>

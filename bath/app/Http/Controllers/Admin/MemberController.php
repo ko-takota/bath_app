@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\Admin;
 use App\Models\Cart;
 use App\Models\User;
 
@@ -17,10 +16,11 @@ class MemberController extends Controller
         //認証されていたら各メソッド実行
         $this->middleware('auth:admin');
     }
-    public function index()
+
+    public function index(Request $request)
     {
         //管理者自身の情報を取得
-        $admin = Auth::guard('admin')->user();
+        $admin = Auth::user();
         if($admin)
         {
             // 管理者が管理している施設のIDを取得

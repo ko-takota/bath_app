@@ -17,29 +17,23 @@ class BathSelectController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function selectShop()
+    public function selectbath()
     {
-        $bathId = AdminBath::where('admin_id', '=', Auth::id())->get()->pluck('bath_id');
+        // $bathId = AdminBath::where('admin_id', '=', Auth::id())->get()->pluck('bath_id');
         // dd($bathId);
-        $baths = Bath::whereIn('id', $bathId)->get();
+        $baths = Auth::user()->baths;
 
         return view('admin.select', compact('baths'));
     }
 
-    public function index(Request $request)
+    public function saveSelectBath(Request $request)
     {
-        $baths = Bath::all();
-        return view('admin.select', compact('baths'));
-    }
+        $selectedBathId = $request->bath_id;
 
-    public function saveSelectedBath(Request $request)
-    {
         $adminId = Auth::id();
-        $selectedBathId = $request->input('bath_id');
-
         // admin_bath_selected テーブルに選択結果を保存
         Admin::find($adminId)->selectedBaths()->sync([$selectedBathId]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'ショップが選択されました。');
+        return redirect()->route('admin.bath.show', ['id' => $selectedBathId])->with('success', 'ショップが選択されました。');
     }
 }
