@@ -1,5 +1,5 @@
 @section('footer')
-<footer class="text-gray-600 body-font">
+<footer class="text-yellow-600 body-font">
     <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
       <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
         <img class="w-auto h-6 sm:h-7" src="https://tsukatte.com/wp-content/uploads/2020/08/onsen-mark.png" alt="">

@@ -1,8 +1,8 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <div class="relative">
-    <img src="{{ asset('images/1181936.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="filter: blur(10px); max-width: 100%;">
-    <div class="absolute inset-0 z-10 bg-black opacity-40"></div>
+    <img src="{{ asset('images/22296391.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="filter: blur(0px); max-width: 100%;">
+    <div class="absolute inset-0 z-10 bg-black-400 opacity-40"></div>
     <div class="container px-5 py-24 mx-auto relative z-10">
         <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">施設一覧/検索</h1>
@@ -43,7 +43,7 @@
                 <div class="container px-5 py-24 mx-auto flex justify-center">
                     <div class="-m-4 lg:w-1/2">
                         @foreach ($baths as $bath)
-                        <div class="hover:bg-gray-300 mt-8 mb-8 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <div class="hover:bg-gray-400 mt-8 mb-8 border-2 border-gray-900 border-opacity-60 rounded-lg overflow-hidden">
                                 <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-yellow-500  items-center md:mb-2 lg:mb-0">
                                     <img src="{{ asset($bath->image) }}" alt="温泉施設画像">
                                 </a>

@@ -8,7 +8,7 @@
 
 @include('common.footer')
 <div class="relative">
-    <img src="{{ asset('images/24059766.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="filter: blur(2px); max-width: 100%;">
+    <img src="{{ asset('images/24120406.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="filter: blur(5px); max-width: 100%;">
     <div class="absolute inset-0 z-10 opacity-40"></div>
     <div class="container px-5 py-24 mx-auto relative z-10">
         <div class="flex flex-wrap w-full flex-col items-center text-center">
@@ -27,7 +27,7 @@
                         </div>
                         <div class="flex flex-col items-center text-center justify-center">
                             <a href="{{ route('user.search')}}">
-                                <h2 class="hover:bg-gray-200 font-medium title-font mt-4 text-gray-900 text-lg  border border-gray-900 p-6 rounded-lg">マッチングセントー(探す)
+                                <h2 class="hover:bg-gray-200 font-medium title-font mt-4 text-gray-900 text-lg  border border-gray-900 p-6 rounded-lg">検索
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                                 </svg>
@@ -36,17 +36,28 @@
                         </div>
                     </div>
                     <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                        <p class="leading-relaxed text-lg mb-4">マッチングセントーの解説</p>
-                        <a class="hover:bg-yellow-700 text-yellow-500 inline-flex items-center">マッチングセントーって何？？
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                        </a>
+                        <p class="leading-relaxed text-lg mb-4">古くから医療目的で温泉が使われていた！？</p><br>
+                        <p class="mb-6 text-left">泉質によって成分も違ってきますが、ガスやイオンなどの成分が皮膚を通して体の中に吸収されることで、
+                            <br>血のめぐりが良くなったり、代謝が良くなったりします。
+
+                            <br>毎日温泉に入ることでアトピーやヘルニアなどの<span class="text-red-500">治療効果が期待</span>できます。
+                            <br>調べてもらえればわかることですが、温泉に入ることで得られる効果は絶大です。
+                            <br>また、リラックス効果もありいつもの家のお風呂とは違う「非日常空間」が心のリラックスにも繋がります。</p>
+                        <div class="text-lg hover:bg-yellow-400 text-yellow-800">
+                            <p class="mt-4 inline-flex items-center">マッチングセントーって何？？</p>
+
+                            <p class="mt-6 text-yellow-800">近年流行している整えるサウナ。ただ熱いから長く入れない。ととのいがわからない！
+                                <br>温泉もいいけど券買うのめんどい、タオル忘れた...毎日行けば身体も回復するけどお金もかかる...
+                                <br><span class="text-red-900">マッチングセントーで自分にあった温泉施設を見つければ、定額料金で好きな時に好きな時間入れちゃいます！</span>
+                            </p>
+                        </div>
+                        </dl>
                     </div>
                     </div>
                 </div>
                 </div>
             </section>
+
             {{-- ニュース --}}
             <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">施設からのお知らせ</span></h1>
             <section class="text-gray-600 body-font">
