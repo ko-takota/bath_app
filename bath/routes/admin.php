@@ -16,8 +16,6 @@ use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\BathController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\BathSelectController;
-use App\Http\Controllers\Admin\BathCreateController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -37,8 +35,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth:admin'])->group(function () {
     // login後、施設作成画面と処理
-    Route::get('/create-bath', [BathCreateController::class, 'bathCreateForm'])->name('show_create_bath');
-    Route::post('/create-bath', [BathCreateController::class, 'create'])->name('create_bath');
+    Route::get('/create-bath', [BathController::class, 'bathCreateForm'])->name('show_create_bath');
+    Route::post('/create-bath', [BathController::class, 'create'])->name('create_bath');
 });
 
 
@@ -53,11 +51,9 @@ Route::prefix('baths')->
 middleware('auth:admin')->group(function () {
     Route::get('index', [BathController::class, 'index'])->name('bath.index');
     Route::get('show/{id}', [BathController::class, 'show'])->name('bath.show');
+    Route::post('select', [BathController::class, 'selectBath'])->name('bath.selected');
     Route::get('edit/{bath}', [BathController::class, 'edit'])->name('bath.edit');
     Route::post('update/{bath}', [BathController::class, 'update'])->name('bath.update');
-//管理者ログイン後の施設選択
-    Route::get('/select', [BathSelectController::class, 'index'])->name('bath.select');
-    Route::post('/save-selected', [BathSelectController::class, 'saveSelectedBath'])->name('bath.select.save');
 });
 
 //お知らせ
@@ -103,19 +99,14 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)->name('verification.notice');
-
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
                 ->middleware(['signed', 'throttle:6,1'])
                 ->name('verification.verify');
-
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
                 ->middleware('throttle:6,1')
                 ->name('verification.send');
-
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
-
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
-
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });

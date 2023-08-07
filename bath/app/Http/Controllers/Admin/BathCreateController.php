@@ -41,10 +41,11 @@ class BathCreateController extends Controller
         }
 
         //view（admin.select）で使用
-        $bathId = AdminBath::where('admin_id', '=', Auth::id())->get()->pluck('bath_id');
-        $baths = Bath::whereIn('id', $bathId)->get();
+        // $bathId = AdminBath::where('admin_id', '=', Auth::id())->get()->pluck('bath_id');
+        // $baths = Bath::whereIn('id', $bathId)->get();
 
-        return view('admin.select', compact('baths'));
+
+        return redirect()->route('admin.create_bath');
 
     }
 }

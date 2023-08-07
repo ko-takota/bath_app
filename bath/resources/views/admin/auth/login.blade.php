@@ -1,9 +1,17 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <x-guest-layout>
+    <div class="shrink-0 flex items-center justify-center">
+        <div class="w-24">
+            <a href="{{ route('admin.dashboard') }}">
+                <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+            </a>
+        </div>
+    </div>
+    <div class="text-center bg-yellow-400 border-0 py-4 px-8 rounded text-lg">管理者用</div>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    管理者用
+
 
     <form method="POST" action="{{ route('admin.login') }}">
         @csrf
