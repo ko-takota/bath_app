@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Plan;
 use App\Models\Post;
+use App\Models\UserPost;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -52,6 +53,11 @@ class Bath extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function userPosts()
+    {
+        return $this->hasMany(UserPost::class);
     }
 
     public function admin()

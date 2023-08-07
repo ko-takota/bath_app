@@ -40,17 +40,6 @@
                                     </span>
                                 </span>
                               </td>
-
-                              {{-- <td class="px-4 py-3">
-                                <button onclick="location.href='{{ route('manage.admin.edit', ['admin' => $admin->id]) }}'" class="text-white bg-yellow-500 border-0 py-2 px-3 focus:outline-none hover:bg-yellow-600 rounded">編集</button>
-                              </td>
-                              <form id="delete_{{$admin->id}}" method="POST" action="{{ route('manage.admin.destroy', ['admin' => $admin->id]) }}">
-                                @csrf
-                                @method('delete')
-                                <td class="px-4 py-3">
-                                    <a href="#" data-id="{{ $admin->id }}" onclick="deletePost(this)" class="text-white bg-red-500 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded">削除</a>
-                                </td> --}}
-                              </form>
                             </tr>
                             @endforeach
                           </tbody>

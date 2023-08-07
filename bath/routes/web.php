@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
@@ -8,7 +9,6 @@ use App\Http\Controllers\User\BathController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\LikeController;
 use App\Http\Controllers\User\InformationController;
-use App\Models\User;
 
 //管理画面系ファイル呼び出し
 //include __DIR__ . '/admin.php';
@@ -39,6 +39,14 @@ Route::prefix('cart')->middleware('auth:users')->group(function(){
     Route::post('delete/{item}', [CartController::class, 'delete'])->name('cart.delete');//カートから削除
     // プランが削除されたらカート情報のプランも削除
     Route::post('/delete-plan/{id}', [CartController::class, 'deletePlan'])->name('cart.delete.plan');
+});
+
+
+Route::prefix('post')->middleware('auth:users')->group(function () {
+    Route::get('/index', [PostController::class, 'index'])->name('post.index');
+    Route::get('/create', [PostController::class, 'create'])->name('post.create');
+    Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+    Route::post('/store', [PostController::class, 'store'])->name('post.store');
 });
 
 require __DIR__.'/auth.php';
