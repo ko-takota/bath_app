@@ -24,14 +24,19 @@ class TopController extends Controller
             $user_id = null;
         }
 
-
+        //管理者お知らせ
         $posts = DB::table('posts')
         ->join('baths', 'posts.bath_id', '=', 'baths.id')
         ->join('admins', 'baths.admin_id', '=', 'admins.id')
         ->select('posts.*', 'admins.name as admin_name')
         ->get();
 
-        return view('user.top', compact('user_id', 'posts'));
+        //ユーザー口コミ
+        $userPosts = DB::table('user_posts')
+        ->join('baths', 'user_posts.bath_id', '=', 'baths.id')->get();
+        
+
+        return view('user.top', compact('user_id', 'posts', 'userPosts'));
     }
 
     public function second()
