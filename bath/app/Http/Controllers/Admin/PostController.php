@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Carbon\Carbon;
@@ -20,8 +21,13 @@ class PostController extends Controller
 
     public function index()
     {
-        // ユーザーIDと一致する投稿データを取得
-        $posts =  Post::where('bath_id', Auth::id())->get();
+        //管理者が持ってる施設のidを取得
+        $adminBathIds = Auth::user()->baths->pluck('id');
+        //管理者が選択した施設のID
+        $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
+        // 投稿データ選択したIDと一致するbath_idを取得
+        $posts =  Post::whereIn('bath_id', $adminSelectBath->pluck('bath_id'))->get();
+        
         return view('admin.post.index', compact('posts',));
     }
 

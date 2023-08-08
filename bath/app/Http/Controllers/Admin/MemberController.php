@@ -21,12 +21,15 @@ class MemberController extends Controller
     {
         //管理者自身の情報を取得
         $admin = Auth::user();
+        // 管理者が管理している施設のIDを取得
+        $adminBathId = DB::table('baths')->where('admin_id', $admin->id)->value('admin_id');
+
         if($admin)
         {
-            // 管理者が管理している施設のIDを取得
-            $adminBathId = DB::table('baths')->where('admin_id', $admin->id)->value('admin_id');
+            //管理者が選択した施設のID
+            $adminSelectBath = DB::table('admin_bath_selected')->where('bath_id', $adminBathId)->value('admin_id');
             //カートテーブルから自分の施設idと同じユーザーのidを取得
-            $carts = Cart::where('bath_id', '=', $adminBathId)->get()->pluck('user_id')->toArray();
+            $carts = Cart::where('bath_id', '=', $adminSelectBath)->get()->pluck('user_id')->toArray();
             //ユーザーのidがカートに入った$cartsに含まれる場合に取得
             $users = User::whereIn('id', $carts)->get();
         }

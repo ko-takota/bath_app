@@ -16,22 +16,20 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                @foreach ($baths as $bath)
                     <div class="bg-white mb-6 p-6 text-gray-900 dark:text-gray-100">
-                        <a href="{{ route('admin.bath.edit', ['bath' => $bath->id]) }}">
+                        <a href="{{ route('admin.bath.edit', ['id' => $bathId]) }}">
                             <div>
-                                {{ $bath->name }}
+                                {{ $bath->value('name') }}
                             </div>
                             <div>
-                                @if(empty($bath->image))
+                                @if(empty($bath->value('image')))
                                     <img src="{{ asset('images/no_image.jpg')}}">
                                 @else
-                                    <img src="{{ asset('storage/baths/' . $bath->image)}}">
+                                    <img src="{{ asset('storage/baths/' . $bath->value('image'))}}">
                                 @endif
                             </div>
                         </a>
                     </div>
-                @endforeach
             </div>
         </div>
     </div>

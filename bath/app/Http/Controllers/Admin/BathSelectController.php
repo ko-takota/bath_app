@@ -23,7 +23,7 @@ class BathSelectController extends Controller
         // dd($bathId);
         $baths = Auth::user()->baths;
 
-        return view('admin.select', compact('baths'));
+        return view('components.admin-bath-select', compact('baths'));
     }
 
     public function saveSelectBath(Request $request)

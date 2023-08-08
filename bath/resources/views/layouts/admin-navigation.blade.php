@@ -10,31 +10,9 @@
                     </a>
                 </div>
             </div>
-            {{-- 先に施設を管理施設を選択してもらう --}}
-
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                @auth
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button>
-                            <div class="text-black">施設選択</div>
-                            <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                                <x-slot name="content">
-                                    @foreach (Auth::user()->baths as $bath)
-                                        <x-dropdown-link :href="route('admin.bath.show', ['id' => $bath->id])" >
-                                            {{ $bath->name }}
-                                        </x-dropdown-link>
-                                    @endforeach
-                                </x-slot>
-                            </div>
-                        </button>
-                    </x-slot>
-                </x-dropdown>
-                @endauth
+                <x-admin-bath-select/>{{-- 管理施設の選択 --}}
             </div>
                 {{-- 管理施設が選択されるまでは表示しない --}}
                 <div class="flex">

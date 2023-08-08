@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Plan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 
 class PlanController extends Controller
@@ -25,9 +27,12 @@ class PlanController extends Controller
     //プラン一覧ページを表示
     public function index()
     {
-        $admin = Auth::user();
-        $bathId = $admin->baths->value('id');
-        $myPlans = Plan::where('bath_id', $bathId)->get();
+        //管理者が持ってる施設のidを取得
+        $adminBathIds = Auth::user()->baths->pluck('id');
+        //管理者が選択した施設のID
+        $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
+
+        $myPlans = Plan::where('bath_id', $adminSelectBath->pluck('bath_id'))->get();
 
         return view('admin.plan.index', compact('myPlans'));
     }

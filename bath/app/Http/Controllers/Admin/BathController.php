@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Bath;
 use App\Models\AdminBath;
@@ -37,17 +38,23 @@ class BathController extends Controller
 
     public function index()
     {
-        // $bath =  Bath::where('admin_id', Auth::id())->first();
-        $baths = Auth::user()->baths;
-        // dd($bath);
+        $bathId = Auth::id();
 
-        return view('admin.bath.index', compact('baths'));
+        //管理者が持ってる施設のidを取得
+        $adminBathIds = Auth::user()->baths->pluck('id');
+
+        //管理者が選択した施設のID
+        $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
+        $bath =  Bath::whereIn('id', $adminSelectBath->pluck('bath_id'))->get();
+
+        return view('admin.bath.index', compact('bath', 'bathId'));
     }
 
 
     // 選択された温泉施設の情報
     public function show($id)
     {
+        // dd($id->bath);
         $bath = Bath::find($id);
 
         return view('admin.bath.show', compact('bath'));
@@ -67,8 +74,11 @@ class BathController extends Controller
 
     public function bathCreateForm()
     {
+        $baths = Auth::user()->bath;
+
+        $bath = Auth::id();
         $categories = PrefctureCategory::select('id', 'name')->get();
-        return view('admin.create_bath', compact('categories'));
+        return view('admin.create_bath', compact('categories', 'bath', 'baths'));
     }
 
     public function create(Request $request)
