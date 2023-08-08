@@ -14,50 +14,58 @@
         <div class="flex flex-wrap w-full flex-col items-center text-center">
             <h1 class="sm:text-3xl text-2xl font-medium title-font">マッチングセントー</h1>
         </div>
-        <div class="container px-5 py-24 mx-auto"><body class="relative isolate bg-gray-300 py-20 sm:py-1">
-            <section class="text-gray-600 body-font">
-                <div class="container px-5 py-24 mx-auto flex flex-col">
-                <div class="lg:w-11/12 mx-auto">
-                    <div class="rounded-lg h-94 overflow-hidden">
-                    <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('images/23932881.jpg') }}" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
+        <div class="container px-5 py-24 mx-auto">
+            <body class="relative isolate bg-gray-300 py-20 sm:py-1">
+                <section class="text-gray-600 body-font">
+                    <div class="hdg-top-b-wrap">
+                        <h2 class="text-lg hdg-top-b">
+                            <div class=" flex-container" style="display: flex; justify-content: center;">
+                            <x-bath-logo/>あなたにピッタリな温泉へ行こう！<x-bath-logo/>
+                            </div>
+                        </h2>
                     </div>
-                    <div class="flex flex-col sm:flex-row mt-10">
-                    <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-                        <div class="w-20 h-20 rounded-full inline-flex items-center justify-center">
+                    <div class="container px-5 py-24 mx-auto flex flex-col">
+                    <div class="lg:w-11/12 mx-auto">
+                        <div class="rounded-lg h-94 overflow-hidden">
+                        <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('images/23932881.jpg') }}" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
                         </div>
-                        <div class="flex flex-col items-center text-center justify-center">
-                            <a href="{{ route('user.search')}}">
-                                <h2 class="hover:bg-gray-200 font-medium title-font mt-4 text-gray-900 text-lg  border border-gray-900 p-6 rounded-lg">検索
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                                </svg>
-                                </h2>
-                            </a>
+                        <div class="flex flex-col sm:flex-row mt-10">
+                        <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
+                            <div class="w-20 h-20 rounded-full inline-flex items-center justify-center">
+                            </div>
+                            <div class="flex flex-col items-center text-center justify-center">
+                                <a href="{{ route('user.search')}}">
+                                    <h2 class="hover:bg-gray-200 font-medium title-font mt-4 text-gray-900 text-lg  border border-gray-900 p-6 rounded-lg">検索
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg>
+                                    </h2>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+                            <p class="leading-relaxed text-lg mb-4">古くから医療目的で温泉が使われていた！？</p><br>
+                            <p class="mb-6 text-left">泉質によって成分も違ってきますが、ガスやイオンなどの成分が皮膚を通して体の中に吸収されることで、
+                                <br>血のめぐりが良くなったり、代謝が良くなったりします。
+
+                                <br>毎日温泉に入ることでアトピーやヘルニアなどの<span class="text-red-500">治療効果が期待</span>できます。
+                                <br>調べてもらえればわかることですが、温泉に入ることで得られる効果は絶大です。
+                                <br>また、リラックス効果もありいつもの家のお風呂とは違う「非日常空間」が心のリラックスにも繋がります。</p>
+                            <div class="text-lg hover:bg-yellow-400 text-yellow-800">
+                                <p class="mt-4 inline-flex items-center">マッチングセントーって何？？</p>
+
+                                <p class="mt-6 text-yellow-800">近年流行している整えるサウナ。ただ熱いから長く入れない。ととのいがわからない！
+                                    <br>温泉もいいけど券買うのめんどい、タオル忘れた...毎日行けば身体も回復するけどお金もかかる...
+                                    <br><span class="text-red-900">マッチングセントーで自分にあった温泉施設を見つければ、定額料金で好きな時に好きな時間入れちゃいます！</span>
+                                </p>
+                            </div>
+                            </dl>
+                        </div>
                         </div>
                     </div>
-                    <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                        <p class="leading-relaxed text-lg mb-4">古くから医療目的で温泉が使われていた！？</p><br>
-                        <p class="mb-6 text-left">泉質によって成分も違ってきますが、ガスやイオンなどの成分が皮膚を通して体の中に吸収されることで、
-                            <br>血のめぐりが良くなったり、代謝が良くなったりします。
-
-                            <br>毎日温泉に入ることでアトピーやヘルニアなどの<span class="text-red-500">治療効果が期待</span>できます。
-                            <br>調べてもらえればわかることですが、温泉に入ることで得られる効果は絶大です。
-                            <br>また、リラックス効果もありいつもの家のお風呂とは違う「非日常空間」が心のリラックスにも繋がります。</p>
-                        <div class="text-lg hover:bg-yellow-400 text-yellow-800">
-                            <p class="mt-4 inline-flex items-center">マッチングセントーって何？？</p>
-
-                            <p class="mt-6 text-yellow-800">近年流行している整えるサウナ。ただ熱いから長く入れない。ととのいがわからない！
-                                <br>温泉もいいけど券買うのめんどい、タオル忘れた...毎日行けば身体も回復するけどお金もかかる...
-                                <br><span class="text-red-900">マッチングセントーで自分にあった温泉施設を見つければ、定額料金で好きな時に好きな時間入れちゃいます！</span>
-                            </p>
-                        </div>
-                        </dl>
                     </div>
-                    </div>
-                </div>
-                </div>
-            </section>
-
+                </section>
+            </body>
             {{-- ニュース --}}
             <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">施設からのお知らせ</span></h1>
             <section class="text-gray-600 body-font">
@@ -110,7 +118,56 @@
                     </div>
                 </div>
             </section>
-            <section class="text-gray-600 body-font">
+
+            <section class="温泉の魅力">
+                <h3 class="text-lg hdg-top-b" style="position: relative;">
+                    <div class=" flex-container" style="display: flex; justify-content: center;">
+                        <img class="" src="{{ asset('images/24149431.jpg')}}" alt="温泉の魅力" style="width: 200px; height: auto; opacity: 0.5;">
+                        <p class="--txt" style="position: absolute; top: 10%; left: 50%; transform: translate(-50%, -50%); padding: 10px; border-radius: 5px;">
+                        温泉の魅力
+                        </p>
+                    </div>
+                </h3>
+                <ul class="--flex charm fadeUpTrigger bg-yellow-300 blur-background" style="display: flex; align-items: center; ">
+                        <li style="text-align: center; width: 100%; box-sizing: border-box;">
+                            <h4>家族で行こう</h4>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <img class="w150" src="{{ asset('images/24076953.jpg')}}" alt="家族で行こう" style="width: 200px; height: auto; opacity: 0.7; margin: 0 auto;">
+                                <p class="--txt">
+                                    家ではなかなか家族で入浴できることがないけど温泉に行けば、家族との時間が作れる。会話も弾む！
+                                </p>
+                            </div>
+                        </li>
+                        <li style="text-align: center; width: 100%; box-sizing: border-box;">
+                            <h4>温泉の効果</h4>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <img src="{{ asset('images/22084964.jpg')}}" alt="温泉の効果" style="width: 200px; height: auto; opacity: 0.7; margin: 0 auto;">
+                                <p class="--txt">
+                                    汗をかくことで、カラダに溜まった老廃物の排出を促進し、毛穴の皮脂を取り除くため美肌効果も期待できます。
+                                    また、代謝が上がることで、睡眠の質や、冷え性の改善にも期待できるという声も。
+                                </p>
+                            </div>
+                        </li>
+                        <li style="text-align: center; width: 100%; box-sizing: border-box;">
+                            <h4>温泉時間を有効に</h4>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <img src="{{ asset('images/24028599.jpg')}}" alt="温泉時間を有効に" style="width: 200px; height: auto; opacity: 0.7; margin: 0 auto;">
+                                <p class="--txt">
+                                    長く温泉に入っている時間はスマホを見ることもなく、リラックスできる時間です。マッサージしたり筋肉をほぐしたりしながら、自分のカラダとゆっくり向き合える時間にしよう。
+                                </p>
+                            </div>
+                        </li>
+                        <li style="text-align: center; width: 100%; box-sizing: border-box;">
+                            <h4>風呂上がりはとにかく気持ちいい</h4>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <img src="{{ asset('images/1471101.jpg')}}" alt="ビール" style="width: 200px; height: auto; opacity: 0.7; margin: 0 auto;">
+                                <p class="--txt">
+                                    風呂上がりのドリンクは家ではなかなか味わえない高揚感も魅力。皆さんも一度この高揚感を味わってみては？
+                                </p>
+                            </div>
+                        </li>
+                </ul>
+
                 <div class="container px-5 py-24 mx-auto flex flex-col">
                 <div class="lg:w-4/6 mx-auto">
                     <div class="rounded-lg h-64 overflow-hidden">
