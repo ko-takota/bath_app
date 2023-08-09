@@ -12,26 +12,37 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <x-admin-bath-select/>{{-- 管理施設の選択 --}}
+                @auth
+                <form action="{{ route('admin.bath.select.save') }}" method="post">
+                    @csrf
+                    <label for="bath">施設を選択:</label>
+                    <select name="bath_id" id="bath">
+                        @foreach(Auth::user()->baths as $bath)
+                            <option value="{{ $bath->id }}">{{ $bath->name }}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="bg-yellow-400 rounded-lg">変更する</button>
+                </form>
+                @endauth{{-- 管理施設の選択 --}}
             </div>
                 {{-- 管理施設が選択されるまでは表示しない --}}
-                <div class="flex">
-                    <!-- Navigation Links -->
-                    <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('admin.member')" :active="request()->routeIs('admin.member')">
-                            会員管理
-                        </x-nav-link>
-                        <x-nav-link :href="route('admin.bath.index')" :active="request()->routeIs('admin.bath.index')">
-                            施設編集
-                        </x-nav-link>
-                        <x-nav-link :href="route('admin.plan.index')" :active="request()->routeIs('admin.plan.index')">
-                            プラン作成
-                        </x-nav-link>
-                        <x-nav-link :href="route('admin.post.index')" :active="request()->routeIs('admin.post.index')">
-                            お知らせ投稿
-                        </x-nav-link>
-                    </div>
+            <div class="flex">
+                <!-- Navigation Links -->
+                <div id="navLinksOpen" class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('admin.member')" :active="request()->routeIs('admin.member')">
+                        会員管理
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.bath.index')" :active="request()->routeIs('admin.bath.index')">
+                        施設編集
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.plan.index')" :active="request()->routeIs('admin.plan.index')">
+                        プラン作成
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.post.index')" :active="request()->routeIs('admin.post.index')">
+                        お知らせ投稿
+                    </x-nav-link>
                 </div>
+            </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -126,3 +137,4 @@
         </div>
     </div>
 </nav>
+

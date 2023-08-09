@@ -53,4 +53,9 @@
             </x-primary-button>
         </div>
     </form>
+    <h2 class="text-lg text-gray-900 font-medium title-font mb-2 text-center">
+        <span class="hover:bg-yellow-600">
+            <a href="{{ route('user.top') }}">トップ一覧へ戻る</a>
+        </span>
+    </h2>
 </x-guest-layout>

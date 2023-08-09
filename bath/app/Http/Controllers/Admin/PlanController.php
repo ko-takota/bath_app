@@ -31,7 +31,7 @@ class PlanController extends Controller
         $adminBathIds = Auth::user()->baths->pluck('id');
         //管理者が選択した施設のID
         $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
-
+        
         $myPlans = Plan::where('bath_id', $adminSelectBath->pluck('bath_id'))->get();
 
         return view('admin.plan.index', compact('myPlans'));

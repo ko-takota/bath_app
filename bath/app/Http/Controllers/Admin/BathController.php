@@ -77,8 +77,10 @@ class BathController extends Controller
         $baths = Auth::user()->bath;
 
         $bath = Auth::id();
+        $adminBath = Bath::where('admin_id', $bath)->get();//空なら戻るを表示しない
+
         $categories = PrefctureCategory::select('id', 'name')->get();
-        return view('admin.create_bath', compact('categories', 'bath', 'baths'));
+        return view('admin.create_bath', compact('categories', 'bath', 'baths', 'adminBath'));
     }
 
     public function create(Request $request)

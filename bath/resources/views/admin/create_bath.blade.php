@@ -7,7 +7,7 @@
         <img src="{{ asset('images/24177390.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(9px);">
         <div class="container px-5 py-24 mx-auto relative z-10">
             {{-- bathsテーブルに管理者idが無ければ一旦戻るは表示しない --}}
-            @if ($bath !== null)
+            @if (!$adminBath->isEmpty())
                 <div class="mt-7 hover:bg-gray-400 bg-gray-200 rounded-lg" style="position: absolute; top: 10px; right: 100px;">
                     <a href="{{ route('admin.bath.index', ['id' => $bath]) }}">一旦戻る</a>
                 </div>
