@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <h1>新規管理者登録</h1>
+    <h1>管理者：新規登録</h1>
 
     <form method="POST" action="{{ route('admin.register') }}">
         @csrf

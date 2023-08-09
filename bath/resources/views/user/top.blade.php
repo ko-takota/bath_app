@@ -9,10 +9,11 @@
 @include('common.footer')
 <div class="relative">
     <img src="{{ asset('images/24120406.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="filter: blur(5px); max-width: 100%;">
-    <div class="absolute inset-0 z-10 opacity-40"></div>
     <div class="container px-5 py-24 mx-auto relative z-10">
         <div class="flex flex-wrap w-full flex-col items-center text-center">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font" style="background-image: linear-gradient(to bottom, #fa1414, #f7c967);">マッチングセントー</h1>
+            <a href="http://127.0.0.1:8000/#:~:text=%E3%82%82%E7%B9%8B%E3%81%8C%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82-,%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%82%BB%E3%83%B3%E3%83%88%E3%83%BC%E3%81%A3%E3%81%A6%E4%BD%95%EF%BC%9F%EF%BC%9F,-%E5%85%A5%E3%82%8C%E3%81%B0%E5%85%A5%E3%82%8B">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font" style="background-image: linear-gradient(to bottom, #f75234, #f8d28b);">マッチングセントー</h1>
+            </a>
         </div>
         <div class="container px-5 py-24 mx-auto">
             <body class="relative isolate bg-gray-300 py-20 sm:py-1">
@@ -25,10 +26,14 @@
                         </h2>
                     </div>
                     <div class="container px-5 py-24 mx-auto flex flex-col">
-                    <div class="lg:w-11/12 mx-auto">
-                        <div class="rounded-lg h-94 overflow-hidden">
-                        <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('images/23932881.jpg') }}" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
-                    </div>
+                        <div class="lg:w-11/12 mx-auto">
+                            <div class="relative rounded-lg h-94 overflow-hidden">
+                                <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('images/23932881.jpg') }}">
+                                <div class="absolute inset-0 flex items-center justify-center bg-opacity-20 bg-black">
+                                    <h1 class="text-4xl font-bold text-white z-10">温泉のサブスク</h1>
+                                </div>
+                            </div>
+                        </div>
                         <div class="flex flex-col sm:flex-row mt-10">
                             <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
                                 <div class="w-20 h-20 rounded-full inline-flex items-center justify-center">
@@ -44,13 +49,17 @@
                                 </div>
                             </div>
                             <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 mb-4 pt-4 sm:mt-0 text-center sm:text-left">
-                                <p class="leading-relaxed text-lg mb-6">古くから医療目的で温泉が使われていた！？</p><br>
-                                <p class="mb-12 text-left">泉質によって成分も違ってきますが、ガスやイオンなどの成分が皮膚を通して体の中に吸収されることで、
+                                <p class="leading-relaxed text-lg mb-6">
+                                    古くから医療目的で温泉が使われていた！？
+                                </p><br>
+                                <p class="mb-12 text-left">
+                                    泉質によって成分も違ってきますが、ガスやイオンなどの成分が皮膚を通して体の中に吸収されることで、
                                     <br>血のめぐりが良くなったり、代謝が良くなったりします。
 
                                     <br>毎日温泉に入ることでアトピーやヘルニアなどの<span class="text-red-500">治療効果が期待</span>できます。
                                     <br>調べてもらえればわかることですが、温泉に入ることで得られる効果は絶大です。
-                                    <br>また、リラックス効果もありいつもの家のお風呂とは違う「非日常空間」が心のリラックスにも繋がります。</p>
+                                    <br>また、リラックス効果もありいつもの家のお風呂とは違う「非日常空間」が心のリラックスにも繋がります。
+                                </p>
                                 <div class="mt-6 text-lg text-yellow-800">
                                     <div class="hover:bg-yellow-400">
                                         <p class="inline-flex items-center" style="text-decoration: underline;">
@@ -63,16 +72,14 @@
                                         <br>マッチングセントーで自分にあった温泉施設を見つければ、定額料金で好きな時に好きな時間入れちゃいます！
                                     </p>
                                 </div>
-                                </dl>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </section>
             </body>
             {{-- お知らせ --}}
-            <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">温泉の新着情報</span></h1>
             <section class="text-gray-600 body-font">
+                <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">温泉の新着情報</span></h1>
                 <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-wrap -mx-4 -my-8">
                         <div class="py-8 px-4 overflow-x-auto">

@@ -25,10 +25,11 @@
                 </form>
                 @endauth{{-- 管理施設の選択 --}}
             </div>
+
                 {{-- 管理施設が選択されるまでは表示しない --}}
-            <div class="flex">
+            <div id="navLinksOpen" class="flex" style="display: ">
                 <!-- Navigation Links -->
-                <div id="navLinksOpen" class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('admin.member')" :active="request()->routeIs('admin.member')">
                         会員管理
                     </x-nav-link>
@@ -43,6 +44,7 @@
                     </x-nav-link>
                 </div>
             </div>
+            <script src="{{ asset('js/navi.js') }}"></script>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
