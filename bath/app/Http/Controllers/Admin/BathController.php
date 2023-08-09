@@ -38,16 +38,15 @@ class BathController extends Controller
 
     public function index()
     {
-        $bathId = Auth::id();
+        $baths = Auth::user()->baths;
 
-        //管理者が持ってる施設のidを取得
-        $adminBathIds = Auth::user()->baths->pluck('id');
+        // //管理者が持ってる施設のidを取得
+        // $adminBathIds = Auth::user()->baths->pluck('id');
+        // //管理者が選択した施設のID
+        // $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
+        // $bath =  Bath::whereIn('id', $adminSelectBath->pluck('bath_id'))->get();
 
-        //管理者が選択した施設のID
-        $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
-        $bath =  Bath::whereIn('id', $adminSelectBath->pluck('bath_id'))->get();
-
-        return view('admin.bath.index', compact('bath', 'bathId'));
+        return view('admin.bath.index', compact('baths'));
     }
 
 
@@ -109,7 +108,7 @@ class BathController extends Controller
         // $baths = Bath::whereIn('id', $bathId)->get();
 
 
-        return redirect()->route('admin.create_bath');
+        return redirect()->route('admin.bath.show', ['id' => $bath]);
 
     }
 

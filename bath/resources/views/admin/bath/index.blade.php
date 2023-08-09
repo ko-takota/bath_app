@@ -1,10 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('施設登録・編集') }}
-            <div class="flex justify-end">
-                <button onclick="location.href='{{route('admin.create_bath')}}'" class="text-white bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg">新規温泉施設作成</button>
-            </div>
+            {{ __('施設一覧') }}
         </h2>
     </x-slot>
 
@@ -16,21 +13,38 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                    <div class="bg-white mb-6 p-6 text-gray-900 dark:text-gray-100">
-                        <a href="{{ route('admin.bath.edit', ['id' => $bathId]) }}">
+                <form action="{{ route('admin.bath.select.save') }}" method="post">
+                    @csrf
+                    @foreach ($baths as $bath)
+                        <div class="bg-white mb-6 p-6 text-gray-900 dark:text-gray-100">
+                            <div> {{ $bath->name }} </div>
                             <div>
-                                {{ $bath->value('name') }}
-                            </div>
-                            <div>
-                                @if(empty($bath->value('image')))
+                                @if(empty($bath->image))
                                     <img src="{{ asset('images/no_image.jpg')}}">
                                 @else
-                                    <img src="{{ asset('storage/baths/' . $bath->value('image'))}}">
+                                    <img src="{{ asset('storage/baths/' . $bath->image)}}">
                                 @endif
                             </div>
-                        </a>
-                    </div>
+
+                            <button type="submit" class="bg-yellow-400 rounded-lg" name="bath_id" value="{{ $bath->id }}">
+                                編集する
+                            </button>
+                        </div>
+                    @endforeach
+                </form>
             </div>
         </div>
     </div>
 </x-app-layout>
+
+
+{{-- <form action="{{ route('admin.bath.select.save') }}" method="post">
+    @csrf
+    <label for="bath">施設を選択:</label>
+    <select name="bath_id" id="bath">
+        @foreach(Auth::user()->baths as $bath)
+            <option value="{{ $bath->id }}">施設名：{{ $bath->name }}</option>
+        @endforeach
+    </select>
+    <button type="submit" class="bg-yellow-400 rounded-lg">編集する</button>
+</form> --}}

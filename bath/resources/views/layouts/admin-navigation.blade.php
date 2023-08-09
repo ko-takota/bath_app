@@ -10,7 +10,7 @@
                     </a>
                 </div>
             </div>
-
+{{--
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @auth
                 <form action="{{ route('admin.bath.select.save') }}" method="post">
@@ -23,28 +23,21 @@
                     </select>
                     <button type="submit" class="bg-yellow-400 rounded-lg">変更する</button>
                 </form>
-                @endauth{{-- 管理施設の選択 --}}
-            </div>
+                @endauth　 管理施設の選択
+            </div> --}}
 
                 {{-- 管理施設が選択されるまでは表示しない --}}
-            <div id="navLinksOpen" class="flex" style="display: ">
+            <div class="flex">
                 <!-- Navigation Links -->
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.member')" :active="request()->routeIs('admin.member')">
-                        会員管理
-                    </x-nav-link>
                     <x-nav-link :href="route('admin.bath.index')" :active="request()->routeIs('admin.bath.index')">
-                        施設編集
+                        <span class="hover:text-lg">施設一覧</span>
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.plan.index')" :active="request()->routeIs('admin.plan.index')">
-                        プラン作成
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.post.index')" :active="request()->routeIs('admin.post.index')">
-                        お知らせ投稿
+                    <x-nav-link :href="route('admin.create_bath')" :active="request()->routeIs('admin.create_bath')">
+                        <span class="hover:text-lg">施設新規作成</span>
                     </x-nav-link>
                 </div>
             </div>
-            <script src="{{ asset('js/navi.js') }}"></script>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">

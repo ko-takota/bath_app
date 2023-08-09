@@ -34,6 +34,7 @@ class BathSelectController extends Controller
         // admin_bath_selected テーブルに選択結果を保存
         Admin::find($adminId)->selectedBaths()->sync([$selectedBathId]);
 
-        return redirect()->route('admin.bath.show', ['id' => $selectedBathId])->with('success', 'ショップが選択されました。');
+
+        return redirect()->route('admin.bath.show', ['id' => $selectedBathId]);
     }
 }
