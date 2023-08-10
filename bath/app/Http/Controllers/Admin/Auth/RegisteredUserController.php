@@ -53,6 +53,11 @@ class RegisteredUserController extends Controller
 
         Auth::guard('admin')->login($admin);
 
-        return redirect(RouteServiceProvider::ADMIN_HOME);
+        return redirect()->route('admin.regist.comp');
+    }
+
+    public function registAfter()
+    {
+        return view('admin.auth.register_complete');
     }
 }

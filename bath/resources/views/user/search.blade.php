@@ -65,3 +65,8 @@
                     </div>
                 </div>
             </section>
+            {{ $baths->links() }}
+        </div>
+    </div>
+</div>
+

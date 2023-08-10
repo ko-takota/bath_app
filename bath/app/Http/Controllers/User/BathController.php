@@ -32,7 +32,7 @@ class BathController extends Controller
             });
         }
 
-        $baths = $baths->get();
+        $baths = Bath::select('id', 'name','image', 'address')->paginate(10);//10施設表示
         $user = User::findOrfail(Auth::id());//マイページに戻るため
 
         return view('user.search', compact('baths', 'categories', 'user'));

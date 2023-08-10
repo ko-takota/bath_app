@@ -17,11 +17,12 @@ class PostController extends Controller
     public function index()
     {
         $user = Auth::id();
-        $carts = Cart::where('user_id', $user)->get();
-        $userBath = Auth::user()->baths;
 
-        $posts = UserPost::where('bath_id', $carts->value('id'))->get();
-        //dd($posts);
+        $carts = Cart::where('user_id', $user)->get();
+
+        $userBath = Auth::user()->baths;
+        $posts = UserPost::where('bath_id', $userBath->value('id'))->get();
+
 
         return view('user.post.index', compact('carts', 'posts', 'user'));
     }

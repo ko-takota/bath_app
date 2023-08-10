@@ -26,14 +26,14 @@
                             </tr>
                         </thead>
                         @foreach ($carts as $cart)
-                        <tbody class="hover:bg-gray-200">
-                            <tr>
-                            <td class="px-4 py-3">{{ $cart->bath->name }}</td>
-                            <td class="px-4 py-3">
-                                <button onclick="location.href='{{ route('user.post.create', ['bathName' => $cart->bath->name, 'bathId' => $cart->bath ]) }}'" class="text-white bg-yellow-500 border-0 py-2 px-3 focus:outline-none hover:bg-yellow-600 rounded">口コミする</button>
-                            </td>
-                            </tr>
-                        </tbody>
+                            <tbody class="hover:bg-gray-200">
+                                <tr>
+                                <td class="px-4 py-3">{{ $cart->bath->name }}</td>
+                                <td class="px-4 py-3">
+                                    <button onclick="location.href='{{ route('user.post.create', ['bathName' => $cart->bath->name, 'bathId' => $cart->bath ]) }}'" class="text-white bg-yellow-500 border-0 py-2 px-3 focus:outline-none hover:bg-yellow-600 rounded">口コミする</button>
+                                </td>
+                                </tr>
+                            </tbody>
                         @endforeach
                     </table>
                 </div>
@@ -50,8 +50,8 @@
                                     </tr>
                                 </thead>
                                 <tbody class="hover:bg-gray-200">
-                                    <tr>
                                     @foreach ($posts as $post)
+                                    <tr>
                                         <td>{{ $post->bath->name }}</td>
                                         <td class="px-4 py-3" style="text-align: left;">
                                             <span class="relative">
@@ -71,8 +71,8 @@
                                                 </a>
                                             </form>
                                         </td>
-                                    @endforeach
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
