@@ -14,6 +14,8 @@ class UserPost extends Model
 
     protected $fillable = [
         'bath_id',
+        'user_id',
+        'plan_id',
         'body',
         'created_at',
         'updated_at',

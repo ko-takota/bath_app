@@ -44,6 +44,7 @@ Route::prefix('cart')->middleware('auth:users')->group(function(){
 
 Route::prefix('post')->middleware('auth:users')->group(function () {
     Route::get('/index', [PostController::class, 'index'])->name('post.index');
+    Route::get('show', [PostController::class, 'show'])->name('post.show');
     Route::get('/create', [PostController::class, 'create'])->name('post.create');
     Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
     Route::post('/store', [PostController::class, 'store'])->name('post.store');

@@ -5,7 +5,7 @@
     <div class="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
         <div class="lg:w-3/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto md:mr-auto w-full mt-8 md:mt-0">
         <h1 class="text-gray-900 text-lg font-medium title-font mb-5">口コミ作成</h1>
-        <form action="{{route('user.post.store', ['bathId' => $cartInBathId])}}" method="POST">
+        <form action="{{route('user.post.store', ['bathId' => $cartInBathId, 'planId' => $cartInPlanId])}}" method="POST">
             @csrf
             <div class="relative mb-4">
                 <label for="name" class="leading-7 text-sm text-gray-600">施設名：{{ $cartInBathName }}</label>
@@ -19,6 +19,11 @@
                 <button type="submit" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">投稿</button>
             </div>
         </form>
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
       </div>
     </div>
 </section>

@@ -16,66 +16,47 @@
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black">{{ Auth::user()->name }}さん</h1>
       </div>
       <div class="py-12">
+        <div class="flex justify-end">
+            <button onclick="location.href='{{route('user.post.show')}}'" class="text-white bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg">プラン新規登録</button>
+        </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="p-6">
-                    <table class="table-auto w-full text-left whitespace-no-wrap">
-                        <thead>
-                            <tr>
-                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"  style="font-weight: bold;">口コミできる施設一覧</th>
-                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br" ></th>
-                            </tr>
-                        </thead>
-                        @foreach ($carts as $cart)
+            <div class="p-6">
+                <div class="mt-6 container px-5 mx-auto">
+                    <div class="text-lg text-center mt-6">投稿一覧</div>
+                        <table class="table-auto w-full text-left whitespace-no-wrap">
+                            <thead>
+                                <tr>
+                                <th class="px-4 py-3 title-font tracking-wider font-medium text-sm bg-gray-100 rounded-tl rounded-bl"  style="font-weight: bold;">施設名</th>
+                                <th class="px-4 py-3 title-font tracking-wider font-medium text-sm bg-gray-100 rounded-tl rounded-bl"  style="font-weight: bold;">内容</th>
+                                <th class="bg-gray-100"></th>
+                                </tr>
+                            </thead>
+                            @foreach ($posts as $post)
                             <tbody class="hover:bg-gray-200">
                                 <tr>
-                                <td class="px-4 py-3">{{ $cart->bath->name }}</td>
-                                <td class="px-4 py-3">
-                                    <button onclick="location.href='{{ route('user.post.create', ['bathName' => $cart->bath->name, 'bathId' => $cart->bath ]) }}'" class="text-white bg-yellow-500 border-0 py-2 px-3 focus:outline-none hover:bg-yellow-600 rounded">口コミする</button>
-                                </td>
+                                    <td>{{ $post->bath->name }}</td>
+                                    <td class="px-4 py-3" style="text-align: left;">
+                                        <span class="relative">
+                                        @if (isset($post->bath_id))
+                                            {{ $post->body }}
+                                        @else
+                                            口コミがありません。
+                                        @endif
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <form method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a class="text-white bg-red-500 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded">
+                                                <input type="submit" value="削除" formaction="delete/{{$post->id}}">
+                                            </a>
+                                        </form>
+                                    </td>
                                 </tr>
                             </tbody>
-                        @endforeach
-                    </table>
-                </div>
-                <div class="p-6">
-                    <div class="mt-6 container px-5 mx-auto">
-                        <div class="text-lg text-center mt-6">投稿一覧</div>
-                        <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-                            <table class="table-auto w-full text-left whitespace-no-wrap">
-                                <thead>
-                                    <tr>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-sm bg-gray-100 rounded-tl rounded-bl"  style="font-weight: bold;">施設名</th>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-sm bg-gray-100 rounded-tl rounded-bl"  style="font-weight: bold;">内容</th>
-                                    <th class="bg-gray-100"></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="hover:bg-gray-200">
-                                    @foreach ($posts as $post)
-                                    <tr>
-                                        <td>{{ $post->bath->name }}</td>
-                                        <td class="px-4 py-3" style="text-align: left;">
-                                            <span class="relative">
-                                            @if (isset($post->bath_id))
-                                                {{ $post->body }}
-                                            @else
-                                                口コミがありません。
-                                            @endif
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <form method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <a class="text-white bg-red-500 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded">
-                                                    <input type="submit" value="削除" formaction="delete/{{$post->id}}">
-                                                </a>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                            @endforeach
+                        </table>
                     </div>
                 </div>
             </div>

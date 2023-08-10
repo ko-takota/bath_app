@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="p-2 w-full flex justify-around mt-6">
-                    <button onclick="location.href='{{ route('admin.bath.show', ['id' => $bath]) }}' " type="submit" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">作成</button>
+                    <button onclick="location.href='{{ route('admin.bath.index', ['id' => $bath]) }}' " type="submit" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">作成</button>
                 </div>
             </form>
         </div>

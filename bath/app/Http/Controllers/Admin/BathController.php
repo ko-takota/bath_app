@@ -108,7 +108,7 @@ class BathController extends Controller
         // $baths = Bath::whereIn('id', $bathId)->get();
 
 
-        return redirect()->route('admin.bath.show', ['id' => $bath]);
+        return redirect()->route('admin.bath.index');
 
     }
 

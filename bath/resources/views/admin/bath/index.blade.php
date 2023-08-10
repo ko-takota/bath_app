@@ -2,6 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('施設一覧') }}
+            <div class="text-sm text-right">温泉施設の情報を見るには <span class="bg-yellow-400 rounded-lg">詳細を見る</span>を選択して下さい</div>
         </h2>
     </x-slot>
 
@@ -25,10 +26,11 @@
                                     <img src="{{ asset('storage/baths/' . $bath->image)}}">
                                 @endif
                             </div>
-
+                            <div class="hover:text-lg">
                             <button type="submit" class="bg-yellow-400 rounded-lg" name="bath_id" value="{{ $bath->id }}">
-                                編集する
+                                詳細を見る
                             </button>
+                            </div>
                         </div>
                     @endforeach
                 </form>
