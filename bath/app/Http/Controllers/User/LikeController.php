@@ -34,7 +34,6 @@ class LikeController extends Controller
     {
         $user = User::findOrfail(Auth::id());
         $likes = $user->likes;//ログインユーザーがお気に入りした温泉
-
         // Like::where('user_id', Auth::user());
 
         return view('user.list.like', compact('likes', 'user'));
