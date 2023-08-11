@@ -34,6 +34,12 @@ class MemberController extends Controller
             $users = User::whereIn('id', $carts)->get();
         }
 
-        return view('admin.member', compact('users'));
+
+        $adminBathIds = Auth::user()->baths->pluck('id');
+        //管理者が選択した施設のID
+        $selectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
+        $bathId = $selectBath->value('bath_id');
+
+        return view('admin.member', compact('users', 'bathId'));
     }
 }

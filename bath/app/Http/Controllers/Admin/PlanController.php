@@ -34,7 +34,8 @@ class PlanController extends Controller
 
         $myPlans = Plan::where('bath_id', $adminSelectBath->pluck('bath_id'))->get();
 
-        return view('admin.plan.index', compact('myPlans'));
+        $bathId = $adminSelectBath->value('bath_id');
+        return view('admin.plan.index', compact('myPlans', 'bathId'));
     }
 
     /**

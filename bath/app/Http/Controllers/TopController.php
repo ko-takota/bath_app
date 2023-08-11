@@ -30,11 +30,10 @@ class TopController extends Controller
         ->join('admins', 'baths.admin_id', '=', 'admins.id')
         ->select('posts.*', 'admins.name as admin_name')
         ->get();
-
         //ユーザー口コミ
         $userPosts = DB::table('user_posts')
         ->join('baths', 'user_posts.bath_id', '=', 'baths.id')->get();
-        
+
 
         return view('user.top', compact('user_id', 'posts', 'userPosts'));
     }

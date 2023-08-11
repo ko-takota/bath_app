@@ -23,7 +23,7 @@
                                 @if(empty($bath->image))
                                     <img src="{{ asset('images/no_image.jpg')}}">
                                 @else
-                                    <img src="{{ asset('storage/baths/' . $bath->image)}}">
+                                    <img src="{{ asset('storage/app/public/baths/' . $bath->image)}}">
                                 @endif
                             </div>
                             <div class="hover:text-lg">

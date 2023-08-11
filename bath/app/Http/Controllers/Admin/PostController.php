@@ -27,8 +27,9 @@ class PostController extends Controller
         $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
         // 投稿データ選択したIDと一致するbath_idを取得
         $posts =  Post::whereIn('bath_id', $adminSelectBath->pluck('bath_id'))->get();
-        
-        return view('admin.post.index', compact('posts',));
+
+        $bathId = $adminSelectBath->value('bath_id');
+        return view('admin.post.index', compact('posts', 'bathId'));
     }
 
     public function create()

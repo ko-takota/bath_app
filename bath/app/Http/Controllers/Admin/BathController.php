@@ -40,11 +40,6 @@ class BathController extends Controller
     {
         $baths = Auth::user()->baths;
 
-        // //管理者が持ってる施設のidを取得
-        // $adminBathIds = Auth::user()->baths->pluck('id');
-        // //管理者が選択した施設のID
-        // $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
-        // $bath =  Bath::whereIn('id', $adminSelectBath->pluck('bath_id'))->get();
 
         return view('admin.bath.index', compact('baths'));
     }
@@ -84,7 +79,7 @@ class BathController extends Controller
 
     public function create(Request $request)
     {
-        //ログイン後、温泉施設登録処理
+        //ログイン後、又は新規の温泉施設登録処理
         $bath = new Bath([
             'name' => $request->name,
             'information' => $request->information,
@@ -102,11 +97,6 @@ class BathController extends Controller
             ]);
             $adminBath->save();
         }
-
-        //view（admin.select）で使用
-        // $bathId = AdminBath::where('admin_id', '=', Auth::id())->get()->pluck('bath_id');
-        // $baths = Bath::whereIn('id', $bathId)->get();
-
 
         return redirect()->route('admin.bath.index');
 

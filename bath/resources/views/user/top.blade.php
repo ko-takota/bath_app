@@ -30,7 +30,7 @@
                             <div class="relative rounded-lg h-94 overflow-hidden">
                                 <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('images/23932881.jpg') }}">
                                 <div class="absolute inset-0 flex items-center justify-center bg-opacity-20 bg-black">
-                                    <h1 class="text-4xl font-bold text-white z-10">温泉のサブスク</h1>
+                                    <h1 class="text-4xl font-bold text-white z-10">温泉サブスク</h1>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                     </div>
                 </section>
             </body>
-            {{-- お知らせ --}}
+            {{-- 施設お知らせ --}}
             <section class="text-gray-600 body-font">
                 <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">温泉の新着情報</span></h1>
                 <div class="container px-5 py-24 mx-auto">
@@ -86,21 +86,27 @@
                             <div class="h-full flex items-start">
                                 <div class="relative w-full h-full">
                                     <div class="max-w-screen-xl mx-auto relative flex justify-start p-6 bg-opacity-75">
-                                        @foreach ($posts->take(20)->sortByDesc('created_at') as $post)
-                                            <div class="flex-shrink-0 w-72 bg-yellow-400 shadow-md p-4 rounded-lg m-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-                                                </svg>
-                                                <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ $post->title }}</h1>
-                                                <p class="font-medium text-gray-900 mb-3">{{ Str::limit($post->body, 25) }}</p>
-                                                <p class="leading-relaxed mb-5">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</p>
-                                                <a class="inline-flex items-center">
-                                                    <span class="flex-grow flex flex-col pl-3">
-                                                        <span class="title-font font-medium text-gray-900">{{ $post->admin_name }}</span>
-                                                    </span>
-                                                </a>
+                                        @if (count($posts) > 0)
+                                            @foreach ($posts->take(20)->sortByDesc('created_at') as $post)
+                                                <div class="flex-shrink-0 w-72 bg-yellow-400 shadow-md p-4 rounded-lg m-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+                                                    </svg>
+                                                    <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ $post->title }}</h1>
+                                                    <p class="font-medium text-gray-900 mb-3">{{ Str::limit($post->body, 25) }}</p>
+                                                    <p class="leading-relaxed mb-5">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</p>
+                                                    <a class="inline-flex items-center">
+                                                        <span class="flex-grow flex flex-col pl-3">
+                                                            <span class="title-font font-medium text-gray-900">{{ $post->admin_name }}</span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="text-center w-48 bg-yellow-100 shadow-md p-4 rounded-lg m-2">
+                                                <p>新着情報はありません</p>
                                             </div>
-                                        @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -115,19 +121,25 @@
                     <div class="flex flex-wrap -mx-4 -my-8">
                         <div class="py-8 px-4 overflow-x-auto">
                             <div class="max-w-screen-xl mx-auto relative flex justify-start p-6 bg-opacity-75">
-                                @foreach ($userPosts->take(10)->sortByDesc('created_at') as $userPost)
-                                    <div class="flex-shrink-0 w-72 bg-yellow-100 shadow-md p-4 rounded-lg m-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-                                        </svg>
-                                        <h1 class="title-font text-xl font-medium text-gray-900 mb-3">みんなの口コミ</h1>
-                                        <p class=" font-medium text-gray-900 mb-3">{{ Str::limit($userPost->body, 25) }}</p>
-                                        <p class="leading-relaxed mb-5">{{ Carbon\Carbon::parse($userPost->created_at)->diffForHumans() }}</p>
-                                        <span class="flex-grow flex flex-col pl-3">
-                                            <span class="title-font font-medium text-gray-900">{{ $userPost->name }}</span>
-                                        </span>
+                                @if (count($userPosts) > 0)
+                                    @foreach ($userPosts->take(10)->sortByDesc('created_at') as $userPost)
+                                        <div class="flex-shrink-0 w-72 bg-yellow-100 shadow-md p-4 rounded-lg m-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+                                            </svg>
+                                            <h1 class="title-font text-xl font-medium text-gray-900 mb-3">みんなの口コミ</h1>
+                                            <p class=" font-medium text-gray-900 mb-3">{{ Str::limit($userPost->body, 25) }}</p>
+                                            <p class="leading-relaxed mb-5">{{ Carbon\Carbon::parse($userPost->created_at)->diffForHumans() }}</p>
+                                            <span class="flex-grow flex flex-col pl-3">
+                                                <span class="title-font font-medium text-gray-900">{{ $userPost->name }}</span>
+                                            </span>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <div class="text-center w-48 bg-yellow-100 shadow-md p-4 rounded-lg m-2">
+                                        <p>口コミはありません</p>
                                     </div>
-                                @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>

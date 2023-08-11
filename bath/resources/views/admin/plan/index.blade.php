@@ -4,6 +4,9 @@
             {{ __('プラン一覧') }}
         </h2>
         <x-admin-navi/>
+        <div class="p-2 w-full flex justify-around mt-6">
+            <button type="button" onclick="location.href='{{route('admin.bath.show', ['id' => $bathId])}}' " class="bg-gray-100 border-0 py-2 px-8 focus:outline-none hover:bg-gray-300 rounded text-lg">施設詳細</button>
+        </div>
     </x-slot>
 
     <div class="py-12">

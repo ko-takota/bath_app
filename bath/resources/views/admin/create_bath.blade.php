@@ -1,7 +1,5 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-
-
 <section class="text-gray-600 body-font">
     <div class="relative">
         <img src="{{ asset('images/24177390.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(9px);">

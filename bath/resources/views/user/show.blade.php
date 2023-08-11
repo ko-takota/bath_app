@@ -1,25 +1,28 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            銭湯の詳細
-        </h2>
-    </x-slot>
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <div class="py-12">
-        <div class="text-center max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ $bath->name }}
-                </div>
-                <div class="bg-white">
-                    <nav>{{ $bath->information }}</nav>
+<section>
+    <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">
+        <div class="flex flex-wrap items-center mx-auto max-w-7xl">
+            <div class="w-full lg:max-w-lg lg:w-1/2 rounded-xl">
+                <div>
+                    <div class="relative w-full max-w-lg">
+                        <div class="absolute top-0 rounded-full bg-violet-300 -left-4 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                        <div class="absolute rounded-full bg-fuchsia-300 -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+                        <div class="relative">
+                            <img class="object-cover object-center mx-auto rounded-lg shadow-2xl" alt="施設写真" src="{{ $bath->image }}">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="flex flex-col items-start mt-12 mb-16 text-left lg:flex-grow lg:w-1/2 lg:pl-6 xl:pl-24 md:mb-0 xl:mt-0">
+                <span class="mb-8 text-lg font-bold tracking-widest text-blue-600 uppercase"> 施設詳細 </span>
+                <h1 class="mb-8 text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl lg:text-5xl">{{ $bath->name }}</h1>
+                <textarea class="mb-8 text-base leading-relaxed text-left text-gray-500 w-full h-full" disabled>{{ $bath->information }}</textarea>
+                <div class="mt-0 lg:mt-6 max-w-7xl sm:flex">
                 <form method="post" action="{{ route('user.cart.add')}}">
                     @csrf
                     <p>プラン</p>
-                    <select name="plan_id" class="bg-black">
+                    <select name="plan_id" class="bg-gray-300">
                         <option value="" selected>選択してください</option>
                             @foreach($plans as $plan)
                                 {
@@ -27,34 +30,43 @@
                                 }
                             @endforeach
                     </select>
-                    <button class="flex ml-auth bg-white text-brack border-0 py-2 px-6">カートに入れる</button>
+                    <button class="ml-auth bg-blue-500 text-brack border-0 py-2 px-6 hover:bg-yellow-500 rounded-full">カートに入れる</button>
                     <input type="hidden" name="bath_id" value="{{ $bath->id }}">
                 </form>
+
                 @if (session('message'))
                     <div class="alert alert-danger">
                         {{ session('message') }}
                     </div>
                 @endif
             </div>
-            {{-- お気に入り機能 --}}
+          {{-- お気に入り機能 --}}
             <button>
                 <div class="btn-group bg-white">
                     @if (Auth::id() != $bath->user_id)
                         @if (Auth::user()->is_like($bath->id))
                         {!! Form::open(['route' => ['user.bath.unlike', $bath->id], 'method' => 'delete']) !!}
-                        {!! Form::submit('お気に入り済み', ['class' => 'button btn btn-warning']) !!}
+                        {!! Form::submit('❤️いいねしました', ['class' => 'button btn btn-warning']) !!}
                         {!! Form::close() !!}
                         @else
                         {!! Form::open(['route' => ['user.bath.like', $bath->id]]) !!}
-                        {!! Form::submit('お気に入りする', ['class' => 'button btn btn-success'])!!}
+                        {!! Form::submit('♡いいねする', ['class' => 'button btn btn-success'])!!}
                         {!! Form::close() !!}
                         @endif
                     @endif
                 </div>
             </button>
-        </div>
-        <div>
-            <a href="{{route('user.search')}}" class="bg-white">施設一覧へ</a>
+            <div class="px-24 py-12">
+                <a href="{{route('user.search')}}" class="bg-white hover:bg-yellow-500 rounded-full">施設一覧へ</a>
+            </div>
+            </div>
         </div>
     </div>
-</x-app-layout>
+</section>
+
+
+
+
+
+
+

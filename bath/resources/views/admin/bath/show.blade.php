@@ -14,9 +14,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <a href="{{ route('admin.bath.edit', ['id' => $bath]) }}" class="flex justify-end">
-                        <p class="text-black bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded">編集する</p>
-                    </a>
+                    <div class="flex justify-end">
+                        <a href="{{ route('admin.bath.edit', ['id' => $bath]) }}">
+                            <p class="text-black bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded">編集する</p>
+                        </a>
+                    </div>
                     <div class="-m-2">
                         <div class="p-2 w-1/22 mx-auto">
                             <div class="relative">
