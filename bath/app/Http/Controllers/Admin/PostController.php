@@ -21,38 +21,39 @@ class PostController extends Controller
 
     public function index()
     {
-        //管理者が持ってる施設のidを取得
-        $adminBathIds = Auth::user()->baths->pluck('id');
+        $admin = Auth::user();
         //管理者が選択した施設のID
-        $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
+        $selectBathId = DB::table('admin_bath_selected')->where('admin_id', $admin->id)->value('bath_id');
         // 投稿データ選択したIDと一致するbath_idを取得
-        $posts =  Post::whereIn('bath_id', $adminSelectBath->pluck('bath_id'))->get();
 
-        $bathId = $adminSelectBath->value('bath_id');
+        $posts =  Post::where('bath_id', $selectBathId)->get();
+
+        $bathId = $selectBathId;
         return view('admin.post.index', compact('posts', 'bathId'));
     }
 
     public function create()
     {
-        $admin = Auth::user();
-        return view('admin.post.create', compact('admin'));
+        $bathId = DB::table('admin_bath_selected')->where('admin_id', Auth::id())->value('bath_id');
+
+        $bathName = DB::table('baths')->where('id', $bathId)->value('name');
+
+
+        return view('admin.post.create', compact('bathId', 'bathName'));
     }
 
 
     public function store(Request $request)
     {
-
     $request->validate([
-        'name' => ['required', 'string', 'max:30'],
         'body' => ['required', 'string', 'max:250'],
     ]);
-    $admin = Auth::user();
-    $adminBath = $admin->baths;
 
+    $admin = Auth::user();
 
     Post::create(
         [
-            'bath_id' => $adminBath->value('id'),
+            'bath_id' => $request->id,
             'title' => $request->name,
             'body' => $request->body,
             'created_at' => Carbon::now(),

@@ -27,14 +27,13 @@ class PlanController extends Controller
     //プラン一覧ページを表示
     public function index()
     {
-        //管理者が持ってる施設のidを取得
-        $adminBathIds = Auth::user()->baths->pluck('id');
+        $admin = Auth::user();
         //管理者が選択した施設のID
-        $adminSelectBath = DB::table('admin_bath_selected')->whereIn('bath_id', $adminBathIds)->get();
+        $selectBathId = DB::table('admin_bath_selected')->where('admin_id', $admin->id)->value('bath_id');
 
-        $myPlans = Plan::where('bath_id', $adminSelectBath->pluck('bath_id'))->get();
+        $myPlans = Plan::where('bath_id', $selectBathId)->get();
 
-        $bathId = $adminSelectBath->value('bath_id');
+        $bathId = $selectBathId;
         return view('admin.plan.index', compact('myPlans', 'bathId'));
     }
 
@@ -47,7 +46,9 @@ class PlanController extends Controller
     //プラン作成ページを表示
     public function create()
     {
-        return view('admin.plan.create');
+        $bathId = DB::table('admin_bath_selected')->where('admin_id', Auth::id())->value('bath_id');
+
+        return view('admin.plan.create', compact('bathId'));
     }
 
     /**
@@ -66,14 +67,12 @@ class PlanController extends Controller
             'contents' => ['required', 'string', 'max:250'],
         ]);
 
-        $bath_id = Auth::user()->baths->value('id');
-
         Plan::create(
             [
                 'name' => $request->name,
                 'price' => $request->price,
                 'contents' => $request->contents,
-                'bath_id' => $bath_id,
+                'bath_id' => $request->id,
             ]);
         return redirect()->route('admin.plan.index');
     }

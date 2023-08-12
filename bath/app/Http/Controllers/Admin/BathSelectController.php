@@ -26,6 +26,7 @@ class BathSelectController extends Controller
         return view('layouts.admin-navigation', compact('baths'));
     }
 
+//所持施設選択時処理
     public function saveSelectBath(Request $request)
     {
         $selectedBathId = $request->bath_id;
