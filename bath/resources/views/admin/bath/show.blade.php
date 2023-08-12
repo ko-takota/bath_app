@@ -33,9 +33,9 @@
                             </div>
                         </div>
                         @if(empty($bath->image))
-                        <img src="{{ asset('images/no_image.jpg')}}">
+                        <img src="{{ asset('images/no_image.jpg')}}" alt="施設画像がありません">
                         @else
-                        <img src="{{ asset('storage/baths/' . $bath->image)}}">
+                        <img src="{{ asset('storage/baths/' . $bath->image)}}" alt="施設画像">
                         @endif
                     </div>
                 </div>

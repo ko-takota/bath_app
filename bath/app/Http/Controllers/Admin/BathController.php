@@ -60,9 +60,9 @@ class BathController extends Controller
     {
         $categories = PrefctureCategory::select('id', 'name')->get();
 
-        $baths = (Bath::findOrFail($id));
+        $bath = (Bath::findOrFail($id));
 
-        return view('admin.bath.edit', compact('baths','categories'));
+        return view('admin.bath.edit', compact('bath','categories'));
     }
 
 
@@ -87,6 +87,14 @@ class BathController extends Controller
             'admin_id' => Auth::id(),
             'prefcture_category_id' => $request->category,
         ]);
+
+        $image = $request->image;
+        if(!is_null($image) && $image->isValid()){
+            $imageName = Storage::putFile('public/baths', $image);
+            $bath->image = basename($imageName);
+        }
+
+
         $bath->save();
 
         //↑の温泉施設登録処理ができたら、中間テーブルにも保存処理
@@ -124,7 +132,7 @@ class BathController extends Controller
         $bath->prefcture_category_id = $request->category;
 
         if(!is_null($image) && $image->isValid()){
-            $bath->image = $imageName;
+            $bath->image = basename($imageName);
         }
 
         $bath->save();

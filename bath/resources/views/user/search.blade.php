@@ -45,14 +45,16 @@
                         @if(count($baths) > 0)
                             @foreach ($baths as $bath)
                             <div class="hover:bg-gray-400 mt-8 mb-8 border-2 border-gray-900 border-opacity-60 rounded-lg overflow-hidden">
-                                <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-yellow-500  items-center md:mb-2 lg:mb-0">
-                                    <img src="{{ asset($bath->image) }}" alt="温泉施設画像">
+                                <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="items-center md:mb-2 lg:mb-0">
+                                    <img src="{{ asset('storage/baths/' . $bath->image)}}" alt="温泉施設画像">
                                 </a>
                                 <div class="p-6">
-                                    <h1 class="title-font text-lg font-medium text-white mb-3">{{ $bath->name }}</h1>
+                                    <div class="flex">
+                                        <h1 class="title-font text-lg font-medium rounded-lg mb-3">{{ $bath->name }}</h1>
+                                    </div>
                                     <p class="leading-relaxed mb-3 text-gray-800">{{ $bath->address }}</p>
                                     <div class=" items-center">
-                                        <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-yellow-500  items-center md:mb-2 lg:mb-0">
+                                        <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-yellow-500 hover:text-yellow-800 items-center md:mb-2 lg:mb-0">
                                             さらに詳しく
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M5 12h14"></path>

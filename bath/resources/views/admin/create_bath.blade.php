@@ -54,7 +54,7 @@
                                     @if(empty($baths->image))
                                         <img src="{{ asset('images/no_image.jpg')}}" class="object-cover object-center rounded-lg">
                                     @else
-                                        <img src="{{ asset('public/images/' . $baths->image)}}" class="object-cover object-center rounded-lg">
+                                        <img src="{{ asset('storage/baths/' . $baths->image)}}" class="object-cover object-center rounded-lg">
                                     @endif
                                 </div>
                             </div>
