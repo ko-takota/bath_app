@@ -8,6 +8,7 @@ use App\Models\Bath;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AreaCategory;
+use Laravel\Ui\Presets\React;
 
 class BathController extends Controller
 {

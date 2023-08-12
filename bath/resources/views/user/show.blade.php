@@ -21,7 +21,7 @@
                 <div class="mt-0 lg:mt-6 max-w-7xl sm:flex">
                 <form method="post" action="{{ route('user.cart.add')}}">
                     @csrf
-                    <p>プランが選べます</p>
+                    <p>プラン選択</p>
                     <select name="plan_id" class="bg-gray-300">
                         <option value="" selected>選択してください</option>
                             @foreach($plans as $plan)
@@ -39,28 +39,41 @@
                         {{ session('message') }}
                     </div>
                 @endif
-            </div>
-          {{-- お気に入り機能 --}}
-            <button>
-                <div class="btn-group bg-white">
-                    @if (Auth::id() != $bath->user_id)
-                        @if (Auth::user()->is_like($bath->id))
-                        {!! Form::open(['route' => ['user.bath.unlike', $bath->id], 'method' => 'delete']) !!}
-                        {!! Form::submit('❤️いいねしました', ['class' => 'button btn btn-warning']) !!}
-                        {!! Form::close() !!}
-                        @else
-                        {!! Form::open(['route' => ['user.bath.like', $bath->id]]) !!}
-                        {!! Form::submit('♡いいねする', ['class' => 'button btn btn-success'])!!}
-                        {!! Form::close() !!}
-                        @endif
-                    @endif
                 </div>
-            </button>
-            <div class="px-24 py-12">
-                <a href="{{route('user.search')}}" class="bg-white hover:bg-yellow-500 rounded-full">施設一覧へ</a>
-            </div>
+                {{-- お気に入り機能 --}}
+                <button>
+                    <div class="btn-group bg-white">
+                        @if (Auth::id() != $bath->user_id)
+                            @if (Auth::user()->is_like($bath->id))
+                            {!! Form::open(['route' => ['user.bath.unlike', $bath->id], 'method' => 'delete']) !!}
+                            {!! Form::submit('❤️いいねしました', ['class' => 'button btn btn-warning']) !!}
+                            {!! Form::close() !!}
+                            @else
+                            {!! Form::open(['route' => ['user.bath.like', $bath->id]]) !!}
+                            {!! Form::submit('♡いいねする', ['class' => 'button btn btn-success'])!!}
+                            {!! Form::close() !!}
+                            @endif
+                        @endif
+                    </div>
+                </button>
+
             </div>
         </div>
+
+    </div>
+    <div class="カート一覧 overflow-x-auto py-8 px-4 mx-auto relative flex justify-start p-6 bg-opacity-75">
+        @foreach ($plans as $plan)
+        <div class="flex-shrink-0 w-72 bg-yellow-400 shadow-md p-4 rounded-lg m-2 mr-12">
+        <p class="">プラン名<br><span class="text-2xl">{{$plan->name}}</span></p>
+        <p>プラン説明：<br>{{$plan->contents}}</p>
+        <div class="flex">
+            <p class="bg-yellow-200">月額{{$plan->price}}円</p>
+        </div>
+        </div>
+        @endforeach
+    </div>
+    <div class="px-24 py-12">
+        <a href="{{route('user.search')}}" class="bg-white hover:bg-yellow-500 rounded-full">施設一覧へ</a>
     </div>
 </section>
 

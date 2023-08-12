@@ -24,11 +24,7 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        // $noSelect = $request->input('noSelect');
-        // // プランが選択されてない場合、"選択してください"メッセージを追加する
-        // if ($noSelect === '') {
-        //     return redirect()->back()->with('message', '選択してください');
-        // }
+        
 
         $cart = Cart::where('bath_id', $request->bath_id)//選択した施設とカートの施設IDの一致
             ->where('user_id', Auth::id())
