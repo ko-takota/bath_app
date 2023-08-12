@@ -60,6 +60,14 @@ class PostController extends Controller
             'updated_at' => Carbon::now(),
             'deleted_at' => null,
         ]);
-    return redirect()->route('admin.post.index',['id' => $admin->id]);
+    return redirect()->route('admin.post.index',['id' => $admin->id])->with('success','お知らせを投稿しました。');
     }
+
+    public function destroy($id)
+    {
+        Post::findOrFail($id)->delete();
+
+        return redirect()->route('admin.post.index')->with('message','お知らせを１件削除しました。');
+    }
+
 }

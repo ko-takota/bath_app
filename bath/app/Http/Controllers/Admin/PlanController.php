@@ -74,7 +74,7 @@ class PlanController extends Controller
                 'contents' => $request->contents,
                 'bath_id' => $request->id,
             ]);
-        return redirect()->route('admin.plan.index');
+        return redirect()->route('admin.plan.index')->with('success', 'プランを作成しました。');
     }
 
     /**
@@ -117,7 +117,7 @@ class PlanController extends Controller
     public function update(Request $request, plan $plan)
     {
         $plan->fill($request->all())->save();
-        return redirect()->route('admin.plan.index');
+        return redirect()->route('admin.plan.index')->with('edit', 'プランを編集しました。');
     }
 
     /**
@@ -132,6 +132,6 @@ class PlanController extends Controller
     {
         Plan::findOrFail($id)->delete();
 
-        return redirect()->route('admin.plan.index');
+        return redirect()->route('admin.plan.index')->with('message', 'プランを一つ削除しました。');
     }
 }

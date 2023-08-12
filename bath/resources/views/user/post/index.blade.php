@@ -48,7 +48,7 @@
                                         <form method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <a class="text-white bg-red-500 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded">
+                                            <a class="text-white bg-red-300 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded">
                                                 <input type="submit" value="削除" formaction="delete/{{$post->id}}">
                                             </a>
                                         </form>

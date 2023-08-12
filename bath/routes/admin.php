@@ -68,6 +68,8 @@ Route::prefix('post')->middleware('auth:admin')->group(function(){
     Route::get('index', [PostController::class, 'index'])->name('post.index');//投稿一覧
     Route::get('create', [PostController::class, 'create'])->name('post.create');
     Route::post('store', [PostController::class, 'store'])->name('post.store');
+    Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+
 });
 
 //ダッシュボード

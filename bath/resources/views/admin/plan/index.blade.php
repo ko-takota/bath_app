@@ -36,7 +36,7 @@
                                         {{ csrf_field() }}
                                         {{method_field('DELETE')}}
                                         <td class="px-4 py-3">
-                                            <a class="text-white bg-red-500 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded">
+                                            <a class="text-white bg-red-300 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded">
                                                 <input type="submit" value="削除" formaction="/admin/plan/{{$plan->id}}">
                                             </a>
                                         </td>
@@ -46,6 +46,19 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @if(session('message'))
+                        <div class="alert alert-success text-red-500">
+                            {{ session('message') }}
+                        </div>
+                        @elseif (session('success'))
+                            <div class="alert alert-success text-blue-500">
+                                {{ session('success') }}
+                            </div>
+                        @elseif (session('edit'))
+                            <div class="alert alert-success">
+                                {{ session('edit') }}
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

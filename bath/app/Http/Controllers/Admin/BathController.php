@@ -106,7 +106,7 @@ class BathController extends Controller
             $adminBath->save();
         }
 
-        return redirect()->route('admin.bath.index');
+        return redirect()->route('admin.bath.index')->with('message', '施設を新規作成しました。');;
 
     }
 
@@ -137,7 +137,7 @@ class BathController extends Controller
 
         $bath->save();
 
-        return redirect()->route('admin.bath.index')
+        return redirect()->route('admin.bath.show', ['id' => $id])
         ->with('message', '施設情報を更新しました。');
     }
 }

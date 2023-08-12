@@ -25,31 +25,50 @@
                             <tr>
                                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">タイトル</th>
                                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">施設名</th>
+                                <th class="bg-gray-100"></th>
                             </tr>
                           </thead>
                           <tbody>
                             @foreach ($posts as $post)
                             <tr>
-                              <td class="px-4 py-3">{{ $post->title }}</td>
-                              <td class="px-4 py-3">
-                                <span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight">
-                                    <span aria-hidden="true" class="absolute inset-0 bg-green-500 rounded-full">
+                                <td class="px-4 py-3 text-center"><span class="text-xl bg-green-300 rounded-lg">{{ $post->title }}</span></td>
+                                <td class="px-4 py-3">
+                                    <span class="relative inline-block px-3 py-1 font-semibold leading-tight">
+                                        <span aria-hidden="true" class="absolute inset-0">
+                                        </span>
+                                        <span class="relative">
+                                            @if (isset($post->bath_id))
+                                                {{ $post->bath->name }}
+                                            @else
+                                                施設名がありません。
+                                            @endif
+                                        </span>
                                     </span>
-                                    <span class="relative">
-                                        @if (isset($post->bath_id))
-                                            {{ $post->bath->name }}
-                                        @else
-                                            施設名がありません。
-                                        @endif
-                                    </span>
-                                </span>
-                              </td>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <form method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a class="text-white bg-red-300 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded">
+                                            <input type="submit" value="削除" formaction="delete/{{$post->id}}">
+                                        </a>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                           </tbody>
                         </table>
                       </div>
                     </div>
+                    @if(session('message'))
+                        <div class="alert alert-success text-red-500">
+                            {{ session('message') }}
+                        </div>
+                    @elseif (session('success'))
+                        <div class="alert alert-success text-blue-500">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                 </section>
             </div>
         </div>
