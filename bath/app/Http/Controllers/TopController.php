@@ -27,8 +27,7 @@ class TopController extends Controller
         //管理者お知らせ
         $posts = DB::table('posts')
         ->join('baths', 'posts.bath_id', '=', 'baths.id')
-        ->join('admins', 'baths.admin_id', '=', 'admins.id')
-        ->select('posts.*', 'admins.name as admin_name')
+        ->select('posts.*', 'baths.name as bath_name')
         ->get();
         //ユーザー口コミ
         $userPosts = DB::table('user_posts')

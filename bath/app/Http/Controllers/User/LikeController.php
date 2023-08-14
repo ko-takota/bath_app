@@ -11,12 +11,6 @@ use App\Models\Bath;
 
 class LikeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:users');
-    }
-
-
     public function store(Request $request, $id)
     {
         Auth::user()->like($id);

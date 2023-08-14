@@ -95,9 +95,9 @@
                                                     <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ $post->title }}</h1>
                                                     <p class="font-medium text-gray-900 mb-3">{{ Str::limit($post->body, 25) }}</p>
                                                     <p class="leading-relaxed mb-5">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</p>
-                                                    <a class="inline-flex items-center">
+                                                    <a href="{{ route('user.item.show', ['item' => $post->bath_id ])}}" class="inline-flex items-center">
                                                         <span class="flex-grow flex flex-col pl-3">
-                                                            <span class="title-font font-medium text-gray-900">{{ $post->admin_name }}</span>
+                                                            <span class="title-font text-sm font-medium hover:text-gray-900 text-gray-400">{{ $post->bath_name }}</span>
                                                         </span>
                                                     </a>
                                                 </div>

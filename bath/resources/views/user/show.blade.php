@@ -19,26 +19,26 @@
                 <h1 class="mb-8 text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl lg:text-5xl">{{ $bath->name }}</h1>
                 <p class="mb-8 text-base leading-relaxed text-left text-gray-500 w-full h-full" disabled>{{ $bath->information }}</p>
                 <div class="mt-0 lg:mt-6 max-w-7xl sm:flex">
-                <form method="post" action="{{ route('user.cart.add')}}">
-                    @csrf
-                    <p>プラン選択</p>
-                    <select name="plan_id" class="bg-gray-300">
-                        <option value="" selected>選択してください</option>
-                            @foreach($plans as $plan)
-                                {
-                                    <option value="{{ $plan->id }}">{{ $plan->name }}：月額{{ $plan->price }}円</option>
-                                }
-                            @endforeach
-                    </select>
-                    <button class="ml-auth bg-blue-500 text-brack border-0 py-2 px-6 hover:bg-yellow-500 rounded-full">カートに入れる</button>
-                    <input type="hidden" name="bath_id" value="{{ $bath->id }}">
-                </form>
+                    <form method="post" action="{{ route('user.cart.add')}}">
+                        @csrf
+                        <p>プラン選択</p>
+                        <select name="plan_id" class="bg-gray-300">
+                            <option value="" selected>選択してください</option>
+                                @foreach($plans as $plan)
+                                    {
+                                        <option value="{{ $plan->id }}">{{ $plan->name }}：月額{{ $plan->price }}円</option>
+                                    }
+                                @endforeach
+                        </select>
+                        <button class="ml-auth bg-blue-500 text-brack border-0 py-2 px-6 hover:bg-yellow-500 rounded-full">カートに入れる</button>
+                        <input type="hidden" name="bath_id" value="{{ $bath->id }}">
+                    </form>
 
-                @if (session('message'))
-                    <div class="alert alert-danger">
-                        {{ session('message') }}
-                    </div>
-                @endif
+                    @if (session('message'))
+                        <div class="alert alert-danger">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                 </div>
                 {{-- お気に入り機能 --}}
                 <button>
@@ -72,9 +72,15 @@
         </div>
         @endforeach
     </div>
+    @if (Auth::id() === null)
+    <div class="px-24 py-12">
+        <a href="{{route('user.top')}}" class="bg-white hover:bg-yellow-500 rounded-full">ホームへ</a>
+    </div>
+    @else
     <div class="px-24 py-12">
         <a href="{{route('user.search')}}" class="bg-white hover:bg-yellow-500 rounded-full">施設一覧へ</a>
     </div>
+    @endif
 </section>
 
 
