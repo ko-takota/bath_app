@@ -2,9 +2,6 @@
 {{-- src/resources/views/layouts/common.blade.php継承 --}}
 @extends('layouts.common')
 
-{{-- @include('user.parts.sidebar_user') --}}
-{{-- @include('common.footer') --}}
-
 @section('content')
 <section class="text-gray-900 body-font ">
     <img src="{{ asset('images/22296391.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(3px);">
