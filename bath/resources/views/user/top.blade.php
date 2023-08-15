@@ -15,7 +15,7 @@
             <h1 class="sm:text-3xl text-2xl font-medium title-font" style="background-image: linear-gradient(to bottom, #f75234, #f8d28b);">マッチングセントー</h1>
         </a>
         <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
-            <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"><a href="{{ route('user.search')}}">検索</a>
+            <button class="inline-flex items-center bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"><a href="{{ route('user.search')}}">検索</a>
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
@@ -168,45 +168,45 @@
                 </div>
                 <div class="flex-center" style="align-items: center;">
                     <ul >
-                        <div class="sm:flex bg-white " style="opacity: 0.7;">
+                        <div class="sm:flex bg-yellow-700 " style="opacity: 0.9;">
                             <div class="sm:w-1/2">
                                 <li class="flex-shrink-0 w-72 shadow-md p-4 rounded-lg m-2" style="text-align: center; width: 100%; box-sizing: border-box;">
-                                    <p class="text-lg p-4">温泉時間を有効に</p>
+                                    <p class="text-lg p-4" style="font-weight: bold;">温泉時間を有効に</p>
                                     <div style="display: flex; flex-direction: column; align-items: center;">
-                                        <img src="{{ asset('images/24028599.jpg')}}" alt="温泉時間を有効に" style="width: 500%; height: 300%; margin: 0 auto;">
-                                        <p class="--txt">
+                                        <img src="{{ asset('images/22240338_s.jpg')}}" alt="温泉時間を有効に" style="width: 500%; height: 300%; margin: 0 auto;">
+                                        <p class="--txt bg-yellow-600">
                                             長く温泉に入っている時間はスマホを見ることもなく、リラックスできる時間です。
                                             <br>マッサージしたり筋肉をほぐしたりしながら、自分のカラダとゆっくり向き合える時間にしよう。
                                         </p>
                                     </div>
                                 </li>
                                 <li class="flex-shrink-0 w-72 shadow-md p-4 rounded-lg m-2" style="text-align: center; width: 100%; box-sizing: border-box;">
-                                    <p class="text-lg p-4">温泉の効果</p>
+                                    <p class="text-lg p-4" style="font-weight: bold;">風呂上がりはとにかく気持ちいい</p>
                                     <div style="display: flex; flex-direction: column; align-items: center;">
-                                        <img src="{{ asset('images/22084964.jpg')}}" alt="温泉の効果" style="width: 500%; height: 200%; margin: 0 auto;">
-                                        <p class="--txt">
-                                            汗をかくことで、カラダに溜まった老廃物の排出を促進し、毛穴の皮脂を取り除くため美肌効果も期待できます。
-                                            <br>また、代謝が上がることで、睡眠の質や、冷え性の改善にも期待できるという声も。
+                                        <img src="{{ asset('images/26929681_s.jpg')}}" alt="ビール" style="width: 500%; height: 300%; margin: 0 auto;">
+                                        <p class="--txt bg-yellow-600">
+                                            風呂上がりのドリンクは家ではなかなか味わえない高揚感も魅力。<br>皆さんも一度この高揚感を味わってみては？
                                         </p>
                                     </div>
                                 </li>
                             </div>
                             <div class="sm:w-1/2">
                                 <li class="flex-shrink-0 w-72 shadow-md p-4 rounded-lg m-2" style="text-align: center; width: 100%; box-sizing: border-box;">
-                                    <p class="text-lg p-4">家族で行こう</p>
+                                    <p class="text-lg p-4" style="font-weight: bold;">家族や友人と行こう</p>
                                     <div style="display: flex; flex-direction: column; align-items: center;">
-                                        <img class="w150" src="{{ asset('images/24076953.jpg')}}" alt="家族で行こう" style="width: 500%; height: 300%; margin: 0 auto;">
-                                        <p class="--txt">
-                                            家ではなかなか家族で入浴できることがないけど温泉に行けば、家族との時間が作れる。会話も弾む！
+                                        <img class="w150" src="{{ asset('images/22272423_s.jpg')}}" alt="家族で行こう" style="width: 500%; height: 300%; margin: 0 auto;">
+                                        <p class="--txt bg-yellow-600">
+                                            家では一人でしか入浴できないけど温泉に行けば、家族や友人との時間が作れる。会話も弾む！
                                         </p>
                                     </div>
                                 </li>
                                 <li class="flex-shrink-0 w-72 shadow-md p-4 rounded-lg m-2" style="text-align: center; width: 100%; box-sizing: border-box;">
-                                    <p class="text-lg p-4">風呂上がりはとにかく気持ちいい</p>
+                                    <p class="text-lg p-4" style="font-weight: bold;">温泉の効果</p>
                                     <div style="display: flex; flex-direction: column; align-items: center;">
-                                        <img src="{{ asset('images/1471101.jpg')}}" alt="ビール" style="width: 500%; height: 300%; margin: 0 auto;">
-                                        <p class="--txt">
-                                            風呂上がりのドリンクは家ではなかなか味わえない高揚感も魅力。皆さんも一度この高揚感を味わってみては？
+                                        <img src="{{ asset('images/bath-0058781eqg.jpg')}}" alt="温泉の効果" style="width: 500%; height: 200%; margin: 0 auto;">
+                                        <p class="--txt bg-yellow-600">
+                                            汗をかくことで、カラダに溜まった老廃物の排出を促進し、毛穴の皮脂を取り除くため美肌効果も期待できます。
+                                            <br>また、代謝が上がることで、睡眠の質や、冷え性の改善にも期待できるという声も。
                                         </p>
                                     </div>
                                 </li>
