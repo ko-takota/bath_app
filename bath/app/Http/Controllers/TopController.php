@@ -50,4 +50,9 @@ class TopController extends Controller
         }
         return view('user.top2', compact('user_id'));
     }
+
+    public function contact()
+    {
+        return view('user.contact');
+    }
 }

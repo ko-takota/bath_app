@@ -68,7 +68,7 @@
                 </svg>
             </div>
             <a href="{{ route('user.cart.mycart')}}">
-            <h2 class="text-lg text-gray-900 font-medium title-font mb-2 text-center hover:bg-yellow-600">マッチングセントー</h2>
+            <h2 class="text-lg text-gray-900 font-medium title-font mb-2 text-center hover:bg-yellow-600">バスクリプション</h2>
             </a>
             <p class="leading-relaxed text-base text-gray-900">今、ご契約中の温泉施設を確認できます。</p>
           </div>

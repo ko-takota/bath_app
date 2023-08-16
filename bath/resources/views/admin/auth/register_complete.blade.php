@@ -13,7 +13,7 @@
             </h2>
         </div>
 
-        <p class="max-w-xl mt-2 leading-relaxed text-gray-500">マッチングセントー
+        <p class="max-w-xl mt-2 leading-relaxed text-gray-500">バスクリプション
             <br>管理者｜会員登録が完了し、施設の掲載が可能になりました</div></p>
 
         <div class="sm:flex p-12">

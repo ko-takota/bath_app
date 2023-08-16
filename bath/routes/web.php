@@ -58,4 +58,7 @@ require __DIR__.'/auth.php';
 
 //topページ
 Route::get('/', [TopController::class, 'top'])->name('top');
+Route::get('/contact', [TopController::class, 'contact'])->name('contact');
+
+
 

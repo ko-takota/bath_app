@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>マッチングセント➖</title>
+    <title>バスクリプション</title>
 </head>
 <body class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
     <img src="{{ asset('images/top2.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
@@ -25,7 +25,7 @@
             <div class="mx-auto max-w-2xl lg:mx-0">
                 <h2 class="text-4xl font-bold tracking-tight text-brack sm:text-6xl whitespace-nowrap dark:text-gray-500">会員登録完了</h2>
                 <p class="mt-12 text-lg leading-8 text-gray-900">
-                    <br>マッチングセントー｜会員登録が完了しました。
+                    <br>バスクリプション｜会員登録が完了しました。
                     <br>早速行きたい温泉を見つけに行こう！
                 </p>
             </div>
