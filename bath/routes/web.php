@@ -56,9 +56,15 @@ Route::prefix('post')->middleware('auth:users')->group(function () {
 require __DIR__.'/auth.php';
 
 
-//topページ
-Route::get('/', [TopController::class, 'top'])->name('top');
-Route::get('/contact', [TopController::class, 'contact'])->name('contact');
-
+Route::get('/', [TopController::class, 'top'])->name('top');//topページ
+Route::get('/contact', [TopController::class, 'contact'])->name('contact');//お問い合わせ
+//利用規約
+Route::get('/terms', function () {
+    return view('user.terms');
+});
+//プライバシーポリシー
+Route::get('/privacypolicy', function () {
+    return view('user.privacy');
+});
 
 

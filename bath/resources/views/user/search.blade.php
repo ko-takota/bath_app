@@ -1,7 +1,7 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <div class="relative">
-    <img src="{{ asset('images/22296391.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="filter: blur(0px); max-width: 100%;">
+    <img src="{{ asset('images/24120406.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="max-width: 100%;">
     <div class="absolute inset-0 z-10 bg-black-400 opacity-40"></div>
     <div class="container px-5 py-24 mx-auto relative z-10">
         <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
@@ -44,22 +44,18 @@
                     <div class="-m-4 lg:w-1/2">
                         @if(count($baths) > 0)
                             @foreach ($baths as $bath)
-                            <div class="hover:bg-gray-400 mt-8 mb-8 border-2 border-gray-900 border-opacity-60 rounded-lg overflow-hidden">
+                            <div class="bg-white mt-8 mb-48 border-2 border-gray-900 rounded-lg overflow-hidden">
                                 <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="items-center md:mb-2 lg:mb-0">
                                     <img src="{{ asset('storage/baths/' . $bath->image)}}" alt="温泉施設画像">
                                 </a>
                                 <div class="p-6">
                                     <div class="flex">
-                                        <h1 class="title-font text-lg font-medium rounded-lg mb-3">{{ $bath->name }}</h1>
+                                        <h1 class="title-font text-sm font-medium bg-blue-100 rounded-lg mb-3">{{ $bath->name }}</h1>
                                     </div>
-                                    <p class="leading-relaxed mb-3 text-gray-800">{{ $bath->address }}</p>
-                                    <div class=" items-center">
-                                        <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-yellow-500 hover:text-yellow-800 items-center md:mb-2 lg:mb-0">
-                                            さらに詳しく
-                                            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M5 12h14"></path>
-                                            <path d="M12 5l7 7-7 7"></path>
-                                            </svg>
+                                    <p class="leading-relaxed mb-3 bg-blue-100 text-gray-800">{{ $bath->address }}</p>
+                                    <div class="mt-12 items-center">
+                                        <a href="{{ route('user.item.show', ['item' => $bath->id ]) }}" class="text-white bg-blue-500 hover:bg-blue-300 items-center md:mb-2 lg:mb-0">
+                                            <span class="text-sm p-2">施設の詳細確認</span>
                                         </a>
                                     </div>
                                 </div>
