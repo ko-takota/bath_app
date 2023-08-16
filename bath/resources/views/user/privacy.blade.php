@@ -9,6 +9,7 @@
             <a href="http://127.0.0.1:8000/#:~:text=~-,%E6%B8%A9%E6%B3%89%E3%81%AE%E9%AD%85%E5%8A%9B,-~" class="mr-5 hover:text-white">魅力</a>
             <a href="/register" class="mr-5 hover:text-white">会員登録</a>
             <a href="/contact" class="mr-5 hover:text-white">お問い合わせ</a>
+            <a href="/" class="mr-5 hover:text-white">ホーム</a>
         </nav>
         <a href="http://127.0.0.1:8000/#:~:text=%E3%82%82%E7%B9%8B%E3%81%8C%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82-,%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%82%BB%E3%83%B3%E3%83%88%E3%83%BC%E3%81%A3%E3%81%A6%E4%BD%95%EF%BC%9F%EF%BC%9F,-%E5%85%A5%E3%82%8C%E3%81%B0%E5%85%A5%E3%82%8B">
             <h1 class="sm:text-3xl text-2xl font-medium title-font" style="background-image: linear-gradient(to bottom, #f75234, #f8d28b);">バスクリプション</h1>
