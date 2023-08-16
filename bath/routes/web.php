@@ -42,6 +42,7 @@ Route::prefix('cart')->middleware('auth:users')->group(function(){
     Route::post('delete/{item}', [CartController::class, 'delete'])->name('cart.delete');//カートから削除
     // プランが削除されたらカート情報のプランも削除
     Route::post('/delete-plan/{id}', [CartController::class, 'deletePlan'])->name('cart.delete.plan');
+    Route::get('pay', [CartController::class, 'pay'])->name('cart.pay');//stripe決済
 });
 
 

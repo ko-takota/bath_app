@@ -24,7 +24,7 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        
+
 
         $cart = Cart::where('bath_id', $request->bath_id)//選択した施設とカートの施設IDの一致
             ->where('user_id', Auth::id())
@@ -70,5 +70,36 @@ class CartController extends Controller
         ->delete();
 
         return redirect()->route('user.cart.mycart');
+    }
+
+    public function pay()
+    {
+        //ユーザーのカート情報を取得
+        $carts = Cart::where('user_id', Auth::id())->get();
+
+        $items = [];
+        foreach($carts as $cart){
+            $item = [
+                'name' => $cart->plan->name,
+                'description' => $cart->plan->contents,
+                'price' => $cart->plan->price,
+                'currebcy' => 'jpy',
+            ];
+            array_push($items, $item);
+        }
+
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [$items],
+            'mode' => 'payment', //一回払い
+            'success_url' => route('user.search'),
+            'cancel_url' => route('user.cart.mycart'),
+        ]);
+
+        $publicKey = env('STRIPE_PUBLIC_KEY');
+
+        return view('user.pay', compact('session', 'publicKey'));
     }
 }
