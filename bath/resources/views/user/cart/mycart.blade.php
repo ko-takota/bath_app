@@ -1,25 +1,25 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <div class="relative">
-    <img src="{{ asset('images/26681189_s.jpg')}}" alt="" class="absolute inset-0 z-0 h-xl w-full object-cover object-right md:object-center" style="filter: blur(2px);">
-    <div class="absolute inset-0 z-10 opacity-40"></div>
+    <img src="{{ asset('images/1237241_s.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="filter: blur(2px);">
+    <div class="absolute inset-0 bg-white z-10 opacity-40"></div>
     <div class="container px-0 py-24 mx-auto relative z-10 max-w-screen-xl">
         <div class="w-full mb-20 flex-col items-center text-center">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2">マイカート</h1>
+            <h1 class="text-3xl bg-white font-medium title-font">カートに入れたプラン情報</h1>
+            <h1 class="mt-6 bg-white">{{Auth::user()->name}}さんのカートの中身</h1>
             <div class="absolute top-4 right-4">
                 <div class="dropdown">
                     <form action="{{ route('user.index', ['id' => $user]) }}" method="GET">
                         @csrf
-                    <button class="bg-gray-400 active:bg-gray-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <a class="dropdown-item text-white" href="{{ route('user.index', ['id' => $user]) }}">マイページ</a>
+                    <button class="bg-gray-400 active:bg-gray-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="index bg-gray-400 hover:text-gray-300" href="{{ route('user.index', ['id' => $user]) }}">マイページ</a>
                     </button>
                     </form>
                 </div>
             </div>
 
-            <div class="container px-5 py-24 mx-auto">
+            <div class="container px-5 py-12 mx-auto">
                 <div class="flex flex-wrap -mx-4 -my-8">
-                    <h1>{{Auth::user()->name}}さんのカートの中身</h1>
                     <div class="py-8 px-4 overflow-x-auto">
                         <div class="h-full flex items-start">
                             <div class="relative w-full h-full">
@@ -45,6 +45,7 @@
                                             <p>プランは削除されたため表示されません。</p>
                                             @endif
                                         @endforeach
+
                                     @else
                                         カートに選択された施設が入っていません。
                                     @endif
@@ -52,7 +53,15 @@
                             </div>
                         </div>
                     </div>
+                    <button class="bg-gray-400 active:bg-gray-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <a href="{{route('user.search')}}" class="index bg-gray-400 hover:text-gray-300">施設一覧へ</a>
+                    </button>
+                </div>
+                <div class="my-2">
+                    合計：{{ number_format($totalPrice) }}<span class="text-sm">円(月額)</span>
+                </div>
+                <div>
+                    <button onclick="location.href='#'" class="bg-yellow-400 border-0 py-2 px-3 focus:outline-none hover:bg-yellow-600 rounded">購入する</button>
                 </div>
             </div>
         </div>
