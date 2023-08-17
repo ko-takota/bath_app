@@ -35,9 +35,15 @@ class BathController extends Controller
 
         // $pagenate = Bath::select('id', 'name','image', 'address')->paginate(10);//10施設表示
         $baths = $baths->get();
-        $user = User::findOrfail(Auth::id());//マイページに戻るため
 
-        return view('user.search', compact('baths', 'categories', 'user'));
+        if (!Auth::id() === null) {
+            $user = User::findOrfail(Auth::id());//マイページに戻るため
+
+            return view('user.search', compact('baths', 'categories', 'user'));
+        } else {
+            return view('user.search', compact('baths', 'categories'));
+        }
+
     }
 
 

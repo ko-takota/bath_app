@@ -16,7 +16,7 @@
             <h1 class="sm:text-3xl text-2xl font-medium title-font" style="background-image: linear-gradient(to bottom, #f75234, #f8d28b);">バスクリプション</h1>
         </a>
         <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
-            <button class="inline-flex items-center bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"><a href="{{ route('user.search') }}">検索</a>
+            <button class="inline-flex items-center bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"><a href="{{ route('user.search') }}">施設検索</a>
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
@@ -102,19 +102,19 @@
                                     <div class="max-w-screen-xl mx-auto relative flex justify-start p-6 bg-opacity-75">
                                         @if (count($posts) > 0)
                                             @foreach ($posts->take(20)->sortByDesc('created_at') as $post)
-                                                <div class="flex-shrink-0 w-72 bg-yellow-400 shadow-md p-4 rounded-lg m-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-                                                    </svg>
-                                                    <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ $post->title }}</h1>
-                                                    <p class="font-medium text-gray-900 mb-3">{{ Str::limit($post->body, 25) }}</p>
-                                                    <p class="leading-relaxed mb-5">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</p>
-                                                    <a href="{{ route('user.item.show', ['item' => $post->bath_id ])}}" class="inline-flex items-center">
+                                                <a href="{{ route('user.item.show', ['item' => $post->bath_id ])}}" class="inline-flex items-center">
+                                                    <div class="flex-shrink-0 w-72 bg-yellow-400 shadow-md p-4 rounded-lg m-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+                                                        </svg>
+                                                        <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ $post->title }}</h1>
+                                                        <p class="font-medium text-gray-900 mb-3">{{ Str::limit($post->body, 25) }}</p>
+                                                        <p class="leading-relaxed mb-5">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</p>
                                                         <span class="flex-grow flex flex-col pl-3">
                                                             <span class="title-font text-sm font-medium hover:text-gray-900 text-gray-400">{{ $post->bath_name }}</span>
                                                         </span>
-                                                    </a>
-                                                </div>
+                                                    </div>
+                                                </a>
                                             @endforeach
                                         @else
                                             <div class="text-center w-48 bg-yellow-100 shadow-md p-4 rounded-lg m-2">

@@ -25,9 +25,9 @@ use App\Http\Controllers\User\InformationController;
 */
 
 Route::get('show/{item}', [BathController::class, 'show'])->name('item.show');//各施設登録ぺージ
+Route::get('/search', [BathController::class, 'search'])->name('search');//施設一覧ページ
 
 Route::middleware('auth:users')->group(function () {
-    Route::get('/search', [BathController::class, 'search'])->name('search');//施設一覧ページ
     Route::post('/{id}/like', [LikeController::class, 'store'])->name('bath.like');//いいね
     Route::delete('{id}/unlike', [LikeController::class, 'destroy'])->name('bath.unlike');//いいね解除
     Route::get('/like', [LikeController::class, 'index'])->name('like.index');//いいね一覧表示

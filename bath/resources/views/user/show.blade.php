@@ -72,15 +72,9 @@
         </div>
         @endforeach
     </div>
-    @if (Auth::id() === null)
-    <div class="px-24 py-12">
-        <a href="{{route('user.top')}}" class="bg-white hover:bg-yellow-500 rounded-full">ホームへ</a>
-    </div>
-    @else
     <div class="px-24 py-12">
         <a href="{{route('user.search')}}" class="bg-white hover:bg-yellow-500 rounded-full">施設一覧へ</a>
     </div>
-    @endif
 </section>
 
 
