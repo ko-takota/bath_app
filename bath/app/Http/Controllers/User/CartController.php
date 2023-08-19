@@ -114,12 +114,18 @@ class CartController extends Controller
             'payment_method_types' => ['card'],
             'line_items' => $items,
             'mode' => 'subscription',
-            'success_url' => route('user.search'),
+            'success_url' => route('user.cart.success'),
             'cancel_url' => route('user.cart.mycart'),
         ]);
 
         $publicKey = env('STRIPE_PUBLIC_KEY');
 
         return view('user.cart.pay', compact('session', 'publicKey'));
+    }
+
+    public function success() {
+        Cart::where('user_id', Auth::id())->delete();
+
+        return redirect()->route('user.search');
     }
 }
