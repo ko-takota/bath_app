@@ -77,35 +77,49 @@ class CartController extends Controller
         return redirect()->route('user.cart.mycart');
     }
 
-    // public function pay()
-    // {
-    //     //ユーザーのカート情報を取得
-    //     $carts = Cart::where('user_id', Auth::id())->get();
 
-    //     $prices = [];
-    //     foreach($carts as $cart){
-    //         $price = Price::create([
-    //             'amount' => $cart->plan->price,
-    //             'currency' => 'jpy',
-    //         ]);
-    //         array_push($prices, $price);
-    //     }
 
-    //     Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+    public function pay()
+    {
+        //ユーザーのカート情報を取得
+        $carts = Cart::where('user_id', Auth::id())->get();
 
-    //     $customer = Customer::create([
-    //         'email' => Auth::user()->email, // ユーザーのメールアドレス
-    //     ]);
-    //     $stripeCustomerId = $customer->id; // 作成した顧客のStripe ID
+        $items = [];
+        foreach($carts as $cart){
 
-    //     $subscription = Subscription::create([
-    //         'customer' => $stripeCustomerId,
-    //         'items' => [$prices],
-    //     ]);
-    //     dd($subscription);
+            \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
-    //     $publicKey = env('STRIPE_PUBLIC_KEY');
+            $product = \Stripe\Product::create([
+                'name' => $cart->plan->name,
+                'description' => $cart->plan->contents,
+            ]);
 
-    //     return view('user.cart.pay', compact('session', 'publicKey'));
-    // }
+            $item = [
+                'price_data' => [
+                    'unit_amount' => $cart->plan->price,
+                    'currency' => 'jpy',
+                    'recurring' => [
+                        'interval' => 'month',
+                    ],
+                    'product' => $product->id,
+                ],
+                'quantity' => 1,
+            ];
+            array_push($items, $item);
+        }
+
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => $items,
+            'mode' => 'subscription',
+            'success_url' => route('user.search'),
+            'cancel_url' => route('user.cart.mycart'),
+        ]);
+
+        $publicKey = env('STRIPE_PUBLIC_KEY');
+
+        return view('user.cart.pay', compact('session', 'publicKey'));
+    }
 }

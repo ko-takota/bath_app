@@ -47,7 +47,6 @@
                                             <p>プランは削除されたため表示されません。</p>
                                             @endif
                                         @endforeach
-
                                     @else
                                         カートに選択された施設が入っていません。
                                     @endif
@@ -60,7 +59,7 @@
                     合計：{{ number_format($totalPrice) }}<span class="text-sm">円(月額)</span>
                 </div>
                 <div>
-                    <button onclick="location.href='#'" class="bg-yellow-400 border-0 py-2 px-3 focus:outline-none hover:bg-yellow-600 rounded">購入する</button>
+                    <button onclick="location.href='{{ route('user.cart.pay') }}'" class="bg-yellow-400 border-0 py-2 px-3 focus:outline-none hover:bg-yellow-600 rounded">購入する</button>
                 </div>
             </div>
             <button class="bg-gray-400 active:bg-gray-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
