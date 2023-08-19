@@ -33,7 +33,7 @@ Route::middleware('auth:users')->group(function () {
     Route::get('/like', [LikeController::class, 'index'])->name('like.index');//いいね一覧表示
     Route::resource('information', InformationController::class);//ユーザー情報の一覧や変更
     Route::get('/tt', [TopController::class, 'second'])->name('second');
-    Route::get('/user/{id}/index', [MypageController::class, 'index'])->name('index');//マイページ
+    Route::get('/user/{id}/mypage', [MypageController::class, 'index'])->name('index');//マイページ
 });
 
 Route::prefix('cart')->middleware('auth:users')->group(function(){
