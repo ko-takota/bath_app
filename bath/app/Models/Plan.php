@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Bath;
 use App\Models\Admin;
 use App\Models\Cart;
+use App\Models\Pay;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plan extends Model
@@ -43,5 +44,10 @@ class Plan extends Model
     public function carts()
     {
         return $this->hasMany(Cart::class);
+    }
+
+    public function pays()
+    {
+        return $this->hasMany(Pay::class);
     }
 }

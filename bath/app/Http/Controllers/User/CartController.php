@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Pay;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -106,6 +107,20 @@ class CartController extends Controller
                 'quantity' => 1,
             ];
             array_push($items, $item);
+
+            //user_idとplan_idが同じ列があるか
+            $existingPay = Pay::where('user_id', $cart->user_id)
+                  ->where('plan_id', $cart->plan_id)
+                  ->first();
+
+            if(!$existingPay) {//同じプランが無ければ購入テーブルに追加
+                Pay::create([
+                    'user_id' => $cart->user_id,
+                    'bath_id' => $cart->bath_id,
+                    'plan_id' => $cart->plan_id,
+                ]);
+            }
+
         }
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
@@ -115,7 +130,7 @@ class CartController extends Controller
             'line_items' => $items,
             'mode' => 'subscription',
             'success_url' => route('user.cart.success'),
-            'cancel_url' => route('user.cart.mycart'),
+            'cancel_url' => route('user.cart.cancel'),
         ]);
 
         $publicKey = env('STRIPE_PUBLIC_KEY');
@@ -123,9 +138,32 @@ class CartController extends Controller
         return view('user.cart.pay', compact('session', 'publicKey'));
     }
 
-    public function success() {
+    public function success(Request $request)
+    {
+
+
         Cart::where('user_id', Auth::id())->delete();//カート情報削除
 
         return redirect()->route('user.search');
+    }
+
+    public function cancel()
+    {
+        $pays = Pay::where('user_id', Auth::id())->get();
+
+        $pays = $pays->sortByDesc('created_at');
+
+        if ($pays->isNotEmpty()) {
+            $created = $pays->first()->created_at;
+
+            $latestPays = $pays->filter(function ($pay) use ($created) {
+                return $pay->created_at->eq($created);
+            });
+
+            foreach ($latestPays as $latestPay) {
+                $latestPay->delete();
+            }
+        }
+        return redirect()->route('user.cart.mycart');
     }
 }

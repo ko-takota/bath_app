@@ -45,6 +45,7 @@ Route::prefix('cart')->middleware('auth:users')->group(function(){
     Route::post('/delete-plan/{id}', [CartController::class, 'deletePlan'])->name('cart.delete.plan');
     Route::get('pay', [CartController::class, 'pay'])->name('cart.pay');//stripe決済
     Route::get('success', [CartController::class, 'success'])->name('cart.success');//stripe決済
+    Route::get('cancel', [CartController::class, 'cancel'])->name('cart.cancel');//決済キャンセル
 });
 
 

@@ -25,6 +25,20 @@ return new class extends Migration
             $table->foreign('bath_id')->references('id')->on('baths');
             $table->foreign('plan_id')->references('id')->on('plans');
         });
+
+        Schema::create('pays', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->constrained();
+            $table->unsignedBigInteger('bath_id')->constrained();
+            $table->unsignedBigInteger('plan_id')->constrained();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('bath_id')->references('id')->on('baths');
+            $table->foreign('plan_id')->references('id')->on('plans');
+        });
+
     }
 
     /**
@@ -35,5 +49,7 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('carts');
+        Schema::dropIfExists('pays');
+
     }
 };
