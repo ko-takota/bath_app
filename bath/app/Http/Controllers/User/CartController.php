@@ -124,7 +124,7 @@ class CartController extends Controller
     }
 
     public function success() {
-        Cart::where('user_id', Auth::id())->delete();
+        Cart::where('user_id', Auth::id())->delete();//カート情報削除
 
         return redirect()->route('user.search');
     }

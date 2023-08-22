@@ -1,8 +1,8 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <div class="relative">
-    <img src="{{ asset('images/1237241_s.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="filter: blur(2px);">
-    <div class="absolute inset-0 bg-white z-10 opacity-40"></div>
+    <img src="{{ asset('images/1237241_s.jpg')}}" alt="" class="absolute inset-0 z-0 h-2/1 w-full object-cover object-right md:object-center" style="filter: blur(2px);">
+    <div class="absolute inset-0 z-10 opacity-40"></div>
     <div class="container px-0 py-24 mx-auto relative z-10 max-w-screen-xl">
         <div class="w-full mb-20 flex-col items-center text-center">
             <h1 class="text-3xl bg-white font-medium title-font">カートに入れたプラン情報</h1>
@@ -60,7 +60,7 @@
                     合計：{{ number_format($totalPrice) }}<span class="text-sm">円(月額)</span>
                 </div>
                 @if (count($carts) > 0)
-                <div>
+                <div class="mt-8">
                     <button onclick="location.href='{{ route('user.cart.pay') }}'" class="bg-yellow-400 border-0 py-2 px-3 focus:outline-none hover:bg-yellow-600 rounded">購入する</button>
                 </div>
                 @endif

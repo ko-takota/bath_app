@@ -29,7 +29,7 @@
     <img src="{{ asset('images/24120406.jpg')}}" alt="" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center" style="filter: blur(5px); max-width: 100%;">
     <div class="container px-5 py-6 mx-auto relative z-10">
         <div class="container px-5 py-6 mx-auto">
-            <body class="relative isolate bg-gray-300 py-20 sm:py-1">
+            <body class="relative isolate bg-gray-300">
                 <section class="text-gray-600 body-font">
                     <div class="hdg-top-b-wrap">
                         <h2 class="text-lg hdg-top-b">

@@ -4,7 +4,7 @@
 
 <section class="text-gray-600 body-font ">
     <div class="relative">
-        <img src="{{ asset('images/22296391.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(4px);">
+        <img src="{{ asset('images/yamaga-city-g66acf2d15_1920.jpg')}}" alt="" class="absolute inset-0 -z-10 w-full object-cover object-right md:object-center" style="filter: blur(1px); position: sticky; top: 0;">
         <div class="absolute inset-0 z-10 bg-gray opacity-40"></div>
             <div class="container px-5 py-24 mx-auto relative z-10">
                 <div class="dropdown">
@@ -16,7 +16,7 @@
                     </form>
                 </div>
                 <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-600">いいねした施設</h1>
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-100">いいねした施設</h1>
                     <div class="container px-5 py-24 mx-auto">
                         @if (count($likes) > 0)
                             @foreach ($likes as $like)
@@ -38,7 +38,7 @@
                                 </div>
                             @endforeach
                         @else
-                            <p class="text-2xl text-gray-500 font-medium text-gray-900 title-font mb-2">いいねした商品はありません。</p>
+                            <p class="text-2xl text-gray-100 font-medium text-gray-900 title-font mb-2">いいねした施設はありません。</p>
                         @endif
                     </div>
                 </div>
