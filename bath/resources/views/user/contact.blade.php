@@ -35,44 +35,37 @@
         </div>
         <div class="mx-auto max-w-xl">
             <div class="flex-wrap -m-2">
-                <div class="p-2 mb-12">
-                    <div class="relative">
-                    <label for="name" class="leading-7 text-sm text-gray-600">お名前<span>(必須)</span></label>
-                    <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <form method="POST" action="{{ route('user.contact.store') }}">
+                    @csrf
+                    <div class="p-2 mb-12">
+                        <div class="relative">
+                        <label for="title" class="leading-7 text-sm text-gray-600">件名<span>(必須)</span></label>
+                        <input type="text" id="title" name="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
                     </div>
-                </div>
-                <div class="p-2 mb-12">
-                    <div class="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">メールアドレス<span>(必須)</label>
-                    <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div class="p-2 w-full mt-8 mb-12">
+                        <div class="relative">
+                        <label for="message" class="leading-7 text-sm text-gray-600">お問い合わせ内容</label>
+                        <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class='grunion-field-select-wrap grunion-field-wrap contact-form-dropdown-wrap ui-front'>
-                    <label for='g958-5' class='grunion-field-label select'> お問い合わせ内容の種類をお選び下さい。<span>(必須)</span></label>
-                    <select name='g958-5' id='g958-5' class='select  grunion-field contact-form-dropdown' required aria-required='true'>
-                        <option value=''>オプションを1つ選択</option>
-                        <option value='１.コース・料金プランについて'>１.コース・料金プランについて</option>
-                        <option value='２.ご利用方法について'>２.ご利用方法について</option>
-                        <option value='３.登録方法について'>３.登録方法について</option>
-                        <option value='４.その他'>４.その他</option>
-                    </select>
-                </div>
-                <div class="p-2 w-full mt-8 mb-12">
-                    <div class="relative">
-                    <label for="message" class="leading-7 text-sm text-gray-600">お問い合わせ内容</label>
-                    <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                    <div class="p-2 mb-12">
+                        <div class="relative">
+                        <label for="email" class="leading-7 text-sm text-gray-600">メールアドレス<span>(必須)</label>
+                        <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
                     </div>
-                </div>
-                <div class="p-2 w-full">
-                    <a href="/">
-                        <button class="flex mx-auto text-white bg-yellow-700 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-400 rounded-full text-lg" onclick="ButtonClick();">送信</button>
-                    </a>
-                </div>
-                <script>
-                    function ButtonClick(){
-                        alert('送信しました。');
-                    }
-                </script>
+                    <div class="p-2 w-full">
+                        <button type="submit" class="flex mx-auto text-white bg-yellow-700 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-400 rounded-full text-lg" onclick="ButtonClick();">
+                            送信
+                        </button>
+                    </div>
+                    <script>
+                        function ButtonClick(){
+                            alert('送信しました。');
+                        }
+                    </script>
+                </form>
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\User\BathController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\LikeController;
 use App\Http\Controllers\User\InformationController;
+use App\Http\Controllers\ContactController;
 
 //管理画面系ファイル呼び出し
 //include __DIR__ . '/admin.php';
@@ -59,7 +60,10 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/', [TopController::class, 'top'])->name('top');//topページ
-Route::get('/contact', [TopController::class, 'contact'])->name('contact');//お問い合わせ
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact');//お問い合わせ
+Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+
+
 //利用規約
 Route::get('/terms', function () {
     return view('user.terms');
