@@ -10,15 +10,18 @@
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black">{{ Auth::user()->name }}さん</h1>
         <p class="lg:w-1/2 w-full leading-relaxed text-gray-900">来てくれてありがとう！</p>
       </div>
-    <div class="absolute top-4 right-4">
-        <div class="dropdown">
-            <button class="bg-gray-500 text-white active:bg-gray-900 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <a class="dropdown-item" href="{{ route('user.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
-                <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </button>
-        </div>
+    <div class="absolute top-4 right-16">
+        <button class="bg-gray-500 text-white active:bg-gray-900 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="dropdown-item" href="{{ route('user.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">ログアウト</a>
+            <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </button>
+    </div>
+    <div class="absolute top-4 right-64">
+        <button class="bg-gray-400 text-white active:bg-gray-900 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:bg-gray-500" type="button">
+            <a href="{{ route('user.contract') }}">契約中</a>
+        </button>
     </div>
       <div class="flex flex-wrap -m-4">
         <div class="xl:w-1/3 md:w-1/2 p-4">
@@ -57,7 +60,7 @@
             <a href="{{ route('user.like.index')}}">
             <h2 class="text-lg text-gray-900 font-medium title-font mb-2 text-center hover:bg-yellow-300">お気に入り一覧</h2>
             </a>
-            <p class="leading-relaxed text-base text-gray-900">{{ Auth::user()->name }}さんがお気に入りした温泉施設が表示されます。</p>
+            <p class="leading-relaxed text-base text-gray-900">お気に入りした温泉施設が表示されます。</p>
           </div>
         </div>
         <div class="xl:w-1/3 md:w-1/2 p-4">
@@ -70,7 +73,7 @@
             <a href="{{ route('user.cart.mycart')}}">
             <h2 class="text-lg text-gray-900 font-medium title-font mb-2 text-center hover:bg-yellow-300">カート情報</h2>
             </a>
-            <p class="leading-relaxed text-base text-gray-900">今、ご契約中の温泉施設を確認できます。</p>
+            <p class="leading-relaxed text-base text-gray-900">カートに入れたプランを確認できます。</p>
           </div>
         </div>
         <div class="xl:w-1/3 md:w-1/2 p-4">
@@ -84,7 +87,7 @@
             <a href="{{ route('user.information.index') }}">
             <h2 class="text-lg text-gray-900 font-medium title-font mb-2 text-center hover:bg-yellow-300">会員情報変更</h2>
             </a>
-            <p class="leading-relaxed text-base text-gray-900">{{ Auth::user()->name }}さんのメール情報などの変更ができます。</p>
+            <p class="leading-relaxed text-base text-gray-900">メール情報などの変更ができます。</p>
           </div>
         </div>
         <div class="xl:w-1/3 md:w-1/2 p-4">

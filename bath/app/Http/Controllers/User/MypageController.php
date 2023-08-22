@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Pay;
 
 
 class MypageController extends Controller
@@ -20,5 +21,14 @@ class MypageController extends Controller
             $user_id = null;
         }
         return view('user.list.mypage', compact('user_id'));
+    }
+
+    //契約一覧
+    public function contract()
+    {
+        $user = Auth::id();
+        $pays = Pay::where('user_id', $user)->get();
+
+        return view('user.contract', compact('pays', 'user'));
     }
 }

@@ -74,4 +74,5 @@ Route::get('/privacypolicy', function () {
     return view('user.privacy');
 });
 
+Route::get('mypage/contract', [MypageController::class, 'contract'])->name('contract');
 

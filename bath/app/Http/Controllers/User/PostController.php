@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Cart;
+use App\Models\Pay;
 use App\Models\UserPost;
 use Carbon\Carbon;
 
@@ -28,8 +28,7 @@ class PostController extends Controller
     public function show()
     {
         $user = Auth::id();
-        $carts = Cart::where('user_id', $user)->get();//ユーザーがカートに入れたカート情報
-
+        $carts = Pay::where('user_id', $user)->get();//ユーザーがカートに入れたカート情報
 
         return view('user.post.show', compact('carts'));
     }
