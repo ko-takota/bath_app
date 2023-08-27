@@ -89,8 +89,9 @@ class BathController extends Controller
         ]);
 
         $image = $request->image;
+        
         if(!is_null($image) && $image->isValid()){
-            $imageName = Storage::putFile('public/baths', $image);
+            $imageName = Storage::disk('public')->putFile('baths', $image);
             $bath->image = basename($imageName);
         }
 

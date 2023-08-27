@@ -85,7 +85,7 @@ class CartController extends Controller
         $items = [];
         foreach($carts as $cart){
 
-            \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+            \Stripe\Stripe::setApiKey(config('stripe.stripe_secret_key'));
 
             $product = \Stripe\Product::create([
                 'name' => $cart->plan->name,
@@ -120,7 +120,7 @@ class CartController extends Controller
 
         }
 
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+        \Stripe\Stripe::setApiKey(config('stripe.stripe_secret_key'));
 
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
@@ -130,7 +130,7 @@ class CartController extends Controller
             'cancel_url' => route('user.cart.cancel'),
         ]);
 
-        $publicKey = env('STRIPE_PUBLIC_KEY');
+        $publicKey = config('stripe.stripe_public_key');
 
         return view('user.cart.pay', compact('session', 'publicKey'));
     }

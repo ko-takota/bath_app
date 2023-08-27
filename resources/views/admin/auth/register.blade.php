@@ -1,5 +1,6 @@
 <x-guest-layout>
-    <h1>管理者：新規登録</h1>
+    <div class="bg-yellow-200">
+    <h1 class="text-center bg-yellow-400 border-0 py-4 px-8 rounded text-lg">管理者：新規登録</h1>
 
     <form method="POST" action="{{ route('admin.register') }}">
         @csrf
@@ -58,4 +59,5 @@
             <a href="{{ route('user.top') }}">トップ一覧へ戻る</a>
         </span>
     </h2>
+    </div>
 </x-guest-layout>
