@@ -18,16 +18,38 @@
             <a href="/register" class="mr-5 hover:text-white">会員登録</a>
             @endauth
             <a href="/contact" class="mr-5 hover:text-white">お問い合わせ</a>
-        </nav>
-        <a href="https://bath-app.matcha.mydns.jp/#:~:text=%E3%82%82%E7%B9%8B%E3%81%8C%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82-,%E3%83%90%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A3%E3%81%A6%E4%BD%95%EF%BC%9F%EF%BC%9F,-%E5%85%A5%E3%82%8C%E3%81%B0%E5%85%A5%E3%82%8B">
-            <h1 class="sm:text-3xl text-red-900 font-medium title-font" style="background-image: linear-gradient;">バスクリプション</h1>
-        </a>
-        <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
             <button class="inline-flex items-center bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"><a href="{{ route('user.search') }}">施設検索</a>
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
             </button>
+        </nav>
+        <a href="https://bath-app.matcha.mydns.jp/#:~:text=%E3%82%82%E7%B9%8B%E3%81%8C%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82-,%E3%83%90%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A3%E3%81%A6%E4%BD%95%EF%BC%9F%EF%BC%9F,-%E5%85%A5%E3%82%8C%E3%81%B0%E5%85%A5%E3%82%8B">
+            <h1 class="sm:text-3xl text-white font-medium title-font" style="background-image: linear-gradient;">バスクリプション</h1>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            {{-- 認証によって、ボタン表示の切り替え --}}
+            @auth
+                <form action="{{ route('user.index', ['id' => $user_id]) }}" method="GET">
+                    @csrf
+                    <button class="mx-4 hover:text-white">マイページ</button>
+                </form>
+                <form action="{{ route('user.logout')}}" method="POST">
+                    @csrf
+                    <button class="mx-4 hover:text-white">ログアウト</button>
+                </form>
+            {{-- ユーザー新規登録・ログインしていない場合、新規登録・ログインボタン表示 --}}
+            @else
+                <button class="mx-4 hover:text-white">
+                    <a href="{{ route('user.login')}}">ログイン</a>
+                </button>
+                <button class="mx-4 hover:text-white">
+                    <a href="{{ route('user.register')}}">初めての方(新規会員登録)</a>
+                </button>
+            @endauth
+        </nav>
+        <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+
         </div>
     </div>
 </header>
@@ -208,7 +230,7 @@
                                     <div style="display: flex; flex-direction: column; align-items: center;">
                                         <img src="{{ asset('images/bath-0058781eqg.jpg')}}" alt="温泉の効果" style="width: 500%; height: 200%; margin: 0 auto;">
                                         <p class="--txt bg-yellow-600">
-                                            汗をかくことで、カラダに溜まった老廃物の排出を促進し、毛穴の皮脂を取り除くため美肌効果も期待できます。
+                                            汗をかくことで、カラダに溜まった老廃物の排出を促進し、毛穴の皮脂を取り除くため美肌効果も期待���きます。
                                             <br>また、代謝が上がることで、睡眠の質や、冷え性の改善にも期待できるという声も。
                                         </p>
                                     </div>

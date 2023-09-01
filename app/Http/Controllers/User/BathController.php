@@ -34,12 +34,13 @@ class BathController extends Controller
         }
 
         $baths = $baths->get();
+        $counts = count($baths);
         if (Auth::id()) {
             $user = User::findOrfail(Auth::id());//マイページに戻るため
 
-            return view('user.search', compact('baths', 'categories', 'user'));
+            return view('user.search', compact('baths', 'categories', 'user', 'counts'));
         } else {
-            return view('user.search', compact('baths', 'categories'));
+            return view('user.search', compact('baths', 'categories', 'counts'));
         }
     }
 
@@ -48,7 +49,7 @@ class BathController extends Controller
     {
         $bath = Bath::findOrFail($id);//ユーザーが選択された施設詳細
         $plans = $bath->plans;
-
+        
         return view('user.show', compact('bath', 'plans'));
     }
 }

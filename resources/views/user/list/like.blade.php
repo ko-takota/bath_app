@@ -4,7 +4,7 @@
 
 <section class="text-gray-600 body-font ">
     <div class="relative">
-        <img src="{{ asset('images/22296392.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(1px);">
+        <img src="{{ asset('images/24120406.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(7px);">
         <div class="absolute inset-0 z-10 bg-gray opacity-40"></div>
         <div class="container px-5 py-24 mx-auto relative z-10">
             <div class="dropdown">

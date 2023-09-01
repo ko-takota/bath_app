@@ -5,7 +5,7 @@
     <div class="absolute inset-0 z-10 bg-black-400 opacity-40"></div>
     <div class="container px-5 py-24 mx-auto relative z-10">
         <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2">施設一覧/検索</h1>
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2">施設検索</h1>
         </div>
         <div class="container px-5 py-24 mx-auto">
             <div class="absolute top-4 right-4">
@@ -48,7 +48,8 @@
             </form>
             <section class="text-gray-600 body-font">
                 <div class="container px-5 py-24 mx-auto flex justify-center">
-                    <div class="-m-4 lg:w-1/2">
+                    検索結果{{$counts}}件
+                    <div class="-m-12 lg:w-1/2">
                         @if(count($baths) > 0)
                             @foreach ($baths as $bath)
                             <div class="bg-white mt-8 mb-48 border-2 border-gray-900 rounded-lg overflow-hidden">

@@ -4,10 +4,10 @@
 
 @section('content')
 <section class="text-gray-900 body-font ">
-    <img src="{{ asset('images/3096750_s.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(9px);">
+    <img src="{{ asset('images/24120406.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(9px);">
     <div class="container px-5 py-24 mx-auto">
       <div class="flex flex-wrap w-full mb-20 flex-col items-left">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black">{{ Auth::user()->name }}さん</h1>
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black">{{ Auth::user()->name }}さんのマイページ</h1>
         <p class="lg:w-1/2 w-full leading-relaxed text-gray-900">来てくれてありがとう！</p>
       </div>
     <div class="absolute top-4 right-16">

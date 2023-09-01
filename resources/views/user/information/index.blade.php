@@ -3,7 +3,7 @@
 @extends('layouts.common')
 @section('content')
 <section class="text-gray-600 body-font ">
-    <img src="{{ asset('images/3096750_s.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(9px);">
+    <img src="{{ asset('images/24120406.jpg')}}" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" style="filter: blur(8px);">
     <div class="container px-5 py-24 mx-auto">
         <div class="dropdown">
             <form action="{{ route('user.index', ['id' => $user]) }}" method="GET">
