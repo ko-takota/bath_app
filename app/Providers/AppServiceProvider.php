@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +28,13 @@ class AppServiceProvider extends ServiceProvider
             config(['session.cookie' => config('session.cookie_admin')]);
         }
         //Paginator::useBootstrapFive();
+            
+        Password::defaults(function () {
+            $rule = Password::min(8);
+    
+            return $this->app->isProduction()
+                        ? $rule->mixedCase()->numbers()->uncompromised()
+                        : $rule;
+        });
     }
 }

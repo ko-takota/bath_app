@@ -13,7 +13,7 @@
             </form>
         </div>
       <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black">{{ Auth::user()->name }}さん</h1>
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black">{{ Auth::user()->name }}さんの投稿</h1>
       </div>
       <div class="py-12">
         <div class="flex justify-end">

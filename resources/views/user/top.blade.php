@@ -5,23 +5,23 @@
 @include('common.footer')
 <header class="text-gray-900 bg-yellow-700 body-font" style="position: sticky; top: 0; z-index: 100;">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a href="https://bath-app.matcha.mydns.jp/#:~:text=%E3%82%82%E7%B9%8B%E3%81%8C%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82-,%E3%83%90%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A3%E3%81%A6%E4%BD%95%EF%BC%9F%EF%BC%9F,-%E5%85%A5%E3%82%8C%E3%81%B0%E5%85%A5%E3%82%8B">
+        <a href="#">
             <h1 class="sm:text-3xl text-white font-medium title-font" style="background-image: linear-gradient;">バスクリプション</h1>
         </a>
         <nav class="flex lg:w-3/5 flex-wrap items-center text-base md:ml-auto">
-            <a href="https://bath-app.matcha.mydns.jp/#:~:text=%E3%81%A1%E3%82%83%E3%81%84%E3%81%BE%E3%81%99%EF%BC%81-,%E6%B8%A9%E6%B3%89%E3%81%AE%E6%96%B0%E7%9D%80%E6%83%85%E5%A0%B1,-%E6%96%B0%E3%81%97%E3%81%84%E3%82%B3%E3%83%BC%E3%82%B9%E3%81%8C" class="mr-5 hover:text-white">お知らせ</a>
-            <a href="https://bath-app.matcha.mydns.jp/#:~:text=%E9%98%BF%E8%98%87%E4%B8%80%E5%8F%B7%E5%BA%97-,%E5%8F%A3%E3%82%B3%E3%83%9F,-%E5%8F%A3%E3%82%B3%E3%83%9F%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE" class="mr-5 hover:text-white">口コミ</a>
-            <a href="https://bath-app.matcha.mydns.jp/#:~:text=%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93-,~%E6%B8%A9%E6%B3%89%E3%81%AE%E9%AD%85%E5%8A%9B~,-%E6%B8%A9%E6%B3%89%E6%99%82%E9%96%93%E3%82%92" class="mr-5 hover:text-white">魅力</a>
+            <a href="#news" class="mr-5 hover:text-white">お知らせ</a>
+            <a href="#comment" class="mr-5 hover:text-white">口コミ</a>
+            <a href="#attract" class="mr-5 hover:text-white">魅力</a>
             <a href="/contact" class="mr-5 hover:text-white">お問い合わせ</a>
             {{-- 認証によって、ボタン表示の切り替え --}}
             @auth
                 <form action="{{ route('user.index', ['id' => $user_id]) }}" method="GET">
                     @csrf
-                    <button class="mr-5 hover:text-white">マイページ</button>
+                    <button class="mr-5 mt-4 hover:text-white">マイページ</button>
                 </form>
                 <form action="{{ route('user.logout')}}" method="POST">
                     @csrf
-                    <button class="mr-5 hover:text-white">ログアウト</button>
+                    <button class="mr-5 mt-4 hover:text-white">ログアウト</button>
                 </form>
             {{-- ユーザー新規登録・ログインしていない場合、新規登録・ログインボタン表示 --}}
             @else
@@ -112,7 +112,7 @@
             </body>
             {{-- 施設お知らせ --}}
             <section class="text-gray-600 body-font">
-                <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">温泉の新着情報</span></h1>
+                <h1 id="news" class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">温泉の新着情報</span></h1>
                 <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-wrap -mx-4 -my-8">
                         <div class="py-8 px-4 overflow-x-auto">
@@ -148,7 +148,7 @@
                 </div>
             </section>
             {{-- みんなの口コミ --}}
-            <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">口コミ</span></h1>
+            <h1 id="comment" class="title-font text-xl font-medium text-center text-gray-900 mb-3"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">口コミ</span></h1>
             <section class="text-gray-600 body-font">
                 <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-wrap -mx-4 -my-8">
@@ -180,7 +180,7 @@
             </section>
 
             <section class="温泉の魅力">
-                <h1 class="title-font text-xl font-medium text-center text-gray-900 mb-12 mt-24"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">~温泉の魅力~</span></h1>
+                <h1 id="attract" class="title-font text-xl font-medium text-center text-gray-900 mb-12 mt-24"><span class="text-lg" style="text-decoration: underline; font-size: 40px;">~温泉の魅力~</span></h1>
                 <div class="flex-center" style="align-items: center;">
                     <ul >
                         <div class="sm:flex bg-yellow-700 " style="opacity: 0.9;">
