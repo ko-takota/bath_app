@@ -2,9 +2,10 @@
     <form method="POST" action="{{ route('user.register') }}">
         @csrf
 
-        <a class="flex items-center justify-center text-gray-900 font-bold p-5 mb-4 md:mb-20" href="{{ route('user.top') }}">
-        <span class="text-2xl">バスクリプション会員登録</span>
+        <a class="flex items-center justify-center text-gray-900 font-bold md:mb-20" href="{{ route('user.top') }}">
+        <span class="text-xl bg-yellow-400">バスクリプション会員登録</span>
         </a>
+    <div class="bg-yellow-200">
         <!-- 名前 -->
         <div>
             <x-input-label for="name" :value="__('ユーザー名')" />
@@ -40,6 +41,7 @@
                 {{ __('登録する') }}
             </x-primary-button>
         </div>
+    </div>
     </form>
     <h2 class="text-lg text-gray-900 font-medium title-font mb-2 text-center">
         <span class="hover:bg-yellow-600">

@@ -3,14 +3,14 @@
 <x-guest-layout>
     <!-- セッション状況 -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+    <a class="flex items-center justify-center text-gray-900 font-bold md:mb-10" href="{{ route('user.top') }}">
+        <span class="text-xl bg-yellow-400">バスクリプションログイン</span>
+    </a>
 
     <form method="POST" action="{{ route('user.login') }}">
         @csrf
-    <div class="bg-yellow-400">
-        <a class="flex items-center justify-center text-gray-900 font-bold p-8 mb-4 md:mb-10" href="{{ route('user.top') }}">
-            <span class="text-2xl">バスクリプションログイン</span>
-        </a>
-
+        
+    <div class="bg-yellow-200">
         <!-- メールアドレス -->
         <div>
             <x-input-label for="email" :value="__('メールアドレス')" />

@@ -26,7 +26,7 @@
                 <input type="hidden" name="id" value="{{$bathId}}">
                 <div class="p-2 w-full flex justify-around mt-6">
                     <button type="button" onclick="location.href='{{route('admin.plan.index')}}' " class="bg-gray-100 border-0 py-2 px-8 focus:outline-none hover:bg-gray-300 rounded text-lg">戻る</button>
-                    <button type="submit" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">更新</button>
+                    <button type="submit" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">登録</button>
                 </div>
             </form>
           </div>

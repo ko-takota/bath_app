@@ -74,17 +74,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.member')" :active="request()->routeIs('admin.member')">
-                会員管理
-            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.bath.index')" :active="request()->routeIs('admin.bath.index')">
-                施設編集
+                施設一覧
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.plan.index')" :active="request()->routeIs('admin.plan.index')">
-                プラン作成
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.post.index')" :active="request()->routeIs('admin.post.index')">
-                お知らせ投稿
+            <x-responsive-nav-link :href="route('admin.create_bath')" :active="request()->routeIs('admin.create_bath')">
+                施設新規作成
             </x-responsive-nav-link>
         </div>
 
