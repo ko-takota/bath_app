@@ -1,4 +1,3 @@
-@section('header')
 <header class="text-gray-900 bg-yellow-700 body-font" style="position: sticky; top: 0; z-index: 100;">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a href="#">
@@ -9,7 +8,7 @@
             <a href="#comment" class="mr-5 hover:text-white">口コミ</a>
             <a href="#attract" class="mr-5 hover:text-white">魅力</a>
             <a href="/contact" class="mr-5 hover:text-white">お問い合わせ</a>
-            {{-- 認証によって、ボタン表示の切り替え --}}
+             <!--認証によって、ボタン表示の切り替え -->
             @auth
                 <form action="{{ route('user.index', ['id' => Auth::id()]) }}" method="GET">
                     @csrf
@@ -19,7 +18,7 @@
                     @csrf
                     <button class="mr-5 mt-4 hover:text-white">ログアウト</button>
                 </form>
-            {{-- ユーザー新規登録・ログインしていない場合、新規登録・ログインボタン表示 --}}
+            <!-- ユーザー新規登録・ログインしていない場合、新規登録・ログインボタン表示 -->
             @else
                 <button class="mr-5 hover:text-white">
                     <a href="{{ route('user.login')}}">ログイン</a>
@@ -39,4 +38,3 @@
         </div>
     </div>
 </header>
-@endsection
