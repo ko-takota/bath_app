@@ -30,7 +30,7 @@
                         <select name="category" class="lg:mb-0 lg:mr-1">
                             <option value="0">全て</option>
                             @foreach ($categories as $category)
-                                <optgroup label="{{ $category->name }}">
+                                <optgroup class="category-optgroup" label="{{ $category->name }}">
                                     @foreach ($category->prefcture as $prefcture)
                                         <option value="{{ $prefcture->id }}" @if(\Request::get('category') == $prefcture->id) selected @endif>
                                             {{ $prefcture->name }}

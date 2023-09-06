@@ -30,11 +30,7 @@ class AppServiceProvider extends ServiceProvider
         //Paginator::useBootstrapFive();
             
         Password::defaults(function () {
-            $rule = Password::min(8);
-    
-            return $this->app->isProduction()
-                        ? $rule->mixedCase()->numbers()->uncompromised()
-                        : $rule;
+            $rule = Password::min(8)->mixedCase()->numbers()->uncompromised();
         });
     }
 }
