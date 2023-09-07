@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\BathNews;
 
 
 class TopController extends Controller
@@ -47,5 +48,21 @@ class TopController extends Controller
             $user_id = null;
         }
         return view('user.top2', compact('user_id'));
+    }
+    
+    
+        public function bathNews()
+    {
+        
+        $importantNews = BathNews::where('category', 0)->get();
+        $otherNews = BathNews::where('category', 1)->get();
+        
+        return view('user.bathNews', compact('importantNews', 'otherNews'));
+    }
+
+    public function bathNews_content($id)
+    {
+        $news = BathNews::findOrFail($id);
+        return view('user.bathNews_content', compact('news'));
     }
 }

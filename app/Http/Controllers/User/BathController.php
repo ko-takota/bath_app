@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AreaCategory;
 use Laravel\Ui\Presets\React;
+use App\Models\Post;
 
 class BathController extends Controller
 {
@@ -50,6 +51,8 @@ class BathController extends Controller
         $bath = Bath::findOrFail($id);//ユーザーが選択された施設詳細
         $plans = $bath->plans;
         
-        return view('user.show', compact('bath', 'plans'));
+        $bathPost = Post::where('bath_id', $bath->id)->get();
+        
+        return view('user.show', compact('bath', 'plans', 'bathPost'));
     }
 }

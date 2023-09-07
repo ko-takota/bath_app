@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/tt';
     public const ADMIN_HOME = '/admin/create-bath';
-    public const MANAGE_HOME = '/manage/dashboard';
+    public const MANAGE_HOME = '/manage/admin';
 
 
     /**

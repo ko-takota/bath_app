@@ -4,7 +4,7 @@
             <h1 class="sm:text-3xl text-white font-medium title-font" style="background-image: linear-gradient;">バスクリプション</h1>
         </a>
         <nav class="flex lg:w-3/5 flex-wrap items-center text-base md:ml-auto">
-            <a href="#news" class="mr-5 hover:text-white">お知らせ</a>
+            <a href="{{ route('user.bath_news') }}" class="mr-5 hover:text-white">お知らせ</a>
             <a href="#comment" class="mr-5 hover:text-white">口コミ</a>
             <a href="#attract" class="mr-5 hover:text-white">魅力</a>
             <a href="/contact" class="mr-5 hover:text-white">お問い合わせ</a>
