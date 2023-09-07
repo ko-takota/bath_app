@@ -74,11 +74,24 @@
     <div class="px-24 py-12">
         <a href="{{route('user.search')}}" class="bg-white hover:bg-yellow-500 rounded-full">施設一覧へ</a>
     </div>
+    <section class="body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
+                    <h3 class="mb-6 text-2xl font-bold"><span class="border bg-gray-300">お知らせ</span></h3>
+                    @foreach($bathPost as $post)
+                    <div class="mb-6 bg-yellow-200" >
+                        <div class="border py-4">
+                            <p class="font-bold">{{ $post->title }}</p>
+                        </div>
+                        <div class="border text-left py-2">
+                            <p>
+                                {{ $post->body}}
+                            </p>
+                        </div>
+                    </div>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+    </section>
 </section>
-
-
-
-
-
-
-
