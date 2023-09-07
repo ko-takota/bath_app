@@ -10,12 +10,23 @@ use App\Http\Controllers\Manage\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Manage\Auth\RegisteredUserController;
 use App\Http\Controllers\Manage\Auth\VerifyEmailController;
 use App\Http\Controllers\Manage\AdminController;
-
+use App\Http\Controllers\Manage\NewsController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
     return view('manage.welcome');
+});
+
+
+//bathNews
+Route::prefix('news')->middleware('auth:manage')->group(function(){
+    Route::get('index', [NewsController::class, 'index'])->name('news.index');
+    Route::get('create', [NewsController::class, 'create'])->name('news.create');
+    Route::post('store', [NewsController::class, 'store'])->name('news.store');
+    Route::get('edit/{id}', [NewsController::class, 'edit'])->name('news.edit');
+    Route::put('update/{id}', [NewsController::class, 'update'])->name('news.update');
+    Route::delete('/delete/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
 });
 
 

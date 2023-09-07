@@ -14,11 +14,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('manage.dashboard')" :active="request()->routeIs('manage.dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('manage.admin.index')" :active="request()->routeIs('manage.admin.index')">
                         {{ __('管理者一覧') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('manage.news.index')" :active="request()->routeIs('manage.news.index')">
+                        {{ __('サイトお知らせ') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -40,9 +40,6 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        {{-- <x-dropdown-link :href="route('manage.profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link> --}}
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('manage.logout') }}">
@@ -74,11 +71,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('manage.dashboard')" :active="request()->routeIs('manage.dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('manage.admin.index')" :active="request()->routeIs('manage.admin.index')">
                 {{ __('管理者一覧') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('manage.news.index')" :active="request()->routeIs('manage.news.index')">
+                {{ __('サイトお知らせ') }}
             </x-responsive-nav-link>
         </div>
 
