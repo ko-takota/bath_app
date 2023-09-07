@@ -165,6 +165,7 @@ return [
         'password' => 'パスワード',
         'title' => '件名',
         'message' => 'メッセージ',
+        'category' => '項目'
     ],
 
 ];

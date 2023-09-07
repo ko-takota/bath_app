@@ -65,6 +65,10 @@ Route::get('/contact', [ContactController::class, 'contact'])->name('contact');/
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 
 
+//運営からのお知らせ
+Route::get('/bath_news', [TopController::class, 'bathNews'])->name('bath_news');
+Route::get('/bath_news_content/{id}', [TopController::class, 'bathNews_content'])->name('bath_news_content');
+
 //利用規約
 Route::get('/terms', function () {
     return view('user.terms');
